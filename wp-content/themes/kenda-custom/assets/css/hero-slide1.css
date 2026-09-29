@@ -1,0 +1,285 @@
+/**
+ * PPT Slide 1 hero + header integration + ambient video.
+ */
+
+.site-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  max-width: min(42vw, 200px);
+}
+
+.site-brand__logo-link,
+.site-brand .custom-logo-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.site-brand__logo-img,
+.site-brand .custom-logo-link img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 56px;
+  max-width: min(150px, 36vw);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.site-brand__logo-img--portrait {
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+  border: 2px solid rgba(214, 174, 94, 0.65);
+  box-shadow: 0 2px 8px rgba(9, 32, 63, 0.2);
+}
+
+/* Header on PPT hero (light deck) */
+.home.has-hero-ppt .site-header:not(.is-scrolled) {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(9, 32, 63, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.home.has-hero-ppt .site-header:not(.is-scrolled) .site-nav__list a {
+  color: var(--color-navy-deep);
+}
+
+.home.has-hero-ppt .site-header:not(.is-scrolled) .site-nav__list a:hover {
+  color: var(--color-blue);
+}
+
+.home.has-hero-ppt .site-header:not(.is-scrolled) .site-nav-toggle span {
+  background: var(--color-navy-deep);
+}
+
+.home.has-hero-ppt .site-header:not(.is-scrolled) .site-brand__logo-img,
+.home.has-hero-ppt .site-header:not(.is-scrolled) .site-brand .custom-logo-link img {
+  filter: none;
+}
+
+.home.has-hero-ppt .site-header.is-scrolled {
+  background: rgba(9, 32, 63, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.home.has-hero-ppt .site-header.is-scrolled .site-nav__list a {
+  color: var(--color-ice);
+}
+
+/* —— PPT hero shell —— */
+.hero.hero--ppt {
+  position: relative;
+  min-height: 100svh;
+  color: var(--color-navy-deep);
+  background: var(--color-white);
+  padding: 0;
+  padding-top: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.hero__ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__ambient-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12;
+}
+
+.hero__ambient-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(218, 229, 242, 0.85) 100%);
+}
+
+.hero__ppt-accent {
+  position: relative;
+  z-index: 2;
+  height: 5px;
+  background: var(--color-gold);
+}
+
+.hero__ppt-shell {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100svh - 5px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.97);
+}
+
+.hero__ppt-grid {
+  flex: 1;
+  width: 100%;
+  max-width: var(--container-width, 1280px);
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 1.5rem) clamp(1.25rem, 4vw, 2.5rem) 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.hero__elect {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  line-height: 1;
+  color: var(--color-gold);
+}
+
+.hero__elect::before {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 3px;
+  margin-bottom: 0.75rem;
+  background: var(--color-gold);
+}
+
+.hero__ppt-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.hero__name-part {
+  display: block;
+  font-size: clamp(2.85rem, 10vw, 7.5rem);
+  letter-spacing: 0.02em;
+}
+
+.hero__name-part--1,
+.hero__name-part--2 {
+  color: var(--color-blue);
+}
+
+.hero__name-part--3 {
+  color: var(--color-gold);
+}
+
+.hero__office-line--ppt {
+  margin: 0 0 1rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-navy-deep);
+}
+
+.hero__lead--ppt {
+  margin: 0 0 1.35rem;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--color-navy-mid);
+}
+
+.hero__ppt-visual {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: min(480px, 50vh);
+}
+
+.hero__slide-logo {
+  margin: 0;
+  line-height: 0;
+  width: min(100%, 380px);
+  margin-left: auto;
+}
+
+.hero__slide-logo-img {
+  width: 100%;
+  height: auto;
+  max-height: min(70vh, 520px);
+  object-fit: contain;
+  object-position: center center;
+  filter: drop-shadow(0 16px 32px rgba(9, 32, 63, 0.18));
+}
+
+.hero__wave {
+  display: block;
+  width: 100%;
+  height: clamp(28px, 4vw, 48px);
+  margin-top: auto;
+}
+
+.hero--ppt .btn--outline-dark {
+  border-color: var(--color-navy-deep);
+  color: var(--color-navy-deep);
+}
+
+.hero--ppt .btn--outline-dark:hover {
+  background: var(--color-navy-deep);
+  color: var(--color-white);
+}
+
+@media (max-width: 960px) {
+  .hero__ppt-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 0.5rem;
+  }
+
+  .hero__ppt-visual {
+    order: -1;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .hero__slide-logo {
+    margin: 0 auto;
+    width: min(260px, 72vw);
+  }
+
+  .hero__slide-logo-img {
+    max-height: 280px;
+  }
+
+  .hero__elect {
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-brand__logo-img:not(.site-brand__logo-img--portrait),
+  .site-brand .custom-logo-link img {
+    max-height: 48px;
+    max-width: min(120px, 34vw);
+  }
+
+  .site-brand__logo-img--portrait {
+    width: 42px;
+    height: 42px;
+    max-width: 42px;
+    max-height: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__ambient-video {
+    display: none;
+  }
+
+  .hero__ambient {
+    background: var(--color-ice) center / cover no-repeat;
+  }
+}
