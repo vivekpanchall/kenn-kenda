@@ -1,0 +1,41 @@
+# WordPress generated/cache files
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
+wp-content/ai1wm-backups/
+wp-content/uploads/cache/
+
+# Logs
+*.log
+debug.log
+
+# Local/dev files
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Development dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local database/config backups
+*.sql
+*.sql.gz
+
+# Server/local cache
+object-cache.php
+advanced-cache.phpwp-content/themes/kenda-custom/assets/videos/hero-campaign.mp4
+wp-content/themes/kenda-custom/assets/videos/hero-campaign.mp4
+/wp-content/themes/kenda-custom/assets/videos/hero-campaign.mp4
