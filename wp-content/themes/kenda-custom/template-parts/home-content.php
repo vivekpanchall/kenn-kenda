@@ -767,7 +767,7 @@ $experience_query = new WP_Query(
 		<header class="k-section__head">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_09', 'heading' ) ); ?></h2>
 			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_09', 'subheading' ) ); ?></p>
-			<p class="eyebrow"><?php echo esc_html( (string) kenda_ppt( 'slide_09', 'logos_label' ) ); ?></p>
+			<p class="eyebrow k-about-eyebrow"><?php echo esc_html( (string) kenda_ppt( 'slide_09', 'logos_label' ) ); ?></p>
 			<div class="k-chips">
 				<?php foreach ( $s09_logos as $logo ) : ?>
 					<span class="k-chip k-chip--outline"><?php echo esc_html( (string) $logo ); ?></span>
