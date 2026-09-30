@@ -467,6 +467,14 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_08', 'stat', __( 'Stat line', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'lead', __( 'Lead', 'kenda-custom' ), $data['slide_08'], 'textarea' );
 				kenda_ppt_admin_row( 'slide_08', 'includes', __( 'What is included', 'kenda-custom' ), $data['slide_08'], 'textarea' );
+				  // NEW FIELD
+				kenda_ppt_admin_row(
+					'slide_08',
+					'opt_content',
+					__( 'Opt content', 'kenda-custom' ),
+					$data['slide_08'],
+					'textarea'
+				);
 				kenda_ppt_admin_row( 'slide_08', 'opt_title', __( 'Optimization title', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'human', __( 'Human oversight label', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'optimized', __( 'Optimization bullets', 'kenda-custom' ), $data['slide_08'], 'textarea' );

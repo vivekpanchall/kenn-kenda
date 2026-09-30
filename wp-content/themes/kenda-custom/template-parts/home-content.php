@@ -21,6 +21,7 @@ $s03_cards    = kenda_ppt( 'slide_03', 'cards', array() );
 $s04_steps    = kenda_ppt( 'slide_04', 'steps', array() );
 $s05_bullets  = kenda_ppt_lines( (string) kenda_ppt( 'slide_05', 'bullets', '' ) );
 $s08_includes = kenda_ppt_lines( (string) kenda_ppt( 'slide_08', 'includes', '' ) );
+$opt_content = kenda_ppt_lines( (string) kenda_ppt( 'slide_08', 'opt_content', '' ) );
 $s08_opt      = kenda_ppt_lines( (string) kenda_ppt( 'slide_08', 'optimized', '' ) );
 $s09_logos    = kenda_ppt( 'slide_09', 'logos', array() );
 $s10_services = kenda_ppt( 'slide_10', 'services', array() );
@@ -699,14 +700,20 @@ $experience_query = new WP_Query(
 <section class="k-section k-section--muted" id="get-involved" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
-			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'heading' ) ); ?></h2>
-			<p class="k-stat-line"><strong><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'strategy' ) ); ?></strong> <?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?></p>
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'lead' ) ); ?></p>
-			<div class="k-chips">
-				<?php foreach ( kenda_ppt( 'slide_08', 'taglines', array() ) as $tag ) : ?>
-					<span class="k-chip"><?php echo esc_html( (string) $tag ); ?></span>
-				<?php endforeach; ?>
+			<div class="k-slide08-head__row">
+
+				<h2 class="display-md">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'heading' ) ); ?>
+				</h2>
+
+				<h2 class="display-md k-slide08-stat">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?>
+				</h2>
+
 			</div>
+			<!-- <p class="k-stat-line"><strong><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'strategy' ) ); ?></strong> <?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?></p> -->
+			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'lead' ) ); ?></p>
+			
 		</header>
 		<div class="k-split">
 			<details class="k-disclosure" open>
@@ -719,11 +726,21 @@ $experience_query = new WP_Query(
 					</ul>
 				</div>
 			</details>
-			<details class="k-disclosure">
+			<details class="k-disclosure" open>
 				<summary class="k-disclosure__summary"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'opt_title' ) ); ?></summary>
 				<div class="k-disclosure__body">
-					<p class="k-card__title"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'human' ) ); ?></p>
-					<ul class="k-list k-list--compact">
+					<ul class="k-list">
+						<?php foreach ( $opt_content as $line ) : ?>
+							<li><?php echo esc_html( $line ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</details>
+			<details class="k-disclosure">
+				<summary class="k-disclosure__summary"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'human' ) ); ?></summary>
+				<div class="k-disclosure__body">
+					
+					<ul class="k-list">
 						<?php foreach ( $s08_opt as $line ) : ?>
 							<li><?php echo esc_html( $line ); ?></li>
 						<?php endforeach; ?>
@@ -731,11 +748,16 @@ $experience_query = new WP_Query(
 				</div>
 			</details>
 		</div>
-		<?php if ( kenda_home( 'involved_cta_text' ) && kenda_home( 'involved_cta_url' ) ) : ?>
+		<div class="k-chips">
+			<?php foreach ( kenda_ppt( 'slide_08', 'taglines', array() ) as $tag ) : ?>
+				<h1><?php echo esc_html( (string) $tag ); ?></h2>
+			<?php endforeach; ?>
+		</div>
+		<!-- <?php if ( kenda_home( 'involved_cta_text' ) && kenda_home( 'involved_cta_url' ) ) : ?>
 			<p class="k-section__cta">
 				<a class="btn btn--gold btn--lg js-scroll-link" href="<?php echo esc_url( kenda_home( 'involved_cta_url', '#contact' ) ); ?>"><?php echo esc_html( kenda_home( 'involved_cta_text' ) ); ?></a>
 			</p>
-		<?php endif; ?>
+		<?php endif; ?> -->
 	</div>
 </section>
 

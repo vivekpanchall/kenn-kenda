@@ -153,6 +153,7 @@ function kenda_ppt_default_slides(): array {
 			'taglines'   => array( __( 'Right message.', 'kenda-custom' ), __( 'Right voter.', 'kenda-custom' ), __( 'Right moment.', 'kenda-custom' ) ),
 			'includes'   => "• Up to 250,000 text messages during the primary campaign window.\n• Segmented SMS/MMS outreach by zip code, generation, issue interest, and engagement behavior.\n• Message variants aligned to Public Safety, Infrastructure, and Economic Opportunity sentiment.\n• Best send windows determined by response patterns, sentiment signals, and voter behavior.\n• A/B testing identifies strongest hooks, calls-to-action, and follow-up sequences.\n• Texts support donations, volunteers, event turnout, video views, persuasion, and GOTV.",
 			'optimized'  => "• Strategic review before major sends.\n• Respectful, compliant outreach with clear sender identity and opt-out handling.\n• Performance feedback loops refine daily social, streaming, and website retargeting.",
+			'opt_content' => "• First optional item\n• Second optional item\n• Third optional item",
 			'opt_title'  => __( 'How sends are optimized', 'kenda-custom' ),
 			'human'      => __( 'Human oversight', 'kenda-custom' ),
 		),
