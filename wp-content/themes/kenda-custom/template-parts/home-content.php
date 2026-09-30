@@ -941,16 +941,16 @@ $experience_query = new WP_Query(
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'heading' ) ); ?></h2>
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'subheading' ) ); ?></p>
-			<p class="k-note"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'intro' ) ); ?></p>
 		</header>
 		<div class="k-wins-grid">
 			<?php foreach ( $s13_bullets as $line ) : ?>
 				<article class="k-card k-card--win">
 					<p class="k-card__text"><?php echo esc_html( $line ); ?></p>
 				</article>
-			<?php endforeach; ?>
-		</div>
+				<?php endforeach; ?>
+			</div>
+			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'subheading' ) ); ?></p>
+			<p class="k-note"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'intro' ) ); ?></p>
 	</div>
 </section>
 
