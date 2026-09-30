@@ -27,20 +27,67 @@ function kenda_ppt_default_slides(): array {
 			'scope_bullets' => "• Primary campaign deliverables only.\n• Kansas City's nonpartisan municipal primary is expected in April 2027.\n• Working planning date: April 6, 2027, pending the official Election Board calendar.\n• A June 2027 runoff/general election proposal will be prepared separately if Kenda advances.",
 		),
 		'slide_03' => array(
+
 			'heading'    => __( 'Meet the JPP Consulting Team', 'kenda-custom' ),
+
 			'subheading' => __( 'Enterprise-grade marketing technology, human oversight, and disciplined messaging', 'kenda-custom' ),
+
 			'stat'       => __( "100+ Years' Combined Experience", 'kenda-custom' ),
+
 			'tags'       => __( 'Digital Marketing • Software Development • Telecommunications • Best-in-Breed IT Products • Human Resource Management', 'kenda-custom' ),
+
 			'cards'      => array(
-				array( 'title' => __( 'AI Accountability Audit', 'kenda-custom' ), 'desc' => __( 'Enterprise-grade AI ethics and governance assessment', 'kenda-custom' ) ),
-				array( 'title' => __( 'AI Agent', 'kenda-custom' ), 'desc' => __( 'AI-powered contact handling with human oversight', 'kenda-custom' ) ),
-				array( 'title' => __( 'Intent Digital Marketing', 'kenda-custom' ), 'desc' => __( 'Multichannel campaigns, copywriting for measurable results', 'kenda-custom' ) ),
-				array( 'title' => __( 'AI Data Center Consulting / Backlash-to-Partnership Advisory', 'kenda-custom' ), 'desc' => '' ),
-				array( 'title' => __( 'NoW Video', 'kenda-custom' ), 'desc' => __( 'Real-Time Voice Translation / Transcription video chat', 'kenda-custom' ) ),
-				array( 'title' => __( 'Ask Carrie', 'kenda-custom' ), 'desc' => __( 'AI-knowledge Base', 'kenda-custom' ) ),
-				array( 'title' => __( 'Explainer Videos', 'kenda-custom' ), 'desc' => __( 'Animated educational videos', 'kenda-custom' ) ),
-				array( 'title' => __( 'Strategic AI Development', 'kenda-custom' ), 'desc' => __( 'End-to-end design / build / host / manage', 'kenda-custom' ) ),
+
+				array(
+					'image' => '',
+					'title' => __( 'AI Accountability Audit', 'kenda-custom' ),
+					'desc'  => __( 'Enterprise-grade AI ethics and governance assessment', 'kenda-custom' ),
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'AI Agent', 'kenda-custom' ),
+					'desc'  => __( 'AI-powered contact handling with human oversight', 'kenda-custom' ),
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'Intent Digital Marketing', 'kenda-custom' ),
+					'desc'  => __( 'Multichannel campaigns, copywriting for measurable results', 'kenda-custom' ),
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'AI Data Center Consulting / Backlash-to-Partnership Advisory', 'kenda-custom' ),
+					'desc'  => '',
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'NoW Video', 'kenda-custom' ),
+					'desc'  => __( 'Real-Time Voice Translation / Transcription video chat', 'kenda-custom' ),
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'Ask Carrie', 'kenda-custom' ),
+					'desc'  => __( 'AI-knowledge Base', 'kenda-custom' ),
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'Explainer Videos', 'kenda-custom' ),
+					'desc'  => __( 'Animated educational videos', 'kenda-custom' ),
+				),
+
+				array(
+					'image' => '',
+					'title' => __( 'Strategic AI Development', 'kenda-custom' ),
+					'desc'  => __( 'End-to-end design / build / host / manage', 'kenda-custom' ),
+				),
+
 			),
+
 		),
 		'slide_04' => array(
 			'heading'      => __( 'Website Revamp', 'kenda-custom' ),
@@ -232,18 +279,26 @@ function kenda_ppt( string $slide, string $key, $default = '' ) {
  * @return list<string>
  */
 function kenda_ppt_lines( string $text ): array {
-	$lines = preg_split( '/\r\n|\r|\n/', $text ) ?: array();
-	return array_values(
-		array_filter(
-			array_map(
-				static function ( string $line ): string {
-					return trim( preg_replace( '/^[•\-\*]\s*/u', '', $line ) ?? $line );
-				},
-				$lines
-			),
-			static fn( string $line ): bool => '' !== $line
-		)
-	);
+
+    // Convert bullet characters to line breaks.
+    $text = preg_replace( '/\s*•\s*/u', "\n", $text ) ?? $text;
+
+    // Split by line breaks.
+    $lines = preg_split( '/\r\n|\r|\n/', $text ) ?: array();
+
+    return array_values(
+        array_filter(
+            array_map(
+                static function ( string $line ): string {
+                    return trim(
+                        preg_replace( '/^[•\-\*]\s*/u', '', $line ) ?? $line
+                    );
+                },
+                $lines
+            ),
+            static fn ( string $line ): bool => '' !== $line
+        )
+    );
 }
 
 add_action(

@@ -26,6 +26,28 @@ add_action(
 );
 
 /**
+ * Load assets for the PPT Deck Sections admin page.
+ */
+function kenda_ppt_deck_admin_assets( string $hook ): void {
+
+    if ( 'kenda-ppt-deck' !== ( $_GET['page'] ?? '' ) ) {
+        return;
+    }
+
+    wp_enqueue_media();
+
+    wp_enqueue_script(
+        'kenda-ppt-admin',
+        get_template_directory_uri() . '/assets/js/kenda-ppt-admin.js',
+        array( 'jquery' ),
+        '1.0.0',
+        true
+    );
+}
+
+add_action( 'admin_enqueue_scripts', 'kenda_ppt_deck_admin_assets' );
+
+/**
  * @param array<string, mixed> $slide_data Current slide values.
  */
 function kenda_ppt_admin_row( string $slide, string $key, string $label, array $slide_data, string $type = 'text' ): void {
@@ -75,12 +97,14 @@ function kenda_sanitize_ppt_settings( array $input ): array {
 					if ( ! is_array( $card ) ) {
 						continue;
 					}
+					$image = absint( $card['image'] ?? 0 );
 					$title = sanitize_text_field( (string) ( $card['title'] ?? '' ) );
 					$desc  = sanitize_text_field( (string) ( $card['desc'] ?? '' ) );
-					if ( '' === $title && '' === $desc ) {
+					 if ( 0 === $image && '' === $title && '' === $desc ) {
 						continue;
 					}
 					$cards[] = array(
+						'image' => $image,
 						'title' => $title,
 						'desc'  => $desc,
 					);
@@ -255,19 +279,128 @@ function kenda_render_ppt_deck_settings_page(): void {
 			?></table>
 			<h3><?php esc_html_e( 'Cards', 'kenda-custom' ); ?></h3>
 			<table class="widefat striped">
-				<thead><tr><th><?php esc_html_e( 'Title', 'kenda-custom' ); ?></th><th><?php esc_html_e( 'Description', 'kenda-custom' ); ?></th></tr></thead>
+
+				<thead>
+					<tr>
+						<th style="width: 25%;">
+							<?php esc_html_e( 'Image', 'kenda-custom' ); ?>
+						</th>
+
+						<th style="width: 30%;">
+							<?php esc_html_e( 'Title', 'kenda-custom' ); ?>
+						</th>
+
+						<th style="width: 45%;">
+							<?php esc_html_e( 'Description', 'kenda-custom' ); ?>
+						</th>
+					</tr>
+				</thead>
+
 				<tbody>
+
 				<?php
 				$cards = $data['slide_03']['cards'] ?? array();
+
 				for ( $i = 0; $i < 8; $i++ ) :
-					$card = $cards[ $i ] ?? array( 'title' => '', 'desc' => '' );
+
+					$card = $cards[ $i ] ?? array(
+						'image' => '',
+						'title' => '',
+						'desc'  => '',
+					);
+
+					$image_id = absint( $card['image'] ?? 0 );
 					?>
+
 					<tr>
-						<td><input type="text" class="large-text" name="kenda_ppt_settings[slide_03][cards][<?php echo (int) $i; ?>][title]" value="<?php echo esc_attr( (string) ( $card['title'] ?? '' ) ); ?>" /></td>
-						<td><input type="text" class="large-text" name="kenda_ppt_settings[slide_03][cards][<?php echo (int) $i; ?>][desc]" value="<?php echo esc_attr( (string) ( $card['desc'] ?? '' ) ); ?>" /></td>
+
+						<!-- Image -->
+						<td>
+
+							<div class="kenda-card-image-field">
+
+								<div
+									class="kenda-card-image-preview"
+									id="kenda-card-image-preview-<?php echo (int) $i; ?>"
+									style="margin-bottom:10px;"
+								>
+
+									<?php if ( $image_id ) : ?>
+
+										<?php
+										echo wp_get_attachment_image(
+											$image_id,
+											'medium',
+											false,
+											array(
+												'style' => 'max-width:150px;height:auto;display:block;',
+											)
+										);
+										?>
+
+									<?php endif; ?>
+
+								</div>
+
+								<input
+									type="hidden"
+									class="kenda-card-image-id"
+									id="kenda-card-image-<?php echo (int) $i; ?>"
+									name="kenda_ppt_settings[slide_03][cards][<?php echo (int) $i; ?>][image]"
+									value="<?php echo esc_attr( $image_id ); ?>"
+								/>
+
+								<button
+									type="button"
+									class="button kenda-select-card-image"
+									data-card-index="<?php echo (int) $i; ?>"
+								>
+									<?php esc_html_e( 'Choose Image', 'kenda-custom' ); ?>
+								</button>
+
+								<button
+									type="button"
+									class="button kenda-remove-card-image"
+									data-card-index="<?php echo (int) $i; ?>"
+									<?php echo $image_id ? '' : 'style="display:none;"'; ?>
+								>
+									<?php esc_html_e( 'Remove', 'kenda-custom' ); ?>
+								</button>
+
+							</div>
+
+						</td>
+
+						<!-- Title -->
+						<td>
+
+							<input
+								type="text"
+								class="large-text"
+								name="kenda_ppt_settings[slide_03][cards][<?php echo (int) $i; ?>][title]"
+								value="<?php echo esc_attr( (string) ( $card['title'] ?? '' ) ); ?>"
+							/>
+
+						</td>
+
+						<!-- Description -->
+						<td>
+
+							<input
+								type="text"
+								class="large-text"
+								name="kenda_ppt_settings[slide_03][cards][<?php echo (int) $i; ?>][desc]"
+								value="<?php echo esc_attr( (string) ( $card['desc'] ?? '' ) ); ?>"
+							/>
+
+						</td>
+
 					</tr>
+
 				<?php endfor; ?>
+
 				</tbody>
+
 			</table>
 
 			<h2><?php esc_html_e( 'Slide 4 — Website Revamp Steps', 'kenda-custom' ); ?></h2>

@@ -7,8 +7,16 @@
 
 declare(strict_types=1);
 
-$s02_bullets  = kenda_ppt_lines( (string) kenda_ppt( 'slide_02', 'bullets', '' ) );
-$s02_scope    = kenda_ppt_lines( (string) kenda_ppt( 'slide_02', 'scope_bullets', '' ) );
+$s02_bullets = kenda_ppt_lines(
+    kenda_ppt( 'slide_02', 'bullets', '' )
+);
+
+$s02_scope = kenda_ppt_lines(
+    kenda_ppt( 'slide_02', 'scope_bullets', '' )
+);
+
+
+
 $s03_cards    = kenda_ppt( 'slide_03', 'cards', array() );
 $s04_steps    = kenda_ppt( 'slide_04', 'steps', array() );
 $s05_bullets  = kenda_ppt_lines( (string) kenda_ppt( 'slide_05', 'bullets', '' ) );
@@ -69,7 +77,15 @@ $experience_query = new WP_Query(
 					<?php endforeach; ?>
 				</ul>
 			</div>
-			<details class="k-disclosure k-disclosure--gold">
+			<div class="k-card k-card--soft">
+				<h3 class="k-card__title"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'scope_title' ) ); ?></h3>
+				<ul class="k-list">
+					<?php foreach ( $s02_scope as $line ) : ?>
+						<li><?php echo esc_html( $line ); ?></li>	
+					<?php endforeach; ?>
+				</ul>
+			</div>
+			<!-- <details class="k-disclosure k-disclosure--gold">
 				<summary class="k-disclosure__summary"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'scope_title' ) ); ?></summary>
 				<div class="k-disclosure__body">
 					<ul class="k-list k-list--compact">
@@ -78,7 +94,7 @@ $experience_query = new WP_Query(
 						<?php endforeach; ?>
 					</ul>
 				</div>
-			</details>
+			</details> -->
 		</div>
 	</div>
 </section>
@@ -93,18 +109,60 @@ $experience_query = new WP_Query(
 			<p class="k-tags"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tags' ) ); ?></p>
 		</header>
 		<?php if ( is_array( $s03_cards ) && $s03_cards ) : ?>
-			<div class="k-card-grid k-card-grid--4">
-				<?php foreach ( $s03_cards as $card ) : ?>
-					<?php if ( ! is_array( $card ) ) { continue; } ?>
-					<article class="k-card k-card--hover">
-						<h3 class="k-card__title"><?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?></h3>
-						<?php if ( ! empty( $card['desc'] ) ) : ?>
-							<p class="k-card__text"><?php echo esc_html( (string) $card['desc'] ); ?></p>
-						<?php endif; ?>
-					</article>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
+
+    <div class="k-card-grid k-card-grid--4">
+
+		<?php foreach ( $s03_cards as $card ) : ?>
+
+			<?php if ( ! is_array( $card ) ) {
+				continue;
+			} ?>
+
+			<article class="k-card k-card--hover">
+
+				<?php
+				$image_id = absint( $card['image'] ?? 0 );
+
+				if ( $image_id ) :
+					?>
+					<div class="k-card__image">
+						<?php
+						echo wp_get_attachment_image(
+							$image_id,
+							'large',
+							false,
+							array(
+								'loading' => 'lazy',
+								'alt'     => (string) ( $card['title'] ?? '' ),
+							)
+						);
+						?>
+					</div>
+				<?php endif; ?>
+
+				<div class="k-card__content">
+
+					<h3 class="k-card__title">
+						<?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?>
+					</h3>
+
+					<?php if ( ! empty( $card['desc'] ) ) : ?>
+
+						<p class="k-card__text">
+							<?php echo esc_html( (string) $card['desc'] ); ?>
+						</p>
+
+					<?php endif; ?>
+
+				</div>
+
+			</article>
+
+		<?php endforeach; ?>
+
+    </div>
+
+<?php endif; ?>
 	</div>
 </section>
 
