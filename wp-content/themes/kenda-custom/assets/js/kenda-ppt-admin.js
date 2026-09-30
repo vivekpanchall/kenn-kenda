@@ -64,3 +64,67 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
+jQuery(document).ready(function ($) {
+
+    let slide14MediaFrame = null;
+
+    $('.kenda-slide14-select-image').on('click', function (event) {
+
+        event.preventDefault();
+
+        slide14MediaFrame = wp.media({
+            title: 'Select Thank You Image',
+            button: {
+                text: 'Use This Image'
+            },
+            multiple: false,
+            library: {
+                type: 'image'
+            }
+        });
+
+        slide14MediaFrame.on('select', function () {
+
+            const attachment = slide14MediaFrame
+                .state()
+                .get('selection')
+                .first()
+                .toJSON();
+
+            $('#kenda-slide14-image').val(attachment.id);
+
+            let imageUrl = attachment.url;
+
+            if (
+                attachment.sizes &&
+                attachment.sizes.medium
+            ) {
+                imageUrl = attachment.sizes.medium.url;
+            }
+
+            $('#kenda-slide14-image-preview').html(
+                '<img src="' +
+                imageUrl +
+                '" style="max-width:300px;height:auto;display:block;" />'
+            );
+
+            $('.kenda-slide14-remove-image').show();
+        });
+
+        slide14MediaFrame.open();
+    });
+
+
+    $('.kenda-slide14-remove-image').on('click', function (event) {
+
+        event.preventDefault();
+
+        $('#kenda-slide14-image').val('');
+
+        $('#kenda-slide14-image-preview').html('');
+
+        $(this).hide();
+    });
+
+});

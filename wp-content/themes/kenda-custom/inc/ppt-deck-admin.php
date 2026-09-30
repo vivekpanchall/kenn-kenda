@@ -91,6 +91,11 @@ function kenda_sanitize_ppt_settings( array $input ): array {
 		foreach ( $slide_val as $field_key => $field_val ) {
 			$field_key = sanitize_key( (string) $field_key );
 
+			if ( 'image' === $field_key ) {
+				$out[ $slide_key ][ $field_key ] = absint( $field_val );
+				continue;
+			}
+
 			if ( 'cards' === $field_key && is_array( $field_val ) ) {
 				$cards = array();
 				foreach ( $field_val as $card ) {
@@ -577,7 +582,7 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_13', 'bullets', __( 'Bullets', 'kenda-custom' ), $data['slide_13'], 'textarea' );
 			?></table>
 
-			<h2><?php esc_html_e( 'Slide 14 — Thank You (before contact)', 'kenda-custom' ); ?></h2>
+			<!-- <h2><?php esc_html_e( 'Slide 14 — Thank You (before contact)', 'kenda-custom' ); ?></h2>
 			<table class="form-table"><?php
 				kenda_ppt_admin_row( 'slide_14', 'heading', __( 'Heading', 'kenda-custom' ), $data['slide_14'] );
 				kenda_ppt_admin_row( 'slide_14', 'subheading', __( 'Subheading', 'kenda-custom' ), $data['slide_14'] );
@@ -587,7 +592,146 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_14', 'line_4', __( 'Optional line 4 (URL text)', 'kenda-custom' ), $data['slide_14'] );
 				kenda_ppt_admin_row( 'slide_14', 'line_5', __( 'Optional line 5', 'kenda-custom' ), $data['slide_14'] );
 				kenda_ppt_admin_row( 'slide_14', 'thank_you', __( 'Thank you headline', 'kenda-custom' ), $data['slide_14'] );
-			?></table>
+			?></table> -->
+
+			<h2>
+				<?php esc_html_e( 'Slide 14 — Thank You (before contact)', 'kenda-custom' ); ?>
+			</h2>
+
+			<table class="form-table">
+
+				<?php
+				kenda_ppt_admin_row(
+					'slide_14',
+					'heading',
+					__( 'Heading', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				$slide14_image_id = absint(
+					$data['slide_14']['image'] ?? 0
+				);
+				?>
+
+				<tr>
+					<th scope="row">
+						<label for="kenda-slide14-image">
+							<?php esc_html_e( 'Thank You Image', 'kenda-custom' ); ?>
+						</label>
+					</th>
+
+					<td>
+
+						<input
+							type="hidden"
+							id="kenda-slide14-image"
+							name="kenda_ppt_settings[slide_14][image]"
+							value="<?php echo esc_attr( $slide14_image_id ); ?>"
+						>
+
+						<div
+							id="kenda-slide14-image-preview"
+							style="margin-bottom: 10px;"
+						>
+
+							<?php if ( $slide14_image_id ) : ?>
+
+								<?php
+								echo wp_get_attachment_image(
+									$slide14_image_id,
+									'medium',
+									false,
+									array(
+										'style' => 'max-width:300px;height:auto;display:block;',
+									)
+								);
+								?>
+
+							<?php endif; ?>
+
+						</div>
+
+						<button
+							type="button"
+							class="button kenda-slide14-select-image"
+						>
+							<?php esc_html_e( 'Choose Image', 'kenda-custom' ); ?>
+						</button>
+
+						<button
+							type="button"
+							class="button kenda-slide14-remove-image"
+							<?php echo $slide14_image_id ? '' : 'style="display:none;"'; ?>
+						>
+							<?php esc_html_e( 'Remove Image', 'kenda-custom' ); ?>
+						</button>
+
+						<p class="description">
+							<?php
+							esc_html_e(
+								'Select an image for the left side of the Thank You section.',
+								'kenda-custom'
+							);
+							?>
+						</p>
+
+					</td>
+				</tr>
+
+				<?php
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'subheading',
+					__( 'Subheading', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'line_1',
+					__( 'Optional line 1', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'line_2',
+					__( 'Optional line 2', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'line_3',
+					__( 'Optional line 3', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'line_4',
+					__( 'Optional line 4 (URL text)', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'line_5',
+					__( 'Optional line 5', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				kenda_ppt_admin_row(
+					'slide_14',
+					'thank_you',
+					__( 'Thank you headline', 'kenda-custom' ),
+					$data['slide_14']
+				);
+
+				?>
+
+			</table>
 
 			<?php submit_button( __( 'Save PPT Deck Sections', 'kenda-custom' ) ); ?>
 		</form>

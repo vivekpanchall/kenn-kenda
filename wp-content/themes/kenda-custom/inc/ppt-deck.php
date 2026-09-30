@@ -252,6 +252,7 @@ function kenda_ppt_default_slides(): array {
 			'line_4'     => '',
 			'line_5'     => '',
 			'thank_you'  => __( 'THANK YOU', 'kenda-custom' ),
+			'image' => '',
 		),
 	);
 }
