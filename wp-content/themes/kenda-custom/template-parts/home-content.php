@@ -431,7 +431,7 @@ $experience_query = new WP_Query(
 </section>
 
 <!-- Slide 7 -->
-<section class="k-section" id="priorities" data-animate>
+<!-- <section class="k-section" id="priorities" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			<h2 class="display-md"><?php echo esc_html( kenda_home( 'priorities_heading', __( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' ) ) ); ?></h2>
@@ -450,7 +450,7 @@ $experience_query = new WP_Query(
 					$panel_id = 'k-pillar-panel-' . (int) $i;
 					?>
 					<article class="k-accordion__item">
-						<button type="button" class="k-accordion__trigger" data-priority-toggle1 aria-expanded="<?php echo 0 === $i ? 'true' : 'false'; ?>" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+						<button type="button" class="k-accordion__trigger" data-priority-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
 							<span class="k-accordion__label"><?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?></span>
 							<span class="k-accordion__icon" aria-hidden="true"></span>
 						</button>
@@ -474,7 +474,13 @@ $experience_query = new WP_Query(
 					$panel_id = 'k-priority-panel-' . get_the_ID();
 					?>
 					<article class="k-accordion__item">
-						<button type="button" class="k-accordion__trigger" data-slide07-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+						<button
+							type="button"
+							class="k-accordion__trigger"
+							data-slide07-toggle
+							aria-expanded="<?php echo 0 === $i ? 'true' : 'false'; ?>"
+							aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+						>
 							<span class="k-accordion__num"><?php echo esc_html( $num ? (string) $num : sprintf( '%02d', $j + 1 ) ); ?></span>
 							<span class="k-accordion__label"><?php the_title(); ?></span>
 							<?php if ( $short ) : ?>
@@ -494,6 +500,199 @@ $experience_query = new WP_Query(
 			</div>
 		<?php endif; ?>
 	</div>
+</section> -->
+<section class="k-section" id="priorities" data-animate>
+
+    <div class="k-section__inner">
+
+        <header class="k-section__head">
+
+            <h2 class="display-md">
+                <?php
+                echo esc_html(
+                    kenda_home(
+                        'priorities_heading',
+                        __( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' )
+                    )
+                );
+                ?>
+            </h2>
+
+            <p class="k-section__lead">
+                <?php echo esc_html( kenda_home( 'priorities_intro', '' ) ); ?>
+            </p>
+
+            <?php if ( kenda_ppt( 'slide_07', 'deliverable' ) ) : ?>
+
+                <p class="k-note">
+                    <?php echo esc_html( (string) kenda_ppt( 'slide_07', 'deliverable' ) ); ?>
+                </p>
+
+            <?php endif; ?>
+
+        </header>
+
+
+        <!-- FIRST ACCORDION -->
+        <div class="k-accordion" data-priority-accordion>
+
+            <?php if ( is_array( $s07_table ) ) : ?>
+
+                <?php foreach ( $s07_table as $i => $row ) : ?>
+
+                    <?php
+                    if ( ! is_array( $row ) ) {
+                        continue;
+                    }
+
+                    $panel_id = 'k-pillar-panel-' . (int) $i;
+                    ?>
+
+                    <article class="k-accordion__item">
+
+                        <button
+                            type="button"
+                            class="k-accordion__trigger"
+                            data-slide07-toggle
+                            aria-expanded="false"
+                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+                        >
+
+                            <span class="k-accordion__label">
+                                <?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?>
+                            </span>
+
+                            <span
+                                class="k-accordion__icon"
+                                aria-hidden="true"
+                            ></span>
+
+                        </button>
+
+
+                        <div
+                            class="k-accordion__panel"
+                            id="<?php echo esc_attr( $panel_id ); ?>"
+                            hidden
+                        >
+
+                            <p>
+                                <strong>
+                                    <?php esc_html_e( 'What we measure', 'kenda-custom' ); ?>
+                                </strong>
+                                —
+                                <?php echo esc_html( (string) ( $row['measure'] ?? '' ) ); ?>
+                            </p>
+
+                            <p>
+                                <strong>
+                                    <?php esc_html_e( 'How it shapes the message', 'kenda-custom' ); ?>
+                                </strong>
+                                —
+                                <?php echo esc_html( (string) ( $row['message'] ?? '' ) ); ?>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
+        </div>
+
+
+        <!-- PLATFORM DETAILS -->
+        <?php if ( $priority_full_query->have_posts() ) : ?>
+
+            <h3 class="k-subhead">
+                <?php esc_html_e( 'Platform details', 'kenda-custom' ); ?>
+            </h3>
+
+
+            <div class="k-accordion k-accordion--compact" data-priority-accordion>
+
+                <?php
+
+                $j = 0;
+
+                while ( $priority_full_query->have_posts() ) :
+
+                    $priority_full_query->the_post();
+
+                    $num      = get_post_meta( get_the_ID(), 'priority_number', true );
+                    $short    = get_post_meta( get_the_ID(), 'priority_short_description', true );
+                    $panel_id = 'k-priority-panel-' . get_the_ID();
+
+                    ?>
+
+                    <article class="k-accordion__item">
+
+                        <button
+                            type="button"
+                            class="k-accordion__trigger"
+                            data-slide07-toggle
+                            aria-expanded="false"
+                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+                        >
+
+                            <span class="k-accordion__num">
+                                <?php
+                                echo esc_html(
+                                    $num
+                                        ? (string) $num
+                                        : sprintf( '%02d', $j + 1 )
+                                );
+                                ?>
+                            </span>
+
+                            <span class="k-accordion__label">
+                                <?php the_title(); ?>
+                            </span>
+
+                            <?php if ( $short ) : ?>
+
+                                <span class="k-accordion__hint">
+                                    <?php echo esc_html( (string) $short ); ?>
+                                </span>
+
+                            <?php endif; ?>
+
+                            <span
+                                class="k-accordion__icon"
+                                aria-hidden="true"
+                            ></span>
+
+                        </button>
+
+
+                        <div
+                            class="k-accordion__panel"
+                            id="<?php echo esc_attr( $panel_id ); ?>"
+                            hidden
+                        >
+
+                            <div class="k-prose">
+                                <?php the_content(); ?>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <?php ++$j; ?>
+
+                <?php endwhile; ?>
+
+                <?php wp_reset_postdata(); ?>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
 </section>
 
 <!-- Slide 8 -->

@@ -103,4 +103,42 @@
           }
       });
   });
+
+  document.querySelectorAll("[data-slide07-toggle]").forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+          const panelId = button.getAttribute("aria-controls");
+
+          if (!panelId) {
+              return;
+          }
+
+          const panel = document.getElementById(panelId);
+
+          if (!panel) {
+              return;
+          }
+
+          const expanded = button.getAttribute("aria-expanded") === "true";
+
+          button.setAttribute(
+              "aria-expanded",
+              expanded ? "false" : "true"
+          );
+
+          panel.hidden = expanded;
+      });
+
+      button.addEventListener("keydown", function (event) {
+
+          if (event.key === "Enter" || event.key === " ") {
+
+              event.preventDefault();
+
+              button.click();
+          }
+      });
+
+  });
 })();
