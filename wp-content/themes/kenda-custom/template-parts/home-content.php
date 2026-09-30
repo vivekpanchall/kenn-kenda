@@ -955,7 +955,7 @@ $experience_query = new WP_Query(
 </section>
 
 <!-- Slide 14 -->
-<section class="k-section k-section--closing" data-animate>
+<!-- <section class="k-section k-section--closing" data-animate>
 	<div class="k-section__inner k-section__inner--narrow k-section__inner--center">
 		<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_14', 'heading' ) ); ?></h2>
 		<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_14', 'subheading' ) ); ?></p>
@@ -970,6 +970,140 @@ $experience_query = new WP_Query(
 		<p class="k-closing-thanks"><?php echo esc_html( (string) kenda_ppt( 'slide_14', 'thank_you' ) ); ?></p>
 		<a class="btn btn--gold btn--lg js-scroll-link" href="#contact"><?php esc_html_e( 'Contact the campaign', 'kenda-custom' ); ?></a>
 	</div>
+</section> -->
+
+<section class="k-section k-section--closing" data-animate>
+
+    <div class="k-section__inner">
+
+        <?php
+        $slide14_image_id = absint(
+            kenda_ppt( 'slide_14', 'image', 0 )
+        );
+        ?>
+
+        <div class="k-slide14-layout">
+
+            <!-- Left: Image -->
+            <?php if ( $slide14_image_id ) : ?>
+
+                <div class="k-slide14-image">
+
+                    <?php
+                    echo wp_get_attachment_image(
+                        $slide14_image_id,
+                        'large',
+                        false,
+                        array(
+                            'loading' => 'lazy',
+                            'alt'     => esc_attr(
+                                (string) kenda_ppt(
+                                    'slide_14',
+                                    'heading',
+                                    ''
+                                )
+                            ),
+                        )
+                    );
+                    ?>
+
+                </div>
+
+            <?php endif; ?>
+
+
+            <!-- Right: Content -->
+            <div class="k-slide14-content">
+
+                <h2 class="display-md">
+                    <?php
+                    echo esc_html(
+                        (string) kenda_ppt(
+                            'slide_14',
+                            'heading',
+                            ''
+                        )
+                    );
+                    ?>
+                </h2>
+
+
+                <p class="k-section__lead">
+                    <?php
+                    echo esc_html(
+                        (string) kenda_ppt(
+                            'slide_14',
+                            'subheading',
+                            ''
+                        )
+                    );
+                    ?>
+                </p>
+
+
+                <?php
+                foreach (
+                    array(
+                        'line_1',
+                        'line_2',
+                        'line_3',
+                        'line_4',
+                        'line_5',
+                    ) as $key
+                ) :
+
+                    $line = trim(
+                        (string) kenda_ppt(
+                            'slide_14',
+                            $key,
+                            ''
+                        )
+                    );
+
+                    if ( '' !== $line ) :
+                        ?>
+
+                        <p class="k-closing-line">
+                            <?php echo esc_html( $line ); ?>
+                        </p>
+
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+
+
+                <?php
+                $thank_you = trim(
+                    (string) kenda_ppt(
+                        'slide_14',
+                        'thank_you',
+                        ''
+                    )
+                );
+                ?>
+
+                <?php if ( '' !== $thank_you ) : ?>
+
+                    <p class="k-closing-thanks">
+                        <?php echo esc_html( $thank_you ); ?>
+                    </p>
+
+                <?php endif; ?>
+
+
+                <a
+                    class="btn btn--gold btn--lg js-scroll-link"
+                    href="#contact"
+                >
+                    <?php esc_html_e( 'Contact the campaign', 'kenda-custom' ); ?>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 <style>
 #intro .k-section__head {
