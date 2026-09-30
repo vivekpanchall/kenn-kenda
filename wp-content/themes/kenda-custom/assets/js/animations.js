@@ -30,19 +30,77 @@
     animated.forEach((el) => el.classList.add("is-visible"));
   }
 
-  document.querySelectorAll("[data-priority-toggle]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.getElementById(button.getAttribute("aria-controls") || "");
-      if (!panel) return;
-      const expanded = button.getAttribute("aria-expanded") === "true";
-      button.setAttribute("aria-expanded", expanded ? "false" : "true");
-      panel.hidden = expanded;
+  document.querySelectorAll("[data-priority-toggle]").forEach(function (button) {
+    button.addEventListener("click", function () {
+
+          const panelId = button.getAttribute("aria-controls");
+
+          if (!panelId) {
+              return;
+          }
+
+          const panel = document.getElementById(panelId);
+
+          if (!panel) {
+              return;
+          }
+
+          const expanded = button.getAttribute("aria-expanded") === "true";
+
+          button.setAttribute(
+              "aria-expanded",
+              expanded ? "false" : "true"
+          );
+
+          panel.hidden = expanded;
     });
-    button.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        button.click();
-      }
+
+    button.addEventListener("keydown", function (event) {
+
+          if (event.key === "Enter" || event.key === " ") {
+
+              event.preventDefault();
+
+              button.click();
+          }
     });
+  });
+
+
+  document.querySelectorAll("[data-slide04-toggle]").forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+          const panelId = button.getAttribute("aria-controls");
+
+          if (!panelId) {
+              return;
+          }
+
+          const panel = document.getElementById(panelId);
+
+          if (!panel) {
+              return;
+          }
+
+          const expanded = button.getAttribute("aria-expanded") === "true";
+
+          button.setAttribute(
+              "aria-expanded",
+              expanded ? "false" : "true"
+          );
+
+          panel.hidden = expanded;
+      });
+
+      button.addEventListener("keydown", function (event) {
+
+          if (event.key === "Enter" || event.key === " ") {
+
+              event.preventDefault();
+
+              button.click();
+          }
+      });
   });
 })();

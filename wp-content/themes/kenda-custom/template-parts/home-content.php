@@ -168,40 +168,87 @@ $experience_query = new WP_Query(
 
 <!-- Slide 4 -->
 <section class="k-section k-section--muted" data-animate>
-	<div class="k-section__inner">
-		<header class="k-section__head">
-			<h2 class="display-md">
-				<?php echo esc_html( (string) kenda_ppt( 'slide_04', 'heading' ) ); ?>
-				<span class="k-inline-accent"><?php echo esc_html( (string) kenda_ppt( 'slide_04', 'arrow_title' ) ); ?></span>
-			</h2>
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_04', 'lead' ) ); ?></p>
-		</header>
-		<?php if ( is_array( $s04_steps ) && $s04_steps ) : ?>
-			<div class="k-card-grid k-card-grid--2" data-k-accordion>
-				<?php foreach ( $s04_steps as $i => $step ) : ?>
-					<?php
-					if ( ! is_array( $step ) ) {
-						continue;
-					}
-					$panel_id = 'k-step-panel-' . (int) $i;
-					$lines    = kenda_ppt_lines( (string) ( $step['desc'] ?? '' ) );
-					?>
-					<article class="k-card k-card--step">
-						<button type="button" class="k-accordion__trigger" data-priority-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
-							<span class="k-step-num"><?php echo esc_html( (string) ( $step['num'] ?? '' ) ); ?></span>
-							<span class="k-accordion__label"><?php echo esc_html( (string) ( $step['title'] ?? '' ) ); ?></span>
-							<span class="k-accordion__icon" aria-hidden="true"></span>
-						</button>
-						<div class="k-accordion__panel" id="<?php echo esc_attr( $panel_id ); ?>" hidden>
-							<?php foreach ( $lines as $line ) : ?>
-								<p class="k-card__text"><?php echo esc_html( $line ); ?></p>
-							<?php endforeach; ?>
-						</div>
-					</article>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
-	</div>
+
+    <div class="k-section__inner">
+
+        <header class="k-section__head">
+
+            <h2 class="display-md">
+                <?php echo esc_html( (string) kenda_ppt( 'slide_04', 'heading' ) ); ?>
+
+                <span class="k-inline-accent">
+                    <?php echo esc_html( (string) kenda_ppt( 'slide_04', 'arrow_title' ) ); ?>
+                </span>
+            </h2>
+
+            <p class="k-section__lead">
+                <?php echo esc_html( (string) kenda_ppt( 'slide_04', 'lead' ) ); ?>
+            </p>
+
+        </header>
+
+        <?php if ( is_array( $s04_steps ) && $s04_steps ) : ?>
+
+            <div class="k-card-grid k-card-grid--2" data-k-accordion>
+
+                <?php foreach ( $s04_steps as $i => $step ) : ?>
+
+                    <?php
+                    if ( ! is_array( $step ) ) {
+                        continue;
+                    }
+
+					$panel_id = 'k-slide-04-panel-' . (int) $i;
+                    $lines    = kenda_ppt_lines( (string) ( $step['desc'] ?? '' ) );
+                    ?>
+
+                    <article class="k-card k-card--step">
+
+                        <button
+                            type="button"
+                            class="k-accordion__trigger"
+							data-slide04-toggle
+                            aria-expanded="false"
+                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+                        >
+                            <span class="k-step-num">
+                                <?php echo esc_html( (string) ( $step['num'] ?? '' ) ); ?>
+                            </span>
+
+                            <span class="k-accordion__label">
+                                <?php echo esc_html( (string) ( $step['title'] ?? '' ) ); ?>
+                            </span>
+
+                            <span
+                                class="k-accordion__icon"
+                                aria-hidden="true"
+                            ></span>
+                        </button>
+
+                        <div
+                            class="k-accordion__panel"
+                            id="<?php echo esc_attr( $panel_id ); ?>"
+                            hidden
+                        >
+                            <?php foreach ( $lines as $line ) : ?>
+
+                                <p class="k-card__text">
+                                    <?php echo esc_html( $line ); ?>
+                                </p>
+
+                            <?php endforeach; ?>
+                        </div>
+
+                    </article>
+
+                <?php endforeach; ?>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
 </section>
 
 <!-- Slide 5 -->
@@ -288,7 +335,7 @@ $experience_query = new WP_Query(
 					$panel_id = 'k-pillar-panel-' . (int) $i;
 					?>
 					<article class="k-accordion__item">
-						<button type="button" class="k-accordion__trigger" data-priority-toggle aria-expanded="<?php echo 0 === $i ? 'true' : 'false'; ?>" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+						<button type="button" class="k-accordion__trigger" data-priority-toggle1 aria-expanded="<?php echo 0 === $i ? 'true' : 'false'; ?>" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
 							<span class="k-accordion__label"><?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?></span>
 							<span class="k-accordion__icon" aria-hidden="true"></span>
 						</button>
@@ -312,7 +359,7 @@ $experience_query = new WP_Query(
 					$panel_id = 'k-priority-panel-' . get_the_ID();
 					?>
 					<article class="k-accordion__item">
-						<button type="button" class="k-accordion__trigger" data-priority-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+						<button type="button" class="k-accordion__trigger" data-slide07-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
 							<span class="k-accordion__num"><?php echo esc_html( $num ? (string) $num : sprintf( '%02d', $j + 1 ) ); ?></span>
 							<span class="k-accordion__label"><?php the_title(); ?></span>
 							<?php if ( $short ) : ?>

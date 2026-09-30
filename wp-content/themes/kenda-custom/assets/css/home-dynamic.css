@@ -525,3 +525,27 @@
 .k-card__content {
     width: 100%;
 }
+
+//slide-4
+/* Slide 04 accordion */
+.k-card-grid--2 {
+    align-items: start;
+}
+
+.k-card--step {
+    align-self: start;
+    height: fit-content;
+}
+
+.k-card--step .k-accordion__panel {
+    width: 100%;
+    overflow: hidden;
+}
+
+.k-card--step .k-accordion__panel[hidden] {
+    display: none !important;
+}
+
+.k-card--step .k-accordion__panel:not([hidden]) {
+    display: block;
+}
