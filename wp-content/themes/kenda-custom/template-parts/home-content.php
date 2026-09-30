@@ -845,7 +845,7 @@ $experience_query = new WP_Query(
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
-		<?php if ( $experience_query->have_posts() ) : ?>
+		<!-- <?php if ( $experience_query->have_posts() ) : ?>
 			<h3 class="k-subhead k-subhead--light"><?php echo esc_html( kenda_home( 'experience_heading', __( 'Leadership & Experience', 'kenda-custom' ) ) ); ?></h3>
 			<ol class="timeline timeline--home">
 				<?php
@@ -867,7 +867,7 @@ $experience_query = new WP_Query(
 				<?php endwhile; ?>
 			</ol>
 			<?php wp_reset_postdata(); ?>
-		<?php endif; ?>
+		<?php endif; ?> -->
 	</div>
 </section>
 
@@ -875,9 +875,46 @@ $experience_query = new WP_Query(
 <section class="k-section k-section--gold" id="support" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
-			<h2 class="display-md"><?php echo esc_html( kenda_home( 'cta_heading', (string) kenda_ppt( 'slide_12', 'heading' ) ) ); ?></h2>
+			 <h2 class="display-md">
+                <?php
+                echo esc_html(
+                    (string) kenda_ppt(
+                        'slide_12',
+                        'heading',
+                        ''
+                    )
+                );
+                ?>
+            </h2>
 			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_12', 'subheading' ) ); ?></p>
 		</header>
+		<div class="k-slide12-total">
+
+			<div class="k-slide12-total__amount">
+				<?php
+				echo esc_html(
+					(string) kenda_ppt(
+						'slide_12',
+						'total',
+						''
+					)
+				);
+				?>
+			</div>
+
+			<div class="k-slide12-total__label">
+				<?php
+				echo esc_html(
+					(string) kenda_ppt(
+						'slide_12',
+						'total_label',
+						''
+					)
+				);
+				?>
+			</div>
+
+		</div>
 		<div class="k-card-grid k-card-grid--2">
 			<?php foreach ( $s12_payments as $payment ) : ?>
 				<?php if ( ! is_array( $payment ) ) { continue; } ?>
@@ -888,15 +925,14 @@ $experience_query = new WP_Query(
 				</article>
 			<?php endforeach; ?>
 		</div>
-		<p class="k-payment-total"><?php echo esc_html( (string) kenda_ppt( 'slide_12', 'total' ) ); ?></p>
-		<p class="k-payment-total-label"><?php echo esc_html( (string) kenda_ppt( 'slide_12', 'total_label' ) ); ?></p>
+	
+		<p class="k-fineprint"><?php echo esc_html( (string) kenda_ppt( 'slide_12', 'disclaimer' ) ); ?></p>
 		<p class="k-quote"><?php echo esc_html( (string) kenda_ppt( 'slide_12', 'quote' ) ); ?></p>
-		<?php if ( kenda_home( 'cta_button_text' ) && kenda_home( 'cta_button_url', kenda_site( 'donation_url' ) ) ) : ?>
+		<!-- <?php if ( kenda_home( 'cta_button_text' ) && kenda_home( 'cta_button_url', kenda_site( 'donation_url' ) ) ) : ?>
 			<p class="k-section__cta">
 				<a class="btn btn--donate btn--lg" href="<?php echo esc_url( kenda_home( 'cta_button_url', kenda_site( 'donation_url' ) ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( kenda_home( 'cta_button_text' ) ); ?></a>
 			</p>
-		<?php endif; ?>
-		<p class="k-fineprint"><?php echo esc_html( (string) kenda_ppt( 'slide_12', 'disclaimer' ) ); ?></p>
+		<?php endif; ?> -->
 	</div>
 </section>
 

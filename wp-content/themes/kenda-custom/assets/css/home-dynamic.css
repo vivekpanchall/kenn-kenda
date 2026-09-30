@@ -625,3 +625,24 @@
     color: #f97316;
     flex-shrink: 0;
 }
+
+/* slide 12 */
+.k-slide12-total {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.k-slide12-total__amount {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    font-weight: 800;
+    color: #0b1f3a;
+    margin-bottom: 0.75rem;
+}
+
+.k-slide12-total__label {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #000;
+}
