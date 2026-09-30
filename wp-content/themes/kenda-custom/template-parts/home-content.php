@@ -281,7 +281,7 @@ $experience_query = new WP_Query(
 </section>
 
 <!-- Slide 6 -->
-<section class="k-section k-section--light" id="about" data-animate>
+<!-- <section class="k-section k-section--light" id="about" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			<?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
@@ -313,6 +313,121 @@ $experience_query = new WP_Query(
 			<?php endif; ?>
 		</div>
 	</div>
+</section> -->
+
+<section class="k-section k-section--light" id="about" data-animate>
+
+    <div class="k-section__inner">
+
+        <header class="k-section__head">
+
+            <?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
+
+                <p class="eyebrow k-about-eyebrow">
+					<?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?>
+				</p>
+
+            <?php endif; ?>
+
+            <h2 class="display-md">
+                <?php
+                echo esc_html(
+                    kenda_home(
+                        'about_heading',
+                        __( "The Candidate's Story", 'kenda-custom' )
+                    )
+                );
+                ?>
+            </h2>
+
+            <p class="k-section__lead">
+                <?php
+                echo esc_html(
+                    kenda_home(
+                        'experience_intro',
+                        __( '30+ years in finance and civic leadership', 'kenda-custom' )
+                    )
+                );
+                ?>
+            </p>
+
+        </header>
+
+        <?php if ( kenda_home( 'about_body' ) ) : ?>
+
+            <div class="k-prose k-about-story">
+
+                <?php
+                echo kenda_content(
+                    (string) kenda_home( 'about_body' )
+                ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                ?>
+
+            </div>
+
+        <?php endif; ?>
+
+
+        <?php if ( $pillar_preview_query->have_posts() ) : ?>
+
+            <div class="k-about-pillars">
+
+                <div class="k-about-pillars__head">
+
+                    <p class="eyebrow">
+                        <?php esc_html_e( 'Leadership Priorities', 'kenda-custom' ); ?>
+                    </p>
+
+                    <h3>
+                        <?php esc_html_e( 'Experience that translates into action', 'kenda-custom' ); ?>
+                    </h3>
+
+                </div>
+
+                <div class="k-about-pillars__grid">
+
+                    <?php
+                    while ( $pillar_preview_query->have_posts() ) :
+
+                        $pillar_preview_query->the_post();
+
+                        $short = get_post_meta(
+                            get_the_ID(),
+                            'priority_short_description',
+                            true
+                        );
+                        ?>
+
+                        <article class="k-card k-card--pillar">
+
+                            <h3 class="k-card__title">
+                                <?php the_title(); ?>
+                            </h3>
+
+                            <p class="k-card__text">
+                                <?php
+                                echo esc_html(
+                                    $short
+                                        ? (string) $short
+                                        : wp_strip_all_tags( get_the_content() )
+                                );
+                                ?>
+                            </p>
+
+                        </article>
+
+                    <?php endwhile; ?>
+
+                    <?php wp_reset_postdata(); ?>
+
+                </div>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
 </section>
 
 <!-- Slide 7 -->

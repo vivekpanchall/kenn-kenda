@@ -44,7 +44,7 @@
 }
 
 .k-section__head {
-  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: clamp(1.75rem, 4vw, 1.75rem);
   max-width: 52rem;
 }
 
@@ -548,4 +548,55 @@
 
 .k-card--step .k-accordion__panel:not([hidden]) {
     display: block;
+}
+
+//slide 6
+/* Slide 06 - About / Candidate Story */
+.k-about-story {
+    max-width: 900px;
+    margin-inline: auto;
+    margin-bottom: 2.5rem;
+}
+
+.k-about-pillars {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.k-about-pillars__head {
+    margin-bottom: 1.5rem;
+}
+
+.k-about-pillars__head h3 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    line-height: 1.15;
+}
+
+.k-about-pillars__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.k-about-pillars__grid .k-card {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .k-about-story {
+        margin-bottom: 2.5rem;
+    }
+
+    .k-about-pillars__grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* slide 6 */
+.k-about-eyebrow {
+    font-size: 1.25rem;
+    line-height: 1.3;
 }
