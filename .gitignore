@@ -30,6 +30,8 @@ node_modules/
 *.tmp
 *.temp
 
+/wp-content/uploads/
+
 # Local database/config backups
 *.sql
 *.sql.gz

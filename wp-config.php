@@ -80,6 +80,17 @@ define( 'WP_REDIS_CONFIG', [
    'prefix' => "tgshvjgmhp:",  
    ] );
 define( 'WP_REDIS_DISABLED', false );
+
+
+/**
+ * SMTP Configuration
+ */
+define( 'KENDA_SMTP_HOST', 'smtp.gmail.com' );
+define( 'KENDA_SMTP_PORT', 587 );
+define( 'KENDA_SMTP_USER', 'testing.testuser.dev3@gmail.com' );
+define( 'KENDA_SMTP_PASSWORD', 'pdfd mclo cceh madv' );
+define( 'KENDA_SMTP_ENCRYPTION', 'tls' );
+
 /* That's all, stop editing! Happy blogging. */
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )

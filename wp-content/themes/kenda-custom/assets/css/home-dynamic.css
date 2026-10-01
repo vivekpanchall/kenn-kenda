@@ -852,7 +852,7 @@
 
    .k-campaign-closing {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
     display: grid;
@@ -861,7 +861,9 @@
     align-items: stretch;
 }
 
-
+p.eyebrow {
+    font-size: 30px;
+}
 /* =========================================================
    Common Block
    ========================================================= */
@@ -999,7 +1001,9 @@
     margin: 0 0 1.5rem;
     color: #0b1f3a;
 }
-
+.site-header{
+      height: 94px;
+}
 .k-campaign-closing__cta {
     display: inline-flex;
     align-items: center;
@@ -1487,8 +1491,30 @@
 .k-actions-updates .k-actions-btn {
     align-self: flex-start;
 }
+section.k-section.is-visible {
+    padding-bottom: 20px;
+}
+.site-brand__logo-img--portrait {
+    width: 78px !important;
+    height: 78px !important;
+        max-width: inherit;
+    max-height: inherit;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 2px;
+    border: 2px solid rgba(214, 174, 94, 0.65);
+    box-shadow: 0 2px 8px rgba(9, 32, 63, 0.2);
+}
+.k-campaign-closing__quote-text {
+    font-size: 30px;
+}
 
-
+section#campaign-closing {
+    padding-top: 20px !important;
+}
+section#intro,section#priorities,section#campaign-actions{
+	padding-top:0 !important;
+}
 /* =========================================================
    TABLET
    ========================================================= */
@@ -1633,3 +1659,5 @@
     }
 
 }
+
+
