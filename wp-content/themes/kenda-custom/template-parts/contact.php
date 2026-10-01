@@ -26,72 +26,364 @@ $message_placeholder = __( 'Tell us more about how you would like to get involve
 			<?php endif; ?>
 		</header>
 
-		<div class="contact-shell">
-			<aside class="contact-shell__aside">
-				<h3 class="contact-shell__aside-title"><?php esc_html_e( 'Campaign Office', 'kenda-custom' ); ?></h3>
-				<ul class="contact-info-list">
+		<div class="k-contact">
+
+			<!-- Contact Header -->
+			<div class="k-contact__header">
+
+				<div class="k-contact__intro">
+
+					<span class="k-contact__eyebrow">
+						<?php esc_html_e( 'Get In Touch', 'kenda-custom' ); ?>
+					</span>
+
+					<h3 class="k-contact__title">
+						<?php esc_html_e( 'Let’s Start a Conversation', 'kenda-custom' ); ?>
+					</h3>
+
+					<p class="k-contact__description">
+						<?php
+						esc_html_e(
+							'Have a question, idea, or want to connect with the campaign? Send us a message and our team will get back to you.',
+							'kenda-custom'
+						);
+						?>
+					</p>
+
+				</div>
+
+				<div class="k-contact__details">
+
 					<?php if ( $phone ) : ?>
-						<li class="contact-info-list__item">
-							<span class="contact-info-list__label"><?php esc_html_e( 'Phone', 'kenda-custom' ); ?></span>
-							<a href="tel:<?php echo esc_attr( $tel ); ?>"><?php echo esc_html( $phone ); ?></a>
-						</li>
+
+						<a
+							class="k-contact__detail"
+							href="tel:<?php echo esc_attr( $tel ); ?>"
+						>
+
+							<span class="k-contact__detail-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none">
+									<path
+										d="M22 16.92v3a2 2 0 0 1-2.18 2
+										19.79 19.79 0 0 1-8.63-3.07
+										19.5 19.5 0 0 1-6-6
+										19.79 19.79 0 0 1-3.07-8.67
+										A2 2 0 0 1 4.11 2h3
+										a2 2 0 0 1 2 1.72
+										12.84 12.84 0 0 0 .7 2.81
+										2 2 0 0 1-.45 2.11L8.09 9.91
+										a16 16 0 0 0 6 6l1.27-1.27
+										a2 2 0 0 1 2.11-.45
+										12.84 12.84 0 0 0 2.81.7
+										A2 2 0 0 1 22 16.92z"
+										stroke="currentColor"
+										stroke-width="1.8"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+
+							<span class="k-contact__detail-text">
+								<small>
+									<?php esc_html_e( 'Phone', 'kenda-custom' ); ?>
+								</small>
+
+								<strong>
+									<?php echo esc_html( $phone ); ?>
+								</strong>
+							</span>
+
+						</a>
+
 					<?php endif; ?>
+
+
 					<?php if ( $email ) : ?>
-						<li class="contact-info-list__item">
-							<span class="contact-info-list__label"><?php esc_html_e( 'Email', 'kenda-custom' ); ?></span>
-							<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
-						</li>
+
+						<a
+							class="k-contact__detail"
+							href="mailto:<?php echo esc_attr( $email ); ?>"
+						>
+
+							<span class="k-contact__detail-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none">
+									<rect
+										x="3"
+										y="5"
+										width="18"
+										height="14"
+										rx="2"
+										stroke="currentColor"
+										stroke-width="1.8"
+									/>
+
+									<path
+										d="m3 7 9 6 9-6"
+										stroke="currentColor"
+										stroke-width="1.8"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+
+							<span class="k-contact__detail-text">
+								<small>
+									<?php esc_html_e( 'Email', 'kenda-custom' ); ?>
+								</small>
+
+								<strong>
+									<?php echo esc_html( $email ); ?>
+								</strong>
+							</span>
+
+						</a>
+
 					<?php endif; ?>
-				</ul>
-				<p class="contact-shell__note"><?php esc_html_e( 'Required fields are marked with *', 'kenda-custom' ); ?></p>
-			</aside>
 
-			<form class="contact-shell__form contact-form" id="contact-form" novalidate enctype="multipart/form-data">
-				<h3 class="contact-form__title"><?php esc_html_e( 'Send a message', 'kenda-custom' ); ?></h3>
+				</div>
 
+			</div>
+
+
+			<!-- Form -->
+			<form
+				class="k-contact__form"
+				id="contact-form"
+				novalidate
+				enctype="multipart/form-data"
+			>
+
+				<div class="k-contact__form-heading">
+
+					<div>
+
+						<span class="k-contact__form-eyebrow">
+							<?php esc_html_e( 'Contact Form', 'kenda-custom' ); ?>
+						</span>
+
+						<h4>
+							<?php esc_html_e( 'Send a Message', 'kenda-custom' ); ?>
+						</h4>
+
+					</div>
+
+					<span class="k-contact__required">
+						<span>*</span>
+						<?php esc_html_e( 'Required', 'kenda-custom' ); ?>
+					</span>
+
+				</div>
+
+
+				<!-- Honeypot -->
 				<div class="hp-field" aria-hidden="true">
-					<label for="company"><?php esc_html_e( 'Company', 'kenda-custom' ); ?></label>
-					<input type="text" name="company" id="company" tabindex="-1" autocomplete="off" />
+
+					<label for="company">
+						<?php esc_html_e( 'Company', 'kenda-custom' ); ?>
+					</label>
+
+					<input
+						type="text"
+						name="company"
+						id="company"
+						tabindex="-1"
+						autocomplete="off"
+					/>
+
 				</div>
 
-				<div class="contact-form__grid">
-					<div class="form-field">
-						<label class="form-label" for="contact-name"><?php esc_html_e( 'Name', 'kenda-custom' ); ?> <span class="form-required" aria-hidden="true">*</span></label>
-						<input class="form-control" type="text" id="contact-name" name="name" required maxlength="120" autocomplete="name" />
+
+				<!-- Name / Email -->
+				<div class="k-contact__fields">
+
+					<div class="k-contact__field">
+
+						<label for="contact-name">
+							<?php esc_html_e( 'Name', 'kenda-custom' ); ?>
+
+							<span>*</span>
+						</label>
+
+						<input
+							type="text"
+							id="contact-name"
+							name="name"
+							required
+							maxlength="120"
+							autocomplete="name"
+							placeholder="<?php esc_attr_e( 'Your full name', 'kenda-custom' ); ?>"
+						/>
+
 					</div>
-					<div class="form-field">
-						<label class="form-label" for="contact-email"><?php esc_html_e( 'Email', 'kenda-custom' ); ?> <span class="form-required" aria-hidden="true">*</span></label>
-						<input class="form-control" type="email" id="contact-email" name="email" required maxlength="190" autocomplete="email" />
+
+
+					<div class="k-contact__field">
+
+						<label for="contact-email">
+							<?php esc_html_e( 'Email', 'kenda-custom' ); ?>
+
+							<span>*</span>
+						</label>
+
+						<input
+							type="email"
+							id="contact-email"
+							name="email"
+							required
+							maxlength="190"
+							autocomplete="email"
+							placeholder="<?php esc_attr_e( 'you@example.com', 'kenda-custom' ); ?>"
+						/>
+
 					</div>
+
 				</div>
 
-				<div class="form-field">
-					<label class="form-label" for="contact-source"><?php esc_html_e( 'Where did you hear about us?', 'kenda-custom' ); ?></label>
-					<input class="form-control" type="text" id="contact-source" name="source" maxlength="190" autocomplete="off" />
+
+				<!-- Source -->
+				<div class="k-contact__field">
+
+					<label for="contact-source">
+						<?php esc_html_e( 'How did you hear about us?', 'kenda-custom' ); ?>
+					</label>
+
+					<input
+						type="text"
+						id="contact-source"
+						name="source"
+						maxlength="190"
+						autocomplete="off"
+						placeholder="<?php esc_attr_e( 'Optional', 'kenda-custom' ); ?>"
+					/>
+
 				</div>
 
-				<div class="form-field">
-					<label class="form-label" for="contact-message"><?php esc_html_e( 'Message', 'kenda-custom' ); ?> <span class="form-required" aria-hidden="true">*</span></label>
+
+				<!-- Message -->
+				<div class="k-contact__field">
+
+					<label for="contact-message">
+						<?php esc_html_e( 'Message', 'kenda-custom' ); ?>
+
+						<span>*</span>
+					</label>
+
 					<textarea
-						class="form-control form-control--textarea"
 						id="contact-message"
 						name="message"
 						required
 						maxlength="5000"
-						rows="4"
+						rows="5"
 						placeholder="<?php echo esc_attr( $message_placeholder ); ?>"
 					></textarea>
+
 				</div>
 
-				<div class="form-field form-field--file">
-					<label class="form-label" for="contact-attachment"><?php esc_html_e( 'Attachment (optional)', 'kenda-custom' ); ?></label>
-					<input class="form-control form-control--file" type="file" id="contact-attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" />
-					<p class="form-hint"><?php esc_html_e( 'PDF, Word, JPG, or PNG — max 10 MB.', 'kenda-custom' ); ?></p>
+
+				<!-- Attachment -->
+				<div class="k-contact__field">
+
+					<label>
+						<?php esc_html_e( 'Attachment', 'kenda-custom' ); ?>
+
+						<em>
+							<?php esc_html_e( 'Optional', 'kenda-custom' ); ?>
+						</em>
+					</label>
+
+					<label
+						class="k-contact__upload"
+						for="contact-attachment"
+					>
+
+						<span class="k-contact__upload-icon">
+							<svg viewBox="0 0 24 24" fill="none">
+								<path
+									d="M12 16V4"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+								/>
+
+								<path
+									d="m7 9 5-5 5 5"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+
+								<path
+									d="M5 20h14"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+								/>
+							</svg>
+						</span>
+
+						<span class="k-contact__upload-text">
+							<strong>
+								<?php esc_html_e( 'Upload a file', 'kenda-custom' ); ?>
+							</strong>
+
+							<small>
+								<?php esc_html_e( 'PDF, Word, JPG or PNG — max 10 MB', 'kenda-custom' ); ?>
+							</small>
+						</span>
+
+						<span class="k-contact__upload-button">
+							<?php esc_html_e( 'Browse', 'kenda-custom' ); ?>
+						</span>
+
+						<input
+							type="file"
+							id="contact-attachment"
+							name="attachment"
+							accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+						/>
+
+					</label>
+
 				</div>
 
-				<button class="btn btn--navy contact-form__submit" type="submit"><?php esc_html_e( 'Send Message', 'kenda-custom' ); ?></button>
-				<p class="form-status" role="status" aria-live="polite" hidden data-form-status></p>
+
+				<!-- Submit -->
+				<div class="k-contact__footer">
+
+					<p>
+						<?php
+						esc_html_e(
+							'Required fields are marked with *.',
+							'kenda-custom'
+						);
+						?>
+					</p>
+
+					<button
+						class="k-contact__submit"
+						type="submit"
+					>
+						<?php esc_html_e( 'Send Message', 'kenda-custom' ); ?>
+
+						<span aria-hidden="true">→</span>
+					</button>
+
+				</div>
+
+
+				<p
+					class="form-status"
+					role="status"
+					aria-live="polite"
+					hidden
+					data-form-status
+				></p>
+
 			</form>
-		</div>
+
+		</div>		
 	</div>
 </section>

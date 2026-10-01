@@ -1071,4 +1071,565 @@
 
 }
 
+/* ------------------ */
 
+/* =========================================================
+   CAMPAIGN ACTIONS
+   Completely isolated styles
+   ========================================================= */
+
+   .k-actions {
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto;
+    padding: 80px 24px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 24px;
+
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   DONATION
+   ========================================================= */
+
+.k-actions-donation {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 28px 32px;
+
+    background: #0b1f3a;
+
+    border-radius: 18px;
+
+    box-sizing: border-box;
+}
+
+
+/* Donation amounts */
+
+.k-actions-donation__amounts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.k-actions-donation__amount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 78px;
+    height: 46px;
+
+    padding: 0 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 50px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.k-actions-donation__amount:hover,
+.k-actions-donation__amount.is-selected {
+    background: #d6ae5e;
+
+    border-color: #d6ae5e;
+
+    color: #0b1f3a;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   COMMON BUTTON
+   ========================================================= */
+
+.k-actions-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.k-actions-btn:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+}
+
+
+/* Gold button */
+
+.k-actions-btn--gold {
+    background: #d6ae5e;
+
+    color: #0b1f3a;
+}
+
+
+/* Navy button */
+
+.k-actions-btn--navy {
+    background: #0b1f3a;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   COMMON CARDS
+   ========================================================= */
+
+.k-actions-card {
+    min-height: 360px;
+
+    border-radius: 18px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+.k-actions-card__inner {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   JOIN TEAM
+   ========================================================= */
+
+.k-actions-team {
+    background: #f4f7f9;
+
+    border: 1px solid #e0e6eb;
+}
+
+.k-actions-team .k-actions-card__inner {
+    padding: 48px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.k-actions-team .k-actions-card__inner::before {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 4px;
+
+    margin-bottom: 24px;
+
+    background: #d6ae5e;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.k-actions-card__title {
+    margin: 0 0 18px;
+
+    color: #0b1f3a;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 40px;
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+   ========================================================= */
+
+.k-actions-card__text {
+    max-width: 520px;
+
+    margin: 0 0 28px;
+
+    color: #425466;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TEXT UPDATES
+   ========================================================= */
+
+.k-actions-updates {
+    background: #d6ae5e;
+}
+
+.k-actions-updates .k-actions-card__inner {
+    padding: 48px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.k-actions-updates .k-actions-card__title {
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.k-actions-form {
+    width: 100%;
+}
+
+.k-actions-form__fields {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.k-actions-form__field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.k-actions-form__field label {
+    color: #0b1f3a;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+}
+
+.k-actions-form__field input {
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 13px;
+
+    border: 1px solid rgba(11, 31, 58, 0.2);
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #0b1f3a;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    box-sizing: border-box;
+
+    appearance: none;
+}
+
+.k-actions-form__field input:focus {
+    outline: none;
+
+    border-color: #2f6fa3;
+
+    box-shadow: 0 0 0 3px rgba(47, 111, 163, 0.15);
+}
+
+
+/* =========================================================
+   CONSENT
+   ========================================================= */
+
+.k-actions-consent {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin: 0 0 22px;
+
+    color: #25384a;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    line-height: 1.55;
+
+    cursor: pointer;
+}
+
+.k-actions-consent input {
+    flex: 0 0 auto;
+
+    width: 15px;
+    height: 15px;
+
+    margin: 2px 0 0;
+
+    accent-color: #0b1f3a;
+}
+
+
+/* =========================================================
+   DESKTOP BUTTON ALIGNMENT
+   ========================================================= */
+
+.k-actions-team .k-actions-btn {
+    align-self: flex-start;
+}
+
+.k-actions-updates .k-actions-btn {
+    align-self: flex-start;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .k-actions {
+        max-width: 760px;
+
+        grid-template-columns: 1fr;
+
+        padding: 65px 20px;
+
+        gap: 18px;
+    }
+
+    .k-actions-donation {
+        grid-column: auto;
+    }
+
+    .k-actions-card {
+        min-height: auto;
+    }
+
+    .k-actions-team .k-actions-card__inner,
+    .k-actions-updates .k-actions-card__inner {
+        padding: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .k-actions {
+        width: 100%;
+
+        padding: 50px 14px;
+
+        gap: 14px;
+    }
+
+
+    /* Donation */
+
+    .k-actions-donation {
+        flex-direction: column;
+
+        padding: 24px 18px;
+
+        gap: 16px;
+
+        border-radius: 14px;
+    }
+
+    .k-actions-donation__amounts {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 7px;
+    }
+
+    .k-actions-donation__amount {
+        width: 100%;
+
+        min-width: 0;
+
+        height: 44px;
+
+        padding: 0 5px;
+
+        font-size: 13px;
+    }
+
+    .k-actions-donation .k-actions-btn {
+        width: 100%;
+    }
+
+
+    /* Cards */
+
+    .k-actions-team .k-actions-card__inner,
+    .k-actions-updates .k-actions-card__inner {
+        padding: 32px 24px;
+    }
+
+    .k-actions-card__title {
+        font-size: 31px;
+    }
+
+    .k-actions-card__text {
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+
+    /* Form */
+
+    .k-actions-form__fields {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .k-actions-team .k-actions-btn,
+    .k-actions-updates .k-actions-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .k-actions {
+        padding-inline: 10px;
+    }
+
+    .k-actions-donation__amounts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .k-actions-team .k-actions-card__inner,
+    .k-actions-updates .k-actions-card__inner {
+        padding: 28px 20px;
+    }
+
+    .k-actions-card__title {
+        font-size: 28px;
+    }
+
+}

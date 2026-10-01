@@ -605,7 +605,337 @@ $experience_query = new WP_Query(
 
 				</section>
 				
+				<section class="k-actions" id="campaign-actions">
 
+					<!-- ==============================
+						DONATION
+						============================== -->
+
+					<div class="k-actions-donation">
+
+						<div class="k-actions-donation__amounts">
+
+							<?php
+							$donation_amounts = preg_split(
+								'/\r\n|\r|\n/',
+								(string) kenda_home( 'donation_amounts', '' )
+							);
+
+							$donation_amounts = array_values(
+								array_filter(
+									array_map( 'trim', $donation_amounts )
+								)
+							);
+							?>
+
+							<?php foreach ( $donation_amounts as $amount ) : ?>
+
+								<?php
+								$display_amount = is_numeric( $amount )
+									? '$' . $amount
+									: $amount;
+								?>
+
+								<button
+									type="button"
+									class="k-actions-donation__amount"
+									data-donation-amount="<?php echo esc_attr( $amount ); ?>"
+								>
+									<?php echo esc_html( $display_amount ); ?>
+								</button>
+
+							<?php endforeach; ?>
+
+						</div>
+
+
+						<?php
+						$donate_text = kenda_home(
+							'donate_button_text',
+							'DONATE'
+						);
+
+						$donate_url = kenda_home(
+							'donate_button_url',
+							''
+						);
+						?>
+
+						<?php if ( $donate_text ) : ?>
+
+							<?php if ( $donate_url ) : ?>
+
+								<a
+									href="<?php echo esc_url( $donate_url ); ?>"
+									class="k-actions-btn k-actions-btn--gold"
+								>
+									<?php echo esc_html( $donate_text ); ?>
+								</a>
+
+							<?php else : ?>
+
+								<button
+									type="button"
+									class="k-actions-btn k-actions-btn--gold"
+								>
+									<?php echo esc_html( $donate_text ); ?>
+								</button>
+
+							<?php endif; ?>
+
+						<?php endif; ?>
+
+					</div>
+
+
+					<!-- ==============================
+						JOIN THE TEAM
+						============================== -->
+
+					<div class="k-actions-card k-actions-team">
+
+						<div class="k-actions-card__inner">
+
+							<?php if ( kenda_home( 'team_heading' ) ) : ?>
+
+								<h2 class="k-actions-card__title">
+
+									<?php echo esc_html(
+										kenda_home( 'team_heading' )
+									); ?>
+
+								</h2>
+
+							<?php endif; ?>
+
+
+							<?php if ( kenda_home( 'team_description' ) ) : ?>
+
+								<p class="k-actions-card__text">
+
+									<?php echo esc_html(
+										kenda_home( 'team_description' )
+									); ?>
+
+								</p>
+
+							<?php endif; ?>
+
+
+							<?php
+							$team_text = kenda_home(
+								'team_button_text',
+								'GET INVOLVED'
+							);
+
+							$team_url = kenda_home(
+								'team_button_url',
+								''
+							);
+							?>
+
+							<?php if ( $team_text ) : ?>
+
+								<?php if ( $team_url ) : ?>
+
+									<a
+										href="<?php echo esc_url( $team_url ); ?>"
+										class="k-actions-btn k-actions-btn--navy"
+									>
+										<?php echo esc_html( $team_text ); ?>
+									</a>
+
+								<?php else : ?>
+
+									<button
+										type="button"
+										class="k-actions-btn k-actions-btn--navy"
+									>
+										<?php echo esc_html( $team_text ); ?>
+									</button>
+
+								<?php endif; ?>
+
+							<?php endif; ?>
+
+						</div>
+
+					</div>
+
+
+					<!-- ==============================
+						TEXT UPDATES
+						============================== -->
+
+					<div class="k-actions-card k-actions-updates">
+
+						<div class="k-actions-card__inner">
+
+							<?php if ( kenda_home( 'text_updates_heading' ) ) : ?>
+
+								<h2 class="k-actions-card__title">
+
+									<?php echo esc_html(
+										kenda_home( 'text_updates_heading' )
+									); ?>
+
+								</h2>
+
+							<?php endif; ?>
+
+
+							<?php
+							$form_action = kenda_home(
+								'text_updates_form_action',
+								''
+							);
+							?>
+
+							<form
+								class="k-actions-form"
+								method="post"
+								<?php if ( $form_action ) : ?>
+									action="<?php echo esc_url( $form_action ); ?>"
+								<?php endif; ?>
+							>
+
+								<div class="k-actions-form__fields">
+
+									<!-- NAME -->
+
+									<div class="k-actions-form__field">
+
+										<label for="k-actions-name">
+
+											<?php echo esc_html(
+												kenda_home(
+													'text_updates_name_label',
+													'Name'
+												)
+											); ?>
+
+										</label>
+
+										<input
+											id="k-actions-name"
+											type="text"
+											name="name"
+											autocomplete="name"
+											required
+										>
+
+									</div>
+
+
+									<!-- MOBILE -->
+
+									<div class="k-actions-form__field">
+
+										<label for="k-actions-mobile">
+
+											<?php echo esc_html(
+												kenda_home(
+													'text_updates_mobile_label',
+													'Mobile'
+												)
+											); ?>
+
+										</label>
+
+										<input
+											id="k-actions-mobile"
+											type="tel"
+											name="mobile"
+											autocomplete="tel"
+											required
+										>
+
+									</div>
+
+
+									<!-- ZIP -->
+
+									<div class="k-actions-form__field">
+
+										<label for="k-actions-zip">
+
+											<?php echo esc_html(
+												kenda_home(
+													'text_updates_zip_label',
+													'Zip Code'
+												)
+											); ?>
+
+										</label>
+
+										<input
+											id="k-actions-zip"
+											type="text"
+											name="zip_code"
+											inputmode="numeric"
+											autocomplete="postal-code"
+											required
+										>
+
+									</div>
+
+								</div>
+
+
+								<!-- CONSENT -->
+
+								<label class="k-actions-consent">
+
+									<input
+										type="checkbox"
+										name="sms_consent"
+										value="1"
+										required
+									>
+
+									<span>
+
+										<?php echo esc_html(
+											kenda_home(
+												'text_updates_disclaimer',
+												''
+											)
+										); ?>
+
+									</span>
+
+								</label>
+
+
+								<!-- SUBMIT -->
+
+								<?php
+								$updates_button_text = kenda_home(
+									'text_updates_button_text',
+									'SIGN ME UP'
+								);
+								?>
+
+								<?php if ( $updates_button_text ) : ?>
+
+									<button
+										type="submit"
+										class="k-actions-btn k-actions-btn--navy"
+									>
+										<?php echo esc_html(
+											$updates_button_text
+										); ?>
+									</button>
+
+								<?php endif; ?>
+
+							</form>
+
+						</div>
+
+					</div>
+
+				</section>
             </div>
 
         <?php endif; ?>
