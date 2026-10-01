@@ -185,6 +185,224 @@ function kenda_render_homepage_settings_page(): void {
 				?>
 			</table>
 
+			<h2 class="title"><?php esc_html_e( 'Campaign Closing Content', 'kenda-custom' ); ?></h2>
+
+			<p class="description">
+				<?php esc_html_e( 'Edit the campaign closing sections displayed on the homepage.', 'kenda-custom' ); ?>
+			</p>
+
+			<table class="form-table" role="presentation">
+
+				<?php
+
+				// In Kenda's Words.
+				kenda_admin_text_row(
+					'words_heading',
+					__( 'In Kenda’s Words - Heading', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'words_quote',
+					__( 'In Kenda’s Words - Quote', 'kenda-custom' ),
+					$options,
+					'textarea'
+				);
+
+				kenda_admin_text_row(
+					'words_author',
+					__( 'In Kenda’s Words - Author', 'kenda-custom' ),
+					$options
+				);
+
+
+				// Your Voice. Your Vote.
+				kenda_admin_text_row(
+					'voice_heading',
+					__( 'Your Voice - Heading', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'voice_subheading',
+					__( 'Your Voice - Subheading', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'voice_body',
+					__( 'Your Voice - Description', 'kenda-custom' ),
+					$options,
+					'textarea'
+				);
+
+
+				// Help Bring Accountability Back.
+				kenda_admin_text_row(
+					'support_heading',
+					__( 'Support Campaign - Heading', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'support_label',
+					__( 'Support Campaign - CTA Label', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'support_description',
+					__( 'Support Campaign - Description', 'kenda-custom' ),
+					$options,
+					'textarea'
+				);
+
+				?>
+
+			</table>
+
+			<h2 class="title">
+				<?php esc_html_e( 'Campaign Actions', 'kenda-custom' ); ?>
+			</h2>
+
+			<p class="description">
+				<?php esc_html_e( 'Edit donation, volunteer, and campaign text-update content displayed on the homepage.', 'kenda-custom' ); ?>
+			</p>
+
+			<!-- Donation Section -->
+			<h3 class="title">
+				<?php esc_html_e( 'Donation', 'kenda-custom' ); ?>
+			</h3>
+
+			<table class="form-table" role="presentation">
+				<?php
+				kenda_admin_text_row(
+					'donation_amounts',
+					__( 'Donation Amounts', 'kenda-custom' ),
+					$options,
+					'textarea'
+				);
+				?>
+
+				<tr>
+					<th scope="row">
+						<label>
+							<?php esc_html_e( 'Amount Format', 'kenda-custom' ); ?>
+						</label>
+					</th>
+
+					<td>
+						<p class="description">
+							<?php esc_html_e( 'Enter one amount per line. Example: 25, 50, 100, 250, OTHER.', 'kenda-custom' ); ?>
+						</p>
+					</td>
+				</tr>
+
+				<?php
+				kenda_admin_text_row(
+					'donate_button_text',
+					__( 'Donate Button Text', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'donate_button_url',
+					__( 'Donate Button URL', 'kenda-custom' ),
+					$options,
+					'url'
+				);
+				?>
+			</table>
+
+
+			<!-- Join the Team Section -->
+			<h3 class="title">
+				<?php esc_html_e( 'Join the Team', 'kenda-custom' ); ?>
+			</h3>
+
+			<table class="form-table" role="presentation">
+				<?php
+				kenda_admin_text_row(
+					'team_heading',
+					__( 'Heading', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'team_description',
+					__( 'Description', 'kenda-custom' ),
+					$options,
+					'textarea'
+				);
+
+				kenda_admin_text_row(
+					'team_button_text',
+					__( 'Button Text', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'team_button_url',
+					__( 'Button URL', 'kenda-custom' ),
+					$options,
+					'url'
+				);
+				?>
+			</table>
+
+
+			<!-- Campaign Text Updates -->
+			<h3 class="title">
+				<?php esc_html_e( 'Campaign Text Updates', 'kenda-custom' ); ?>
+			</h3>
+
+			<table class="form-table" role="presentation">
+				<?php
+				kenda_admin_text_row(
+					'text_updates_heading',
+					__( 'Heading', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'text_updates_name_label',
+					__( 'Name Field Label', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'text_updates_mobile_label',
+					__( 'Mobile Field Label', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'text_updates_zip_label',
+					__( 'Zip Code Field Label', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'text_updates_disclaimer',
+					__( 'SMS Disclaimer', 'kenda-custom' ),
+					$options,
+					'textarea'
+				);
+
+				kenda_admin_text_row(
+					'text_updates_button_text',
+					__( 'Submit Button Text', 'kenda-custom' ),
+					$options
+				);
+
+				kenda_admin_text_row(
+					'text_updates_form_action',
+					__( 'Form Action URL', 'kenda-custom' ),
+					$options,
+					'url'
+				);
+				?>
+			</table>
 			<h2 class="title"><?php esc_html_e( 'Get Involved', 'kenda-custom' ); ?></h2>
 			<table class="form-table" role="presentation">
 				<?php
@@ -221,6 +439,7 @@ function kenda_render_homepage_settings_page(): void {
 		</form>
 	</div>
 	<?php
+	
 }
 
 /**
@@ -254,6 +473,22 @@ function kenda_sanitize_homepage_settings( array $input ): array {
 		'cta_button_text',
 		'contact_eyebrow',
 		'contact_heading',
+		'words_heading',
+		'words_author',
+
+		'voice_heading',
+		'voice_subheading',
+
+		'support_heading',
+		'support_label',
+		'donate_button_text',
+		'team_heading',
+		'team_button_text',
+		'text_updates_heading',
+		'text_updates_name_label',
+		'text_updates_mobile_label',
+		'text_updates_zip_label',
+		'text_updates_button_text',
 	);
 	$area_keys = array(
 		'hero_subtitle',
@@ -269,6 +504,12 @@ function kenda_sanitize_homepage_settings( array $input ): array {
 		'involved_body',
 		'cta_body',
 		'contact_body',
+		'words_quote',
+		'voice_body',
+		'support_description',
+		'donation_amounts',
+		'team_description',
+		'text_updates_disclaimer',
 	);
 
 	$out = array();

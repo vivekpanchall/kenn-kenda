@@ -461,7 +461,158 @@ $experience_query = new WP_Query(
 	</div>
 </section>
 
+<!-- page 3 -->
+<section class="k-section k-section--light" id="about" data-animate>
 
+    <div class="k-section__inner">
+
+        <header class="k-section__head">
+
+            <?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
+
+                <p class="eyebrow k-about-eyebrow">
+					<?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?>
+				</p>
+
+            <?php endif; ?>
+
+            <h2 class="display-md">
+                <?php
+                echo esc_html(
+                    kenda_home(
+                        'about_heading',
+                        __( "The Candidate's Story", 'kenda-custom' )
+                    )
+                );
+                ?>
+            </h2>
+
+            <p class="k-section__lead">
+                <?php
+                echo esc_html(
+                    kenda_home(
+                        'experience_intro',
+                        __( '30+ years in finance and civic leadership', 'kenda-custom' )
+                    )
+                );
+                ?>
+            </p>
+
+        </header>
+
+        <?php if ( kenda_home( 'about_body' ) ) : ?>
+
+            <div class="k-prose k-about-story">
+
+                <?php
+                echo kenda_content(
+                    (string) kenda_home( 'about_body' )
+                ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                ?>
+
+            </div>
+
+        <?php endif; ?>
+
+
+        <?php if ( $pillar_preview_query->have_posts() ) : ?>
+
+            <div class="k-about-pillars">
+
+                <!-- <div class="k-about-pillars__head">
+
+                    <p class="eyebrow">
+                        <?php esc_html_e( 'Leadership Priorities', 'kenda-custom' ); ?>
+                    </p>
+
+                    <h3>
+                        <?php esc_html_e( 'Experience that translates into action', 'kenda-custom' ); ?>
+                    </h3>
+
+                </div> -->
+				<section class="k-campaign-closing" id="campaign-closing">
+
+					<!-- IN KENDA'S WORDS -->
+					<div class="k-campaign-closing__block k-campaign-closing__quote">
+
+						<?php if ( kenda_home( 'words_heading' ) ) : ?>
+							<p class="eyebrow">
+								<?php echo esc_html( kenda_home( 'words_heading' ) ); ?>
+							</p>
+						<?php endif; ?>
+
+						<?php if ( kenda_home( 'words_quote' ) ) : ?>
+							<blockquote class="k-campaign-closing__quote-text">
+								“<?php echo esc_html( kenda_home( 'words_quote' ) ); ?>”
+							</blockquote>
+						<?php endif; ?>
+
+						<?php if ( kenda_home( 'words_author' ) ) : ?>
+							<p class="k-campaign-closing__author">
+								<?php echo esc_html( kenda_home( 'words_author' ) ); ?>
+							</p>
+						<?php endif; ?>
+
+					</div>
+
+
+					<!-- YOUR VOICE. YOUR VOTE. -->
+					<div class="k-campaign-closing__block k-campaign-closing__voice">
+
+						<?php if ( kenda_home( 'voice_heading' ) ) : ?>
+							<h2 class="display-md">
+								<?php echo esc_html( kenda_home( 'voice_heading' ) ); ?>
+							</h2>
+						<?php endif; ?>
+
+						<?php if ( kenda_home( 'voice_subheading' ) ) : ?>
+							<h3 class="k-campaign-closing__subheading">
+								<?php echo esc_html( kenda_home( 'voice_subheading' ) ); ?>
+							</h3>
+						<?php endif; ?>
+
+						<?php if ( kenda_home( 'voice_body' ) ) : ?>
+							<p class="k-campaign-closing__body">
+								<?php echo esc_html( kenda_home( 'voice_body' ) ); ?>
+							</p>
+						<?php endif; ?>
+
+					</div>
+
+
+					<!-- HELP BRING ACCOUNTABILITY BACK -->
+					<div class="k-campaign-closing__block k-campaign-closing__support">
+
+						<?php if ( kenda_home( 'support_heading' ) ) : ?>
+							<h2 class="display-md">
+								<?php echo esc_html( kenda_home( 'support_heading' ) ); ?>
+							</h2>
+						<?php endif; ?>
+
+						<?php if ( kenda_home( 'support_label' ) ) : ?>
+							<div class="k-campaign-closing__cta">
+								<?php echo esc_html( kenda_home( 'support_label' ) ); ?>
+							</div>
+						<?php endif; ?>
+
+						<?php if ( kenda_home( 'support_description' ) ) : ?>
+							<p class="k-campaign-closing__body">
+								<?php echo esc_html( kenda_home( 'support_description' ) ); ?>
+							</p>
+						<?php endif; ?>
+
+					</div>
+
+				</section>
+				
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</section>
 
 <!-- Slide 4 -->
 <!-- <section class="k-section k-section--muted" data-animate>
@@ -584,7 +735,7 @@ $experience_query = new WP_Query(
 </section> -->
 
 <!-- Slide 5 -->
-<section class="k-section k-section--dark" id="vision" data-animate>
+<!-- <section class="k-section k-section--dark" id="vision" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head k-section__head--light">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_05', 'heading' ) ); ?></h2>
@@ -610,127 +761,11 @@ $experience_query = new WP_Query(
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
-
-
-<section class="k-section k-section--light" id="about" data-animate>
-
-    <div class="k-section__inner">
-
-        <header class="k-section__head">
-
-            <?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
-
-                <p class="eyebrow k-about-eyebrow">
-					<?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?>
-				</p>
-
-            <?php endif; ?>
-
-            <h2 class="display-md">
-                <?php
-                echo esc_html(
-                    kenda_home(
-                        'about_heading',
-                        __( "The Candidate's Story", 'kenda-custom' )
-                    )
-                );
-                ?>
-            </h2>
-
-            <p class="k-section__lead">
-                <?php
-                echo esc_html(
-                    kenda_home(
-                        'experience_intro',
-                        __( '30+ years in finance and civic leadership', 'kenda-custom' )
-                    )
-                );
-                ?>
-            </p>
-
-        </header>
-
-        <?php if ( kenda_home( 'about_body' ) ) : ?>
-
-            <div class="k-prose k-about-story">
-
-                <?php
-                echo kenda_content(
-                    (string) kenda_home( 'about_body' )
-                ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                ?>
-
-            </div>
-
-        <?php endif; ?>
-
-
-        <?php if ( $pillar_preview_query->have_posts() ) : ?>
-
-            <div class="k-about-pillars">
-
-                <div class="k-about-pillars__head">
-
-                    <p class="eyebrow">
-                        <?php esc_html_e( 'Leadership Priorities', 'kenda-custom' ); ?>
-                    </p>
-
-                    <h3>
-                        <?php esc_html_e( 'Experience that translates into action', 'kenda-custom' ); ?>
-                    </h3>
-
-                </div>
-
-                <div class="k-about-pillars__grid">
-
-                    <?php
-                    while ( $pillar_preview_query->have_posts() ) :
-
-                        $pillar_preview_query->the_post();
-
-                        $short = get_post_meta(
-                            get_the_ID(),
-                            'priority_short_description',
-                            true
-                        );
-                        ?>
-
-                        <article class="k-card k-card--pillar">
-
-                            <h3 class="k-card__title">
-                                <?php the_title(); ?>
-                            </h3>
-
-                            <p class="k-card__text">
-                                <?php
-                                echo esc_html(
-                                    $short
-                                        ? (string) $short
-                                        : wp_strip_all_tags( get_the_content() )
-                                );
-                                ?>
-                            </p>
-
-                        </article>
-
-                    <?php endwhile; ?>
-
-                    <?php wp_reset_postdata(); ?>
-
-                </div>
-
-            </div>
-
-        <?php endif; ?>
-
-    </div>
-
-</section>
 
 <!-- Slide 9 -->
-<section class="k-section" data-animate>
+<!-- <section class="k-section" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_09', 'heading' ) ); ?></h2>
@@ -769,10 +804,10 @@ $experience_query = new WP_Query(
 			</article>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <!-- Slide 10 -->
-<section class="k-section k-section--light" data-animate>
+<!-- <section class="k-section k-section--light" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_10', 'heading' ) ); ?></h2>
@@ -791,10 +826,10 @@ $experience_query = new WP_Query(
 			</div>
 		<?php endif; ?>
 	</div>
-</section>
+</section> -->
 
 <!-- Slide 11 -->
-<section class="k-section k-section--dark" id="experience" data-animate>
+<!-- <section class="k-section k-section--dark" id="experience" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head k-section__head--light">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_11', 'heading', __( 'Service Delivery Timeline', 'kenda-custom' ) ) ); ?></h2>
@@ -837,10 +872,10 @@ $experience_query = new WP_Query(
 			<?php wp_reset_postdata(); ?>
 		<?php endif; ?> -->
 	</div>
-</section>
+</section> 
 
 <!-- Slide 12 -->
-<section class="k-section k-section--gold" id="support" data-animate>
+<!-- <section class="k-section k-section--gold" id="support" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			 <h2 class="display-md">
@@ -902,10 +937,10 @@ $experience_query = new WP_Query(
 			</p>
 		<?php endif; ?> -->
 	</div>
-</section>
+</section> 
 
 <!-- Slide 13 -->
-<section class="k-section k-section--muted" data-animate>
+<!-- <section class="k-section k-section--muted" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
 			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'heading' ) ); ?></h2>
@@ -920,159 +955,8 @@ $experience_query = new WP_Query(
 			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'subheading' ) ); ?></p>
 			<p class="k-note"><?php echo esc_html( (string) kenda_ppt( 'slide_13', 'intro' ) ); ?></p>
 	</div>
-</section>
-
-<!-- Slide 14 -->
-<!-- <section class="k-section k-section--closing" data-animate>
-	<div class="k-section__inner k-section__inner--narrow k-section__inner--center">
-		<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_14', 'heading' ) ); ?></h2>
-		<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_14', 'subheading' ) ); ?></p>
-		<?php
-		foreach ( array( 'line_1', 'line_2', 'line_3', 'line_4', 'line_5' ) as $key ) :
-			$line = trim( (string) kenda_ppt( 'slide_14', $key, '' ) );
-			if ( '' !== $line ) :
-				?>
-				<p class="k-closing-line"><?php echo esc_html( $line ); ?></p>
-			<?php endif; ?>
-		<?php endforeach; ?>
-		<p class="k-closing-thanks"><?php echo esc_html( (string) kenda_ppt( 'slide_14', 'thank_you' ) ); ?></p>
-		<a class="btn btn--gold btn--lg js-scroll-link" href="#contact"><?php esc_html_e( 'Contact the campaign', 'kenda-custom' ); ?></a>
-	</div>
 </section> -->
 
-<section class="k-section k-section--closing" data-animate>
-
-    <div class="k-section__inner">
-
-        <?php
-        $slide14_image_id = absint(
-            kenda_ppt( 'slide_14', 'image', 0 )
-        );
-        ?>
-
-        <div class="k-slide14-layout">
-
-            <!-- Left: Image -->
-            <?php if ( $slide14_image_id ) : ?>
-
-                <div class="k-slide14-image">
-
-                    <?php
-                    echo wp_get_attachment_image(
-                        $slide14_image_id,
-                        'large',
-                        false,
-                        array(
-                            'loading' => 'lazy',
-                            'alt'     => esc_attr(
-                                (string) kenda_ppt(
-                                    'slide_14',
-                                    'heading',
-                                    ''
-                                )
-                            ),
-                        )
-                    );
-                    ?>
-
-                </div>
-
-            <?php endif; ?>
-
-
-            <!-- Right: Content -->
-            <div class="k-slide14-content">
-
-                <h2 class="display-md">
-                    <?php
-                    echo esc_html(
-                        (string) kenda_ppt(
-                            'slide_14',
-                            'heading',
-                            ''
-                        )
-                    );
-                    ?>
-                </h2>
-
-
-                <p class="k-section__lead">
-                    <?php
-                    echo esc_html(
-                        (string) kenda_ppt(
-                            'slide_14',
-                            'subheading',
-                            ''
-                        )
-                    );
-                    ?>
-                </p>
-
-
-                <?php
-                foreach (
-                    array(
-                        'line_1',
-                        'line_2',
-                        'line_3',
-                        'line_4',
-                        'line_5',
-                    ) as $key
-                ) :
-
-                    $line = trim(
-                        (string) kenda_ppt(
-                            'slide_14',
-                            $key,
-                            ''
-                        )
-                    );
-
-                    if ( '' !== $line ) :
-                        ?>
-
-                        <p class="k-closing-line">
-                            <?php echo esc_html( $line ); ?>
-                        </p>
-
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
-
-
-                <?php
-                $thank_you = trim(
-                    (string) kenda_ppt(
-                        'slide_14',
-                        'thank_you',
-                        ''
-                    )
-                );
-                ?>
-
-                <?php if ( '' !== $thank_you ) : ?>
-
-                    <p class="k-closing-thanks">
-                        <?php echo esc_html( $thank_you ); ?>
-                    </p>
-
-                <?php endif; ?>
-
-
-                <a
-                    class="btn btn--gold btn--lg js-scroll-link"
-                    href="#contact"
-                >
-                    <?php esc_html_e( 'Contact the campaign', 'kenda-custom' ); ?>
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 <style>
 #intro .k-section__head {
     max-width: 100%;

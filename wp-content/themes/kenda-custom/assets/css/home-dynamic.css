@@ -845,3 +845,230 @@
   overflow-wrap: normal;
   line-height: 1.5;
 }
+
+/* =========================================================
+   Campaign Closing Section
+   ========================================================= */
+
+   .k-campaign-closing {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2rem;
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   Common Block
+   ========================================================= */
+
+.k-campaign-closing__block {
+    position: relative;
+    padding: clamp(2rem, 4vw, 3.5rem);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   IN KENDA'S WORDS
+   ========================================================= */
+
+.k-campaign-closing__quote {
+    grid-column: 1 / -1;
+    background: #0b1f3a;
+    color: #ffffff;
+    padding: clamp(2.5rem, 5vw, 5rem);
+}
+
+.k-campaign-closing__quote::before {
+    content: "“";
+    position: absolute;
+    top: -1.5rem;
+    left: 1rem;
+    font-family: Georgia, serif;
+    font-size: 12rem;
+    line-height: 1;
+    color: rgba(214, 174, 94, 0.12);
+    pointer-events: none;
+}
+
+.k-campaign-closing__quote .eyebrow {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 1.5rem;
+    color: #d6ae5e;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.k-campaign-closing__quote-text {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+.k-campaign-closing__author {
+    position: relative;
+    z-index: 1;
+    margin: 1.75rem 0 0;
+    color: #6eb8e0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   YOUR VOICE
+   ========================================================= */
+
+.k-campaign-closing__voice {
+    background: #f3f7fa;
+    border: 1px solid rgba(11, 31, 58, 0.1);
+}
+
+.k-campaign-closing__voice::before {
+    content: "02";
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 900;
+    color: rgba(11, 31, 58, 0.05);
+}
+
+.k-campaign-closing__voice .display-md {
+    position: relative;
+    margin: 0 0 1rem;
+    color: #0b1f3a;
+}
+
+.k-campaign-closing__subheading {
+    margin: 0 0 1.25rem;
+    color: #2f6fa3;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.k-campaign-closing__body {
+    margin: 0;
+    color: #34495e;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SUPPORT
+   ========================================================= */
+
+.k-campaign-closing__support {
+    background: #d6ae5e;
+    color: #0b1f3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.k-campaign-closing__support::before {
+    content: "03";
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 900;
+    color: rgba(11, 31, 58, 0.1);
+}
+
+.k-campaign-closing__support .display-md {
+    margin: 0 0 1.5rem;
+    color: #0b1f3a;
+}
+
+.k-campaign-closing__cta {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 1.25rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 999px;
+    background: #0b1f3a;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.k-campaign-closing__support .k-campaign-closing__body {
+    color: #0b1f3a;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .k-campaign-closing {
+        grid-template-columns: 1fr;
+    }
+
+    .k-campaign-closing__quote {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .k-campaign-closing {
+        padding-block: 3rem;
+        gap: 1.25rem;
+    }
+
+    .k-campaign-closing__block {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+
+    .k-campaign-closing__quote {
+        padding: 2.25rem 1.5rem;
+    }
+
+    .k-campaign-closing__quote-text {
+        font-size: 1.45rem;
+        line-height: 1.5;
+    }
+
+    .k-campaign-closing__quote::before {
+        font-size: 8rem;
+        top: -0.75rem;
+    }
+
+    .k-campaign-closing__voice::before,
+    .k-campaign-closing__support::before {
+        font-size: 3rem;
+    }
+
+}
+
+
