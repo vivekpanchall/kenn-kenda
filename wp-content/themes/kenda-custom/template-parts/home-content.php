@@ -61,17 +61,84 @@ $experience_query = new WP_Query(
 );
 ?>
 
+<!-- Slide 3 -->
+<section class="k-section" data-animate>
+	<div class="k-section__inner">
+		<header class="k-section__head">
+			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'heading' ) ); ?></h2>
+			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'subheading' ) ); ?></p>
+			<p class="k-stat"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'stat' ) ); ?></p>
+			<p class="k-tags"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tags' ) ); ?></p>
+		</header>
+		<!-- <?php if ( is_array( $s03_cards ) && $s03_cards ) : ?>
+
+			<div class="k-card-grid k-card-grid--4">
+
+				<?php foreach ( $s03_cards as $card ) : ?>
+
+					<?php if ( ! is_array( $card ) ) {
+						continue;
+					} ?>
+
+					<article class="k-card k-card--hover">
+
+						<?php
+						$image_id = absint( $card['image'] ?? 0 );
+
+						if ( $image_id ) :
+							?>
+							<div class="k-card__image">
+								<?php
+								echo wp_get_attachment_image(
+									$image_id,
+									'large',
+									false,
+									array(
+										'loading' => 'lazy',
+										'alt'     => (string) ( $card['title'] ?? '' ),
+									)
+								);
+								?>
+							</div>
+						<?php endif; ?>
+
+						<div class="k-card__content">
+
+							<h3 class="k-card__title">
+								<?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?>
+							</h3>
+
+							<?php if ( ! empty( $card['desc'] ) ) : ?>
+
+								<p class="k-card__text">
+									<?php echo esc_html( (string) $card['desc'] ); ?>
+								</p>
+
+							<?php endif; ?>
+
+						</div>
+
+					</article>
+
+				<?php endforeach; ?>
+
+			</div>
+
+		<?php endif; ?> -->
+	</div>
+</section>
+
 <!-- Slide 2 -->
 <section class="k-section k-section--light" id="intro" data-animate>
 	<div class="k-section__inner">
 		<header class="k-section__head">
-			<p class="eyebrow"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'eyebrow' ) ); ?></p>
-			<h2 class="display-md second-slide"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'heading' ) ); ?></h2>
+			<h2 class="display-md second-slide second-slide--gold"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'heading' ) ); ?></h2>
+			<!-- <p class="slide-02-blue-text"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'eyebrow' ) ); ?></p> -->
 			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'intro' ) ); ?></p>
 		</header>
 		<div class="k-split">
 			<div class="k-card k-card--soft">
-				<h3 class="k-card__title"><?php esc_html_e( 'Thank you for the opportunity', 'kenda-custom' ); ?></h3>
+				<!-- <h3 class="k-card__title slide-02-dark-blue"><?php esc_html_e( 'Thank you for the opportunity', 'kenda-custom' ); ?></h3> -->
 				<ul class="k-list">
 					<?php foreach ( $s02_bullets as $line ) : ?>
 						<li><?php echo esc_html( $line ); ?></li>
@@ -79,7 +146,7 @@ $experience_query = new WP_Query(
 				</ul>
 			</div>
 			<div class="k-card k-card--soft">
-				<h3 class="k-card__title"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'scope_title' ) ); ?></h3>
+				<h3 class="k-card__title slide-02-dark-blue"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'scope_title' ) ); ?></h3>
 				<ul class="k-list">
 					<?php foreach ( $s02_scope as $line ) : ?>
 						<li><?php echo esc_html( $line ); ?></li>	
@@ -100,75 +167,304 @@ $experience_query = new WP_Query(
 	</div>
 </section>
 
-<!-- Slide 3 -->
-<section class="k-section" data-animate>
-	<div class="k-section__inner">
-		<header class="k-section__head">
-			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'heading' ) ); ?></h2>
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'subheading' ) ); ?></p>
-			<p class="k-stat"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'stat' ) ); ?></p>
-			<p class="k-tags"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tags' ) ); ?></p>
-		</header>
-		<?php if ( is_array( $s03_cards ) && $s03_cards ) : ?>
 
-    <div class="k-card-grid k-card-grid--4">
+<!-- Slide 7 --> 
+ <!-- platform details -->
+<section class="k-section" id="priorities" data-animate>
 
-		<?php foreach ( $s03_cards as $card ) : ?>
+    <div class="k-section__inner">
 
-			<?php if ( ! is_array( $card ) ) {
-				continue;
-			} ?>
+        <header class="k-section__head">
 
-			<article class="k-card k-card--hover">
+            <h2 class="display-md">
+                <?php
+                echo esc_html(
+                    kenda_home(
+                        'priorities_heading',
+                        __( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' )
+                    )
+                );
+                ?>
+            </h2>
+
+            <!-- <p class="k-section__lead">
+                <?php echo esc_html( kenda_home( 'priorities_intro', '' ) ); ?>
+            </p> -->
+
+            <!-- <?php if ( kenda_ppt( 'slide_07', 'deliverable' ) ) : ?>
+
+                <p class="k-note">
+                    <?php echo esc_html( (string) kenda_ppt( 'slide_07', 'deliverable' ) ); ?>
+                </p>
+
+            <?php endif; ?> -->
+
+        </header>
+
+
+        <!-- FIRST ACCORDION -->
+        <!-- <div class="k-accordion" data-priority-accordion>
+
+            <?php if ( is_array( $s07_table ) ) : ?>
+
+                <?php foreach ( $s07_table as $i => $row ) : ?>
+
+                    <?php
+                    if ( ! is_array( $row ) ) {
+                        continue;
+                    }
+
+                    $panel_id = 'k-pillar-panel-' . (int) $i;
+                    ?>
+
+                    <article class="k-accordion__item">
+
+                        <button
+                            type="button"
+                            class="k-accordion__trigger"
+                            data-slide07-toggle
+                            aria-expanded="false"
+                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+                        >
+
+                            <span class="k-accordion__label">
+                                <?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?>
+                            </span>
+
+                            <span
+                                class="k-accordion__icon"
+                                aria-hidden="true"
+                            ></span>
+
+                        </button>
+
+
+                        <div
+                            class="k-accordion__panel"
+                            id="<?php echo esc_attr( $panel_id ); ?>"
+                            hidden
+                        >
+
+                            <p>
+                                <strong>
+                                    <?php esc_html_e( 'What we measure', 'kenda-custom' ); ?>
+                                </strong>
+                                —
+                                <?php echo esc_html( (string) ( $row['measure'] ?? '' ) ); ?>
+                            </p>
+
+                            <p>
+                                <strong>
+                                    <?php esc_html_e( 'How it shapes the message', 'kenda-custom' ); ?>
+                                </strong>
+                                —
+                                <?php echo esc_html( (string) ( $row['message'] ?? '' ) ); ?>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
+        </div> -->
+
+
+        <!-- PLATFORM DETAILS -->
+		<?php if ( $priority_full_query->have_posts() ) : ?>
+
+			<h3 class="k-subhead">
+				<?php esc_html_e( 'Platform details', 'kenda-custom' ); ?>
+			</h3>
+
+			<div class="k-platform-details">
 
 				<?php
-				$image_id = absint( $card['image'] ?? 0 );
+				$j = 0;
 
-				if ( $image_id ) :
+				while ( $priority_full_query->have_posts() ) :
+					$priority_full_query->the_post();
+
+					$num   = get_post_meta( get_the_ID(), 'priority_number', true );
+					$short = get_post_meta( get_the_ID(), 'priority_short_description', true );
 					?>
-					<div class="k-card__image">
-						<?php
-						echo wp_get_attachment_image(
-							$image_id,
-							'large',
-							false,
-							array(
-								'loading' => 'lazy',
-								'alt'     => (string) ( $card['title'] ?? '' ),
-							)
-						);
-						?>
+
+					<article class="k-platform-detail">
+
+						<div class="k-platform-detail__header">
+
+							<span class="k-platform-detail__num">
+								<?php
+								echo esc_html(
+									$num
+										? (string) $num
+										: sprintf( '%02d', $j + 1 )
+								);
+								?>
+							</span>
+
+							<div class="k-platform-detail__info">
+
+								<h4 class="k-platform-detail__title">
+									<?php the_title(); ?>
+								</h4>
+
+								<?php if ( $short ) : ?>
+									<p class="k-platform-detail__short">
+										<?php echo esc_html( (string) $short ); ?>
+									</p>
+								<?php endif; ?>
+
+							</div>
+
+						</div>
+
+						<?php if ( get_the_content() ) : ?>
+							<div class="k-platform-detail__content k-prose">
+								<?php the_content(); ?>
+							</div>
+						<?php endif; ?>
+
+					</article>
+
+					<?php ++$j; ?>
+
+				<?php endwhile; ?>
+
+				<?php wp_reset_postdata(); ?>
+
+			</div>
+
+		<?php endif; ?>
+
+    </div>
+
+</section>
+
+<!-- Slide 8 -->
+<section class="k-section k-section--muted" id="get-involved" data-animate>
+	<div class="k-section__inner">
+		<header class="k-section__head">
+			<div class="k-slide08-head__row">
+
+				<h2 class="display-md">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'heading' ) ); ?>
+				</h2>
+
+				<h2 class="display-md k-slide08-stat">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?>
+				</h2>
+
+			</div>
+			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'lead' ) ); ?></p>
+			<p class="k-stat-line"><strong><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'strategy' ) ); ?></strong> <?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?></p>
+			
+		</header>
+		<div class="k-platform-details k-slide08-details">
+			<article class="k-platform-detail">
+				<div class="k-platform-detail__header">
+					<span class="k-platform-detail__num">
+						01
+					</span>
+
+					<div class="k-platform-detail__info">
+
+						<h4 class="k-platform-detail__title">
+							<?php esc_html_e( 'Responsible spending:', 'kenda-custom' ); ?>
+						</h4>
+
+						<?php if ( ! empty( $s08_includes ) ) : ?>
+							<p class="k-platform-detail__short">
+								<?php echo esc_html( implode( ' ', $s08_includes ) ); ?>
+							</p>
+						<?php endif; ?>
+
 					</div>
-				<?php endif; ?>
+				</div>
 
-				<div class="k-card__content">
+			</article>
 
-					<h3 class="k-card__title">
-						<?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?>
-					</h3>
+			<article class="k-platform-detail">
 
-					<?php if ( ! empty( $card['desc'] ) ) : ?>
+				<div class="k-platform-detail__header">
 
-						<p class="k-card__text">
-							<?php echo esc_html( (string) $card['desc'] ); ?>
-						</p>
+					<span class="k-platform-detail__num">
+						02
+					</span>
 
-					<?php endif; ?>
+					<div class="k-platform-detail__info">
+
+						<h4 class="k-platform-detail__title">
+							<?php echo esc_html(
+								(string) kenda_ppt(
+									'slide_08',
+									'opt_title'
+								)
+							); ?>
+						</h4>
+
+						<?php if ( ! empty( $opt_content ) ) : ?>
+							<p class="k-platform-detail__short">
+								<?php echo esc_html( implode( ' ', $opt_content ) ); ?>
+							</p>
+						<?php endif; ?>
+
+					</div>
 
 				</div>
 
 			</article>
 
-		<?php endforeach; ?>
+			<article class="k-platform-detail">
 
-    </div>
+				<div class="k-platform-detail__header">
 
-<?php endif; ?>
+					<span class="k-platform-detail__num">
+						03
+					</span>
+
+					<div class="k-platform-detail__info">
+
+						<h4 class="k-platform-detail__title">
+							<?php echo esc_html(
+								(string) kenda_ppt(
+									'slide_08',
+									'human'
+								)
+							); ?>
+						</h4>
+
+						<?php if ( ! empty( $s08_opt ) ) : ?>
+							<p class="k-platform-detail__short">
+								<?php echo esc_html( implode( ' ', $s08_opt ) ); ?>
+							</p>
+						<?php endif; ?>
+
+					</div>
+
+				</div>
+			</article>
+
+		</div>
+		<!-- <div class="k-chips">
+			<?php foreach ( kenda_ppt( 'slide_08', 'taglines', array() ) as $tag ) : ?>
+				<h1><?php echo esc_html( (string) $tag ); ?></h2>
+			<?php endforeach; ?>
+		</div> -->
+		<!-- <?php if ( kenda_home( 'involved_cta_text' ) && kenda_home( 'involved_cta_url' ) ) : ?>
+			<p class="k-section__cta">
+				<a class="btn btn--gold btn--lg js-scroll-link" href="<?php echo esc_url( kenda_home( 'involved_cta_url', '#contact' ) ); ?>"><?php echo esc_html( kenda_home( 'involved_cta_text' ) ); ?></a>
+			</p>
+		<?php endif; ?> -->
 	</div>
 </section>
 
+
+
 <!-- Slide 4 -->
-<section class="k-section k-section--muted" data-animate>
+<!-- <section class="k-section k-section--muted" data-animate>
 
     <div class="k-section__inner">
 
@@ -250,7 +546,42 @@ $experience_query = new WP_Query(
 
     </div>
 
-</section>
+</section> -->
+
+<!-- Slide 6 -->
+<!-- <section class="k-section k-section--light" id="about" data-animate>
+	<div class="k-section__inner">
+		<header class="k-section__head">
+		<?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
+				<p class="eyebrow"><?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?></p>
+			<?php endif; ?>
+			<h2 class="display-md"><?php echo esc_html( kenda_home( 'about_heading', __( "The Candidate's Story", 'kenda-custom' ) ) ); ?></h2>
+			<p class="k-section__lead"><?php echo esc_html( kenda_home( 'experience_intro', __( '30+ years in finance and civic leadership', 'kenda-custom' ) ) ); ?></p>
+		</header>
+		<div class="k-split">
+			<div class="k-prose">
+				<?php if ( kenda_home( 'about_body' ) ) : ?>
+					<?php echo kenda_content( (string) kenda_home( 'about_body' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php endif; ?>
+			</div>
+			<?php if ( $pillar_preview_query->have_posts() ) : ?>
+				<div class="k-card-grid k-card-grid--1">
+					<?php
+					while ( $pillar_preview_query->have_posts() ) :
+						$pillar_preview_query->the_post();
+						$short = get_post_meta( get_the_ID(), 'priority_short_description', true );
+						?>
+						<article class="k-card k-card--pillar">
+							<h3 class="k-card__title"><?php the_title(); ?></h3>
+							<p class="k-card__text"><?php echo esc_html( $short ? (string) $short : wp_strip_all_tags( get_the_content() ) ); ?></p>
+						</article>
+					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</section> -->
 
 <!-- Slide 5 -->
 <section class="k-section k-section--dark" id="vision" data-animate>
@@ -281,40 +612,7 @@ $experience_query = new WP_Query(
 	</div>
 </section>
 
-<!-- Slide 6 -->
-<!-- <section class="k-section k-section--light" id="about" data-animate>
-	<div class="k-section__inner">
-		<header class="k-section__head">
-			<?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
-				<p class="eyebrow"><?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?></p>
-			<?php endif; ?>
-			<h2 class="display-md"><?php echo esc_html( kenda_home( 'about_heading', __( "The Candidate's Story", 'kenda-custom' ) ) ); ?></h2>
-			<p class="k-section__lead"><?php echo esc_html( kenda_home( 'experience_intro', __( '30+ years in finance and civic leadership', 'kenda-custom' ) ) ); ?></p>
-		</header>
-		<div class="k-split">
-			<div class="k-prose">
-				<?php if ( kenda_home( 'about_body' ) ) : ?>
-					<?php echo kenda_content( (string) kenda_home( 'about_body' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<?php endif; ?>
-			</div>
-			<?php if ( $pillar_preview_query->have_posts() ) : ?>
-				<div class="k-card-grid k-card-grid--1">
-					<?php
-					while ( $pillar_preview_query->have_posts() ) :
-						$pillar_preview_query->the_post();
-						$short = get_post_meta( get_the_ID(), 'priority_short_description', true );
-						?>
-						<article class="k-card k-card--pillar">
-							<h3 class="k-card__title"><?php the_title(); ?></h3>
-							<p class="k-card__text"><?php echo esc_html( $short ? (string) $short : wp_strip_all_tags( get_the_content() ) ); ?></p>
-						</article>
-					<?php endwhile; ?>
-					<?php wp_reset_postdata(); ?>
-				</div>
-			<?php endif; ?>
-		</div>
-	</div>
-</section> -->
+
 
 <section class="k-section k-section--light" id="about" data-animate>
 
@@ -429,336 +727,6 @@ $experience_query = new WP_Query(
 
     </div>
 
-</section>
-
-<!-- Slide 7 -->
-<!-- <section class="k-section" id="priorities" data-animate>
-	<div class="k-section__inner">
-		<header class="k-section__head">
-			<h2 class="display-md"><?php echo esc_html( kenda_home( 'priorities_heading', __( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' ) ) ); ?></h2>
-			<p class="k-section__lead"><?php echo esc_html( kenda_home( 'priorities_intro', '' ) ); ?></p>
-			<?php if ( kenda_ppt( 'slide_07', 'deliverable' ) ) : ?>
-				<p class="k-note"><?php echo esc_html( (string) kenda_ppt( 'slide_07', 'deliverable' ) ); ?></p>
-			<?php endif; ?>
-		</header>
-		<div class="k-accordion" data-priority-accordion>
-			<?php if ( is_array( $s07_table ) ) : ?>
-				<?php foreach ( $s07_table as $i => $row ) : ?>
-					<?php
-					if ( ! is_array( $row ) ) {
-						continue;
-					}
-					$panel_id = 'k-pillar-panel-' . (int) $i;
-					?>
-					<article class="k-accordion__item">
-						<button type="button" class="k-accordion__trigger" data-priority-toggle aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
-							<span class="k-accordion__label"><?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?></span>
-							<span class="k-accordion__icon" aria-hidden="true"></span>
-						</button>
-						<div class="k-accordion__panel" id="<?php echo esc_attr( $panel_id ); ?>" <?php echo 0 === $i ? '' : 'hidden'; ?>>
-							<p><strong><?php esc_html_e( 'What we measure', 'kenda-custom' ); ?></strong> — <?php echo esc_html( (string) ( $row['measure'] ?? '' ) ); ?></p>
-							<p><strong><?php esc_html_e( 'How it shapes the message', 'kenda-custom' ); ?></strong> — <?php echo esc_html( (string) ( $row['message'] ?? '' ) ); ?></p>
-						</div>
-					</article>
-				<?php endforeach; ?>
-			<?php endif; ?>
-		</div>
-		<?php if ( $priority_full_query->have_posts() ) : ?>
-			<h3 class="k-subhead"><?php esc_html_e( 'Platform details', 'kenda-custom' ); ?></h3>
-			<div class="k-accordion k-accordion--compact" data-priority-accordion>
-				<?php
-				$j = 0;
-				while ( $priority_full_query->have_posts() ) :
-					$priority_full_query->the_post();
-					$num      = get_post_meta( get_the_ID(), 'priority_number', true );
-					$short    = get_post_meta( get_the_ID(), 'priority_short_description', true );
-					$panel_id = 'k-priority-panel-' . get_the_ID();
-					?>
-					<article class="k-accordion__item">
-						<button
-							type="button"
-							class="k-accordion__trigger"
-							data-slide07-toggle
-							aria-expanded="<?php echo 0 === $i ? 'true' : 'false'; ?>"
-							aria-controls="<?php echo esc_attr( $panel_id ); ?>"
-						>
-							<span class="k-accordion__num"><?php echo esc_html( $num ? (string) $num : sprintf( '%02d', $j + 1 ) ); ?></span>
-							<span class="k-accordion__label"><?php the_title(); ?></span>
-							<?php if ( $short ) : ?>
-								<span class="k-accordion__hint"><?php echo esc_html( (string) $short ); ?></span>
-							<?php endif; ?>
-							<span class="k-accordion__icon" aria-hidden="true"></span>
-						</button>
-						<div class="k-accordion__panel" id="<?php echo esc_attr( $panel_id ); ?>" hidden>
-							<div class="k-prose"><?php the_content(); ?></div>
-						</div>
-					</article>
-					<?php
-					++$j;
-				endwhile;
-				wp_reset_postdata();
-				?>
-			</div>
-		<?php endif; ?>
-	</div>
-</section> -->
-<section class="k-section" id="priorities" data-animate>
-
-    <div class="k-section__inner">
-
-        <header class="k-section__head">
-
-            <h2 class="display-md">
-                <?php
-                echo esc_html(
-                    kenda_home(
-                        'priorities_heading',
-                        __( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' )
-                    )
-                );
-                ?>
-            </h2>
-
-            <p class="k-section__lead">
-                <?php echo esc_html( kenda_home( 'priorities_intro', '' ) ); ?>
-            </p>
-
-            <?php if ( kenda_ppt( 'slide_07', 'deliverable' ) ) : ?>
-
-                <p class="k-note">
-                    <?php echo esc_html( (string) kenda_ppt( 'slide_07', 'deliverable' ) ); ?>
-                </p>
-
-            <?php endif; ?>
-
-        </header>
-
-
-        <!-- FIRST ACCORDION -->
-        <div class="k-accordion" data-priority-accordion>
-
-            <?php if ( is_array( $s07_table ) ) : ?>
-
-                <?php foreach ( $s07_table as $i => $row ) : ?>
-
-                    <?php
-                    if ( ! is_array( $row ) ) {
-                        continue;
-                    }
-
-                    $panel_id = 'k-pillar-panel-' . (int) $i;
-                    ?>
-
-                    <article class="k-accordion__item">
-
-                        <button
-                            type="button"
-                            class="k-accordion__trigger"
-                            data-slide07-toggle
-                            aria-expanded="false"
-                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
-                        >
-
-                            <span class="k-accordion__label">
-                                <?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?>
-                            </span>
-
-                            <span
-                                class="k-accordion__icon"
-                                aria-hidden="true"
-                            ></span>
-
-                        </button>
-
-
-                        <div
-                            class="k-accordion__panel"
-                            id="<?php echo esc_attr( $panel_id ); ?>"
-                            hidden
-                        >
-
-                            <p>
-                                <strong>
-                                    <?php esc_html_e( 'What we measure', 'kenda-custom' ); ?>
-                                </strong>
-                                —
-                                <?php echo esc_html( (string) ( $row['measure'] ?? '' ) ); ?>
-                            </p>
-
-                            <p>
-                                <strong>
-                                    <?php esc_html_e( 'How it shapes the message', 'kenda-custom' ); ?>
-                                </strong>
-                                —
-                                <?php echo esc_html( (string) ( $row['message'] ?? '' ) ); ?>
-                            </p>
-
-                        </div>
-
-                    </article>
-
-                <?php endforeach; ?>
-
-            <?php endif; ?>
-
-        </div>
-
-
-        <!-- PLATFORM DETAILS -->
-        <?php if ( $priority_full_query->have_posts() ) : ?>
-
-            <h3 class="k-subhead">
-                <?php esc_html_e( 'Platform details', 'kenda-custom' ); ?>
-            </h3>
-
-
-            <div class="k-accordion k-accordion--compact" data-priority-accordion>
-
-                <?php
-
-                $j = 0;
-
-                while ( $priority_full_query->have_posts() ) :
-
-                    $priority_full_query->the_post();
-
-                    $num      = get_post_meta( get_the_ID(), 'priority_number', true );
-                    $short    = get_post_meta( get_the_ID(), 'priority_short_description', true );
-                    $panel_id = 'k-priority-panel-' . get_the_ID();
-
-                    ?>
-
-                    <article class="k-accordion__item">
-
-                        <button
-                            type="button"
-                            class="k-accordion__trigger"
-                            data-slide07-toggle
-                            aria-expanded="false"
-                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
-                        >
-
-                            <span class="k-accordion__num">
-                                <?php
-                                echo esc_html(
-                                    $num
-                                        ? (string) $num
-                                        : sprintf( '%02d', $j + 1 )
-                                );
-                                ?>
-                            </span>
-
-                            <span class="k-accordion__label">
-                                <?php the_title(); ?>
-                            </span>
-
-                            <?php if ( $short ) : ?>
-
-                                <span class="k-accordion__hint">
-                                    <?php echo esc_html( (string) $short ); ?>
-                                </span>
-
-                            <?php endif; ?>
-
-                            <span
-                                class="k-accordion__icon"
-                                aria-hidden="true"
-                            ></span>
-
-                        </button>
-
-
-                        <div
-                            class="k-accordion__panel"
-                            id="<?php echo esc_attr( $panel_id ); ?>"
-                            hidden
-                        >
-
-                            <div class="k-prose">
-                                <?php the_content(); ?>
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                    <?php ++$j; ?>
-
-                <?php endwhile; ?>
-
-                <?php wp_reset_postdata(); ?>
-
-            </div>
-
-        <?php endif; ?>
-
-    </div>
-
-</section>
-
-<!-- Slide 8 -->
-<section class="k-section k-section--muted" id="get-involved" data-animate>
-	<div class="k-section__inner">
-		<header class="k-section__head">
-			<div class="k-slide08-head__row">
-
-				<h2 class="display-md">
-					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'heading' ) ); ?>
-				</h2>
-
-				<h2 class="display-md k-slide08-stat">
-					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?>
-				</h2>
-
-			</div>
-			<!-- <p class="k-stat-line"><strong><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'strategy' ) ); ?></strong> <?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?></p> -->
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'lead' ) ); ?></p>
-			
-		</header>
-		<div class="k-split">
-			<details class="k-disclosure" open>
-				<summary class="k-disclosure__summary"><?php esc_html_e( 'What is included', 'kenda-custom' ); ?></summary>
-				<div class="k-disclosure__body">
-					<ul class="k-list">
-						<?php foreach ( $s08_includes as $line ) : ?>
-							<li><?php echo esc_html( $line ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-			</details>
-			<details class="k-disclosure" open>
-				<summary class="k-disclosure__summary"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'opt_title' ) ); ?></summary>
-				<div class="k-disclosure__body">
-					<ul class="k-list">
-						<?php foreach ( $opt_content as $line ) : ?>
-							<li><?php echo esc_html( $line ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-			</details>
-			<details class="k-disclosure">
-				<summary class="k-disclosure__summary"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'human' ) ); ?></summary>
-				<div class="k-disclosure__body">
-					
-					<ul class="k-list">
-						<?php foreach ( $s08_opt as $line ) : ?>
-							<li><?php echo esc_html( $line ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-			</details>
-		</div>
-		<div class="k-chips">
-			<?php foreach ( kenda_ppt( 'slide_08', 'taglines', array() ) as $tag ) : ?>
-				<h1><?php echo esc_html( (string) $tag ); ?></h2>
-			<?php endforeach; ?>
-		</div>
-		<!-- <?php if ( kenda_home( 'involved_cta_text' ) && kenda_home( 'involved_cta_url' ) ) : ?>
-			<p class="k-section__cta">
-				<a class="btn btn--gold btn--lg js-scroll-link" href="<?php echo esc_url( kenda_home( 'involved_cta_url', '#contact' ) ); ?>"><?php echo esc_html( kenda_home( 'involved_cta_text' ) ); ?></a>
-			</p>
-		<?php endif; ?> -->
-	</div>
 </section>
 
 <!-- Slide 9 -->

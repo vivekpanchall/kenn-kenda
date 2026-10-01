@@ -471,7 +471,7 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_08', 'strategy', __( 'Strategy label', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'stat', __( 'Stat line', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'lead', __( 'Lead', 'kenda-custom' ), $data['slide_08'], 'textarea' );
-				kenda_ppt_admin_row( 'slide_08', 'includes', __( 'What is included', 'kenda-custom' ), $data['slide_08'], 'textarea' );
+				kenda_ppt_admin_row( 'slide_08', 'includes', __( 'Responsible spending', 'kenda-custom' ), $data['slide_08'], 'textarea' );
 				  // NEW FIELD
 				kenda_ppt_admin_row(
 					'slide_08',

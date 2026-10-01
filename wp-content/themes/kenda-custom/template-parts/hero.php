@@ -22,7 +22,15 @@ $p_text      = kenda_home( 'hero_primary_text' );
 $p_url       = kenda_home( 'hero_primary_url', '#get-involved' );
 $s_text      = kenda_home( 'hero_secondary_text' );
 $s_url       = kenda_home( 'hero_secondary_url', '#support' );
-$name_parts  = kenda_hero_name_parts( $title );
+// $name_parts  = kenda_hero_name_parts( $title );
+$words = preg_split( '/\s+/', trim( $title ) );
+
+$name_parts = array(
+    implode( ' ', array_slice( $words, 0, 2 ) ),
+    implode( ' ', array_slice( $words, 2, 3 ) ),
+    implode( ' ', array_slice( $words, 5, 2 ) ),
+    implode( ' ', array_slice( $words, 7 ) ),
+);
 $logo_id     = kenda_custom_logo_id();
 $logo_fb     = KENDA_THEME_URI . '/assets/images/campaign-logo-shield.png';
 
