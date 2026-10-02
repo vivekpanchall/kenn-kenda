@@ -3,7 +3,7 @@
  */
 
 .k-section {
-  padding: clamp(3rem, 5vw, 4rem) clamp(1.25rem, 4vw, 2rem);
+  padding: clamp(3rem, 5.5vw, 4.75rem) clamp(1rem, 4vw, 1.75rem);
 }
 
 .k-section--light {
@@ -31,8 +31,9 @@
 }
 
 .k-section__inner {
-  max-width: var(--container-width, 1280px);
+  max-width: var(--container-width, 1200px);
   margin: 0 auto;
+  width: 100%;
 }
 
 .k-section__inner--narrow {
@@ -44,7 +45,7 @@
 }
 
 .k-section__head {
-  margin-bottom: clamp(1.75rem, 4vw, 1.75rem);
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
   max-width: 52rem;
 }
 
@@ -486,6 +487,10 @@
 }
 
 @media (max-width: 768px) {
+  .k-section {
+    padding-block: clamp(2.5rem, 8vw, 3.25rem);
+  }
+
   .k-split,
   .k-card-grid--2,
   .k-card-grid--3,
@@ -497,6 +502,10 @@
   .k-accordion__hint {
     grid-column: 1 / -1;
   }
+
+  .k-section__lead {
+    font-size: 1.05rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -504,8 +513,6 @@
     transform: none;
   }
 }
-
-/* new css */
 
 /* slide 2 */
 .second-slide--gold {
@@ -543,7 +550,6 @@
     width: 100%;
 }
 
-//slide-4
 /* Slide 04 accordion */
 .k-card-grid--2 {
     align-items: start;
@@ -567,7 +573,6 @@
     display: block;
 }
 
-//slide 6
 /* Slide 06 - About / Candidate Story */
 .k-about-story {
     max-width: 900px;
@@ -622,25 +627,26 @@
 .k-slide08-head__row {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: nowrap;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
     width: 100%;
 }
 
 .k-slide08-head__row h2 {
     margin: 0;
-    white-space: nowrap;
+    min-width: 0;
 }
 
 .k-slide08-head__row h2:first-child {
-    flex: 1;
+    flex: 1 1 16rem;
 }
 
 .k-slide08-stat {
     color: #f97316;
-    flex-shrink: 0;
+    flex: 0 1 auto;
+    max-width: 100%;
 }
 
 /* slide 12 */
@@ -737,21 +743,23 @@
 .k-platform-details {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .k-platform-detail {
   display: grid;
   grid-template-columns: 70px minmax(180px, 0.35fr) minmax(0, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: start;
   width: 100%;
-  padding: 1.75rem 2rem;
+  max-width: 100%;
+  padding: 1.5rem 1.75rem;
   background: #ffffff;
   border: 1px solid rgba(11, 31, 58, 0.12);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(11, 31, 58, 0.06);
+  box-sizing: border-box;
 }
 
 .k-platform-detail__header {
@@ -798,9 +806,9 @@
 @media (max-width: 768px) {
   .k-platform-detail {
       display: grid;
-      grid-template-columns: 50px minmax(0, 1fr);
-      gap: 1rem;
-      padding: 1.25rem;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 0.85rem 1rem;
+      padding: 1.15rem;
   }
 
   .k-platform-detail__num {
@@ -809,41 +817,190 @@
   }
 
   .k-platform-detail__title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
   }
 
   .k-platform-detail__short,
   .k-platform-detail__content {
       grid-column: 1 / -1;
   }
+
+  .k-slide08-details .k-platform-detail__info {
+      grid-column: 2;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0;
+  }
+
+  .k-slide08-details .k-platform-detail__title {
+      white-space: normal;
+  }
+
+  .k-slide08-head__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+  }
 }
 
 .k-slide08-details .k-platform-detail__info {
   grid-column: 2 / -1;
   display: flex;
-  margin-top: 0.75rem;
-  align-items: center;
-  gap: 1rem;
+  margin-top: 0;
+  align-items: flex-start;
+  gap: 0.75rem 1rem;
   width: 100%;
   min-width: 0;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .k-slide08-details .k-platform-detail__title {
   margin: 0;
-  flex: 0 0 auto;
-  white-space: nowrap;
+  flex: 0 1 auto;
+  white-space: normal;
 }
 
 .k-slide08-details .k-platform-detail__short {
   margin: 0;
-  flex: 1 1 auto;
+  flex: 1 1 12rem;
   min-width: 0;
   white-space: normal;
-  margin-top: 0.40rem;
   word-break: normal;
-  overflow-wrap: normal;
-  line-height: 1.5;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+
+/*
+ * Accountability Promise cards only have a number + title + short line.
+ * The shared platform-detail CSS grid creates empty rows/space for these.
+ * Use a content-sized flex layout instead.
+ */
+.k-slide08-details .k-platform-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.85rem;
+  height: auto;
+  min-height: 0;
+  padding: 1rem 1.15rem;
+  grid-template-columns: none;
+}
+
+.k-slide08-details .k-platform-detail__header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.k-slide08-details .k-platform-detail__num {
+  flex: 0 0 auto;
+}
+
+.k-slide08-details .k-platform-detail__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  margin: 0;
+  grid-column: auto;
+}
+
+.k-slide08-details .k-platform-detail__title,
+.k-slide08-details .k-platform-detail__short {
+  grid-column: auto;
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+/* Accountability Promise — compact mobile layout */
+@media (max-width: 768px) {
+  #get-involved.k-section {
+    padding-top: 2.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  #get-involved .k-section__head {
+    margin-bottom: 0.75rem;
+  }
+
+  #get-involved .k-section__lead,
+  #get-involved .k-stat-line {
+    margin-top: 0.35rem;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  #get-involved .k-platform-details.k-slide08-details {
+    gap: 0.55rem;
+    margin-top: 0.75rem;
+  }
+
+  #get-involved .k-slide08-details .k-platform-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.7rem;
+    height: auto;
+    min-height: 0;
+    padding: 0.75rem 0.85rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(11, 31, 58, 0.05);
+  }
+
+  #get-involved .k-slide08-details .k-platform-detail__header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.7rem;
+    width: 100%;
+  }
+
+  #get-involved .k-slide08-details .k-platform-detail__num {
+    width: 36px;
+    height: 36px;
+    font-size: 0.75rem;
+    flex: 0 0 36px;
+  }
+
+  #get-involved .k-slide08-details .k-platform-detail__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    grid-column: auto;
+  }
+
+  #get-involved .k-slide08-details .k-platform-detail__title {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  #get-involved .k-slide08-details .k-platform-detail__short {
+    font-size: 0.9rem;
+    line-height: 1.35;
+    margin: 0;
+    padding: 0;
+    grid-column: auto;
+  }
+
+  /* Reduce gap before the next section */
+  #about.k-section {
+    padding-top: 1.75rem;
+  }
 }
 
 /* =========================================================
@@ -852,17 +1009,20 @@
 
    .k-campaign-closing {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
+    max-width: 100%;
+    margin: 0;
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0 0;
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: 2rem;
+    gap: 1.25rem;
     align-items: stretch;
+    box-sizing: border-box;
 }
 
+.k-about-eyebrow,
 p.eyebrow {
-    font-size: 30px;
+    font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+    line-height: 1.35;
 }
 /* =========================================================
    Common Block
@@ -916,7 +1076,7 @@ p.eyebrow {
     max-width: 1000px;
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    font-size: clamp(1.35rem, 2.6vw, 2.35rem);
     font-weight: 400;
     line-height: 1.4;
     color: #ffffff;
@@ -1001,13 +1161,12 @@ p.eyebrow {
     margin: 0 0 1.5rem;
     color: #0b1f3a;
 }
-.site-header{
-      height: 94px;
-}
+
 .k-campaign-closing__cta {
     display: inline-flex;
     align-items: center;
     width: fit-content;
+    max-width: 100%;
     margin-bottom: 1.25rem;
     padding: 0.85rem 1.25rem;
     border-radius: 999px;
@@ -1084,19 +1243,14 @@ p.eyebrow {
 
    .k-actions {
     width: 100%;
-    max-width: 1180px;
-
-    margin: 0 auto;
-    padding: 80px 24px;
-
+    max-width: 100%;
+    margin: clamp(1.5rem, 3vw, 2.5rem) auto 0;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-
-    gap: 24px;
-
+    gap: 1.25rem;
     box-sizing: border-box;
-
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-body, "Source Sans 3", system-ui, sans-serif);
 }
 
 
@@ -1183,37 +1337,23 @@ p.eyebrow {
 
 .k-actions-btn {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     min-height: 46px;
-
-    padding: 0 25px;
-
+    padding: 0 1.5rem;
     border: none;
-
     border-radius: 50px;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 12px;
+    font-family: var(--font-body, "Source Sans 3", system-ui, sans-serif);
+    font-size: 0.8rem;
     font-weight: 800;
-
     letter-spacing: 0.08em;
-
     line-height: 1;
-
     text-decoration: none;
-
     text-transform: uppercase;
-
-    white-space: nowrap;
-
+    white-space: normal;
+    text-align: center;
     cursor: pointer;
-
     box-sizing: border-box;
-
     transition:
         transform 0.2s ease,
         opacity 0.2s ease;
@@ -1276,12 +1416,11 @@ p.eyebrow {
     border: 1px solid #e0e6eb;
 }
 
-.k-actions-team .k-actions-card__inner {
-    padding: 48px;
-
+.k-actions-team .k-actions-card__inner,
+.k-actions-updates .k-actions-card__inner {
+    padding: clamp(1.75rem, 3vw, 2.75rem);
     display: flex;
     flex-direction: column;
-
     justify-content: center;
 }
 
@@ -1306,18 +1445,12 @@ p.eyebrow {
    ========================================================= */
 
 .k-actions-card__title {
-    margin: 0 0 18px;
-
+    margin: 0 0 1rem;
     color: #0b1f3a;
-
     font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 40px;
-
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
     font-weight: 400;
-
     line-height: 1.15;
-
     letter-spacing: -0.02em;
 }
 
@@ -1351,17 +1484,8 @@ p.eyebrow {
     background: #d6ae5e;
 }
 
-.k-actions-updates .k-actions-card__inner {
-    padding: 48px;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-}
-
 .k-actions-updates .k-actions-card__title {
-    margin-bottom: 28px;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -1491,30 +1615,7 @@ p.eyebrow {
 .k-actions-updates .k-actions-btn {
     align-self: flex-start;
 }
-section.k-section.is-visible {
-    padding-bottom: 20px;
-}
-.site-brand__logo-img--portrait {
-    width: 78px !important;
-    height: 78px !important;
-        max-width: inherit;
-    max-height: inherit;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 2px;
-    border: 2px solid rgba(214, 174, 94, 0.65);
-    box-shadow: 0 2px 8px rgba(9, 32, 63, 0.2);
-}
-.k-campaign-closing__quote-text {
-    font-size: 30px;
-}
 
-section#campaign-closing {
-    padding-top: 20px !important;
-}
-section#intro,section#priorities,section#campaign-actions{
-	padding-top:0 !important;
-}
 /* =========================================================
    TABLET
    ========================================================= */
@@ -1522,28 +1623,20 @@ section#intro,section#priorities,section#campaign-actions{
 @media (max-width: 900px) {
 
     .k-actions {
-        max-width: 760px;
-
         grid-template-columns: 1fr;
-
-        padding: 65px 20px;
-
-        gap: 18px;
+        gap: 1rem;
+        margin-top: 1.5rem;
     }
 
     .k-actions-donation {
         grid-column: auto;
+        flex-wrap: wrap;
+        padding: 1.35rem 1.25rem;
     }
 
     .k-actions-card {
         min-height: auto;
     }
-
-    .k-actions-team .k-actions-card__inner,
-    .k-actions-updates .k-actions-card__inner {
-        padding: 40px;
-    }
-
 }
 
 
@@ -1555,83 +1648,65 @@ section#intro,section#priorities,section#campaign-actions{
 
     .k-actions {
         width: 100%;
-
-        padding: 50px 14px;
-
-        gap: 14px;
+        gap: 0.85rem;
+        margin-top: 1.25rem;
     }
-
-
-    /* Donation */
 
     .k-actions-donation {
         flex-direction: column;
-
-        padding: 24px 18px;
-
-        gap: 16px;
-
+        padding: 1.25rem 1rem;
+        gap: 1rem;
         border-radius: 14px;
     }
 
     .k-actions-donation__amounts {
         width: 100%;
-
         display: grid;
-
         grid-template-columns: repeat(3, 1fr);
-
-        gap: 7px;
+        gap: 0.45rem;
     }
 
     .k-actions-donation__amount {
         width: 100%;
-
         min-width: 0;
-
         height: 44px;
-
-        padding: 0 5px;
-
-        font-size: 13px;
+        padding: 0 0.35rem;
+        font-size: 0.8125rem;
     }
 
     .k-actions-donation .k-actions-btn {
         width: 100%;
     }
 
-
-    /* Cards */
-
     .k-actions-team .k-actions-card__inner,
     .k-actions-updates .k-actions-card__inner {
-        padding: 32px 24px;
+        padding: 1.5rem 1.15rem;
     }
 
     .k-actions-card__title {
-        font-size: 31px;
+        font-size: clamp(1.55rem, 7vw, 1.9rem);
     }
 
     .k-actions-card__text {
-        font-size: 15px;
-
+        font-size: 0.95rem;
         line-height: 1.65;
+        margin-bottom: 1.25rem;
     }
-
-
-    /* Form */
 
     .k-actions-form__fields {
         grid-template-columns: 1fr;
-
-        gap: 12px;
+        gap: 0.75rem;
     }
 
     .k-actions-team .k-actions-btn,
     .k-actions-updates .k-actions-btn {
         width: 100%;
+        align-self: stretch;
     }
 
+    .k-actions-consent {
+        font-size: 0.75rem;
+    }
 }
 
 
@@ -1641,23 +1716,14 @@ section#intro,section#priorities,section#campaign-actions{
 
 @media (max-width: 400px) {
 
-    .k-actions {
-        padding-inline: 10px;
-    }
-
     .k-actions-donation__amounts {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .k-actions-team .k-actions-card__inner,
     .k-actions-updates .k-actions-card__inner {
-        padding: 28px 20px;
+        padding: 1.25rem 1rem;
     }
-
-    .k-actions-card__title {
-        font-size: 28px;
-    }
-
 }
 
 
