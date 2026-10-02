@@ -2,10 +2,12 @@
  * Dynamic homepage sections (deck content, website UI).
  */
 
-.k-section {
-  padding: clamp(3rem, 5.5vw, 4.75rem) clamp(1rem, 4vw, 1.75rem);
+ .k-section {
+  padding: clamp(2rem, 4vw, 3.75rem)
+           clamp(1rem, 3vw, 1.75rem)
+           0.50rem
+           clamp(1rem, 3vw, 1.75rem);
 }
-
 .k-section--light {
   background: var(--color-white);
 }
@@ -45,7 +47,7 @@
 }
 
 .k-section__head {
-  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: clamp(1.25rem, 2vw, 2rem);
   max-width: 52rem;
 }
 
