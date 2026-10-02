@@ -28,10 +28,10 @@
 }
 
 .site-brand__logo-img--portrait {
-  width: 48px;
-  height: 48px;
-  max-width: 48px;
-  max-height: 48px;
+  width: 76px;
+  height: 76px;
+  max-width: 76px;
+  max-height: 76px;
   object-fit: cover;
   object-position: center top;
   border-radius: 2px;
@@ -39,7 +39,16 @@
   box-shadow: 0 2px 8px rgba(9, 32, 63, 0.2);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
+  .site-brand__logo-img--portrait {
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
   .site-brand__logo-img--portrait {
     width: 42px;
     height: 42px;
@@ -51,7 +60,7 @@
 /* —— Campaign hero —— */
 .hero.hero--campaign {
   position: relative;
-  min-height: 100svh;
+  min-height: min(92svh, 860px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,13 +73,20 @@
 .hero--campaign .hero__media {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .hero--campaign .hero__video {
   width: 100%;
   height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
-  transform: scale(1.02);
+  object-position: center center;
+  transform: none;
+  display: block;
+  pointer-events: none;
 }
 
 .hero--campaign .hero__overlay {
@@ -268,25 +284,6 @@
   background: linear-gradient(180deg, #f8fafc 0%, var(--color-white) 100%);
 }
 
-@media (max-width: 960px) {
-  .hero__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__brand {
-    order: -1;
-    justify-content: flex-start;
-  }
-
-  .hero__brand-mark {
-    width: min(200px, 55vw);
-  }
-
-  .hero__scroll-hint {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero--campaign .hero__video {
     display: none;
@@ -305,27 +302,146 @@
   }
 }
 
-
-/* new css */
+/* Hero layout (base) — keep after earlier legacy rules */
 .hero__container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: var(--container-width, 1280px);
+  max-width: var(--container-width, 1200px);
   margin: 0 auto;
-  padding: calc(var(--header-h) + 1rem) clamp(1.25rem, 4vw, 2.5rem) 4rem;
+  padding: calc(var(--header-h) + 1.75rem) clamp(1.25rem, 4vw, 2rem) clamp(3.25rem, 6vw, 4.5rem);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: clamp(2rem, 5vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
+  width: 100%;
 }
 
 .hero__brand {
   align-self: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.hero__brand-mark {
+  width: min(100%, 260px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.site-header .site-header__cta {
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* Responsive overrides MUST come after base hero layout rules */
+@media (max-width: 960px) {
+  .hero.hero--campaign {
+    min-height: min(78svh, 720px);
+    justify-content: flex-start;
+  }
+
+  .hero--campaign .hero__video {
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .hero__brand {
+    order: -1;
+    justify-content: flex-start;
+    align-self: start;
+  }
+
+  .hero__brand-card {
+    padding: 0.65rem;
+  }
+
+  .hero__brand-mark {
+    width: min(150px, 40vw);
+  }
+
+  .hero__scroll-hint {
+    display: none;
+  }
+
+  .hero__container {
+    padding: calc(var(--header-h) + 1.1rem) clamp(1rem, 4vw, 1.5rem) 2.25rem;
+    justify-content: flex-start;
+  }
+
+  .hero__content {
+    max-width: none;
+    width: 100%;
+  }
+
+  .hero__headline--stack .hero__name-line {
+    font-size: clamp(2.1rem, 9vw, 3.5rem);
+  }
+
+  .hero__deck-lines,
+  .hero__summary {
+    max-width: none;
+  }
+
+  .hero__actions {
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 auto;
+    min-width: min(100%, 10rem);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero.hero--campaign {
+    min-height: min(70svh, 640px);
+  }
+
+  .hero--campaign .hero__video {
+    object-position: center 28%;
+  }
+
+  .hero__elect {
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
+    font-size: clamp(1.35rem, 7vw, 1.75rem);
+  }
+
+  .hero__headline--stack .hero__name-line {
+    font-size: clamp(1.9rem, 10.5vw, 2.75rem);
+  }
+
+  .hero__summary {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__brand-mark {
+    width: min(130px, 46vw);
+  }
 }

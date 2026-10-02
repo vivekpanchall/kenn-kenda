@@ -8,7 +8,7 @@
   --color-muted: var(--color-blue-soft);
   --font-heading: var(--font-display);
   --font-body: var(--font-body);
-  --container-width: 1280px;
+  --container-width: 1200px;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1.25rem;
@@ -40,8 +40,11 @@
   display: none;
   background: none;
   border: 0;
-  padding: 0.5rem;
+  padding: 0.65rem;
+  min-width: 44px;
+  min-height: 44px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .site-nav-toggle span {
