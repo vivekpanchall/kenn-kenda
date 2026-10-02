@@ -794,26 +794,23 @@ $experience_query = new WP_Query(
 							<form
 								class="k-actions-form"
 								method="post"
-								<?php if ( $form_action ) : ?>
-									action="<?php echo esc_url( $form_action ); ?>"
-								<?php endif; ?>
+								action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
 							>
+								<input type="hidden" name="action" value="kenda_text_signup">
+
+								<?php wp_nonce_field( 'kenda_text_signup', 'kenda_text_signup_nonce' ); ?>
 
 								<div class="k-actions-form__fields">
-
-									<!-- NAME -->
 
 									<div class="k-actions-form__field">
 
 										<label for="k-actions-name">
-
 											<?php echo esc_html(
 												kenda_home(
 													'text_updates_name_label',
 													'Name'
 												)
 											); ?>
-
 										</label>
 
 										<input
@@ -826,20 +823,15 @@ $experience_query = new WP_Query(
 
 									</div>
 
-
-									<!-- MOBILE -->
-
 									<div class="k-actions-form__field">
 
 										<label for="k-actions-mobile">
-
 											<?php echo esc_html(
 												kenda_home(
 													'text_updates_mobile_label',
 													'Mobile'
 												)
 											); ?>
-
 										</label>
 
 										<input
@@ -852,20 +844,15 @@ $experience_query = new WP_Query(
 
 									</div>
 
-
-									<!-- ZIP -->
-
 									<div class="k-actions-form__field">
 
 										<label for="k-actions-zip">
-
 											<?php echo esc_html(
 												kenda_home(
 													'text_updates_zip_label',
 													'Zip Code'
 												)
 											); ?>
-
 										</label>
 
 										<input
@@ -881,9 +868,6 @@ $experience_query = new WP_Query(
 
 								</div>
 
-
-								<!-- CONSENT -->
-
 								<label class="k-actions-consent">
 
 									<input
@@ -894,20 +878,15 @@ $experience_query = new WP_Query(
 									>
 
 									<span>
-
 										<?php echo esc_html(
 											kenda_home(
 												'text_updates_disclaimer',
 												''
 											)
 										); ?>
-
 									</span>
 
 								</label>
-
-
-								<!-- SUBMIT -->
 
 								<?php
 								$updates_button_text = kenda_home(
@@ -922,9 +901,7 @@ $experience_query = new WP_Query(
 										type="submit"
 										class="k-actions-btn k-actions-btn--navy"
 									>
-										<?php echo esc_html(
-											$updates_button_text
-										); ?>
+										<?php echo esc_html( $updates_button_text ); ?>
 									</button>
 
 								<?php endif; ?>

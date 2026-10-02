@@ -21,6 +21,7 @@ require_once KENDA_THEME_DIR . '/inc/helpers.php';
 require_once KENDA_THEME_DIR . '/inc/custom-post-types.php';
 require_once KENDA_THEME_DIR . '/inc/custom-fields.php';
 require_once KENDA_THEME_DIR . '/inc/contact-handler.php';
+require_once KENDA_THEME_DIR . '/inc/text-signups.php';
 require_once KENDA_THEME_DIR . '/inc/smtp.php';
 require_once KENDA_THEME_DIR . '/inc/seed.php';
 require_once KENDA_THEME_DIR . '/inc/nav-fallback.php';
