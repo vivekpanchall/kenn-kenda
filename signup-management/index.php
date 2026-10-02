@@ -82,23 +82,23 @@ require __DIR__ . '/includes/header.php';
                 >
             </div>
 
-            <div class="field">
+            <!-- <div class="field">
                 <label for="status">Status</label>
                 <select id="status" name="status">
                     <option value="all" <?php echo $params['status'] === 'all' ? 'selected' : ''; ?>>All</option>
                     <option value="active" <?php echo $params['status'] === 'active' ? 'selected' : ''; ?>>Active</option>
                     <option value="deleted" <?php echo $params['status'] === 'deleted' ? 'selected' : ''; ?>>Deleted</option>
                 </select>
-            </div>
+            </div> -->
 
-            <div class="field">
+            <!-- <div class="field">
                 <label for="consent">SMS Consent</label>
                 <select id="consent" name="consent">
                     <option value="all" <?php echo $params['consent'] === 'all' ? 'selected' : ''; ?>>All</option>
                     <option value="given" <?php echo $params['consent'] === 'given' ? 'selected' : ''; ?>>Given</option>
                     <option value="not_given" <?php echo $params['consent'] === 'not_given' ? 'selected' : ''; ?>>Not Given</option>
                 </select>
-            </div>
+            </div> -->
 
             <div class="btn-row">
                 <button type="submit" class="btn btn--primary">Search</button>
@@ -135,7 +135,7 @@ require __DIR__ . '/includes/header.php';
                         'consented_at' => 'Consented At',
                         'created_at'   => 'Created At',
                         'updated_at'   => 'Updated At',
-                        'status'       => 'Status',
+                        // 'status'       => 'Status',
                     ];
                     foreach ($cols as $key => $label) :
                         ?>
@@ -167,13 +167,13 @@ require __DIR__ . '/includes/header.php';
                         <td><?php echo signup_format_datetime($row['consented_at'] ?? null); ?></td>
                         <td><?php echo signup_format_datetime($row['created_at'] ?? null); ?></td>
                         <td><?php echo signup_format_datetime($row['updated_at'] ?? null); ?></td>
-                        <td>
+                        <!-- <td>
                             <?php if ($deleted) : ?>
                                 <span class="badge badge--deleted">Deleted</span>
                             <?php else : ?>
                                 <span class="badge badge--active">Active</span>
                             <?php endif; ?>
-                        </td>
+                        </td> -->
                         <td>
                             <div class="actions">
                                 <a class="btn btn--sm btn--secondary" href="<?php echo e(signup_url('view.php', ['id' => $row['id']])); ?>">View</a>

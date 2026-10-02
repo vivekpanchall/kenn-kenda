@@ -6,7 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-
 /**
  * Create text signup table.
  */
@@ -19,16 +18,33 @@ function kenda_create_text_signups_table(): void {
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE {$table_name} (
+
         id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+
         name VARCHAR(255) NOT NULL,
+
         mobile VARCHAR(50) NOT NULL,
+
         zip_code VARCHAR(20) NOT NULL,
+
         sms_consent TINYINT(1) NOT NULL DEFAULT 0,
+
         consented_at DATETIME NULL,
+
         created_at DATETIME NOT NULL,
+
+        updated_at DATETIME NULL,
+
+        deleted_at DATETIME NULL,
+
         PRIMARY KEY (id),
+
         KEY mobile (mobile),
-        KEY created_at (created_at)
+
+        KEY created_at (created_at),
+
+        KEY deleted_at (deleted_at)
+
     ) {$charset_collate};";
 
     require_once ABSPATH . 'wp-admin/includes/upgrade.php';
@@ -75,7 +91,7 @@ function kenda_handle_text_signup(): void {
         ? 1
         : 0;
 
-    /*
+    /**
      * Validate required fields.
      */
     if (
@@ -100,9 +116,11 @@ function kenda_handle_text_signup(): void {
 
     $table_name = $wpdb->prefix . 'kenda_text_signups';
 
-    /*
+    /**
      * Store signup.
      */
+    $current_time = current_time( 'mysql' );
+
     $inserted = $wpdb->insert(
         $table_name,
         array(
@@ -110,8 +128,10 @@ function kenda_handle_text_signup(): void {
             'mobile'       => $mobile,
             'zip_code'     => $zip_code,
             'sms_consent'  => $sms_consent,
-            'consented_at' => current_time( 'mysql' ),
-            'created_at'   => current_time( 'mysql' ),
+            'consented_at' => $current_time,
+            'created_at'   => $current_time,
+            'updated_at'   => $current_time,
+            'deleted_at'   => null,
         ),
         array(
             '%s',
@@ -120,11 +140,12 @@ function kenda_handle_text_signup(): void {
             '%d',
             '%s',
             '%s',
+            '%s',
+            null,
         )
     );
 
     if ( false === $inserted ) {
-
         wp_die(
             esc_html__(
                 'Unable to save your signup. Please try again.',
@@ -137,7 +158,7 @@ function kenda_handle_text_signup(): void {
         );
     }
 
-    /*
+    /**
      * Redirect back to homepage with success status.
      */
     $redirect_url = wp_get_referer();
