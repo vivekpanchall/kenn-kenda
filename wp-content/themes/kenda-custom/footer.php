@@ -10,62 +10,63 @@ declare(strict_types=1);
 $phone = kenda_site( 'contact_phone' );
 $email = kenda_site( 'contact_email' );
 $tel   = preg_replace( '/\D+/', '', (string) $phone );
-$newsletter_placeholder = __( 'you@example.com', 'kenda-custom' );
+
+$footer_title = __( 'Kenda Tomes McClain for Mayor of Kansas City', 'kenda-custom' );
+
+$disclaimer = kenda_site(
+	'footer_disclaimer',
+	__( 'Paid for by [Committee Name], [Treasurer Name], Treasurer.', 'kenda-custom' )
+);
+
+$social_links = array();
+$social_map   = array(
+	'facebook_url'  => __( 'Facebook', 'kenda-custom' ),
+	'instagram_url' => __( 'Instagram', 'kenda-custom' ),
+	'twitter_url'   => __( 'LinkedIn', 'kenda-custom' ),
+);
+foreach ( $social_map as $key => $label ) {
+	$url = kenda_site( $key );
+	if ( $url ) {
+		$social_links[] = array(
+			'url'   => $url,
+			'label' => $label,
+		);
+	}
+}
 ?>
 </main>
 <footer class="site-footer">
 	<div class="site-footer__inner">
-		<div class="site-footer__grid">
-			<div class="site-footer__brand">
-				<p class="display-sm"><?php echo esc_html( kenda_site( 'site_name', get_bloginfo( 'name' ) ) ); ?></p>
-				<!-- <p><?php esc_html_e( 'Leadership for ALL of Kansas City.', 'kenda-custom' ); ?></p> -->
-				<ul class="contact-list">
-					<?php if ( $phone ) : ?>
-						<li><a href="tel:<?php echo esc_attr( $tel ); ?>"><?php echo esc_html( $phone ); ?></a></li>
+		<p class="site-footer__title"><?php echo esc_html( (string) $footer_title ); ?></p>
+
+		<?php if ( $phone || $email ) : ?>
+			<p class="site-footer__contact">
+				<?php if ( $phone ) : ?>
+					<a href="tel:<?php echo esc_attr( (string) $tel ); ?>"><?php echo esc_html( (string) $phone ); ?></a>
+				<?php endif; ?>
+				<?php if ( $phone && $email ) : ?>
+					<span class="site-footer__sep" aria-hidden="true">|</span>
+				<?php endif; ?>
+				<?php if ( $email ) : ?>
+					<a href="mailto:<?php echo esc_attr( (string) $email ); ?>"><?php echo esc_html( (string) $email ); ?></a>
+				<?php endif; ?>
+			</p>
+		<?php endif; ?>
+
+		<?php if ( $social_links ) : ?>
+			<p class="site-footer__social">
+				<?php foreach ( $social_links as $index => $item ) : ?>
+					<?php if ( $index > 0 ) : ?>
+						<span class="site-footer__sep" aria-hidden="true">|</span>
 					<?php endif; ?>
-					<?php if ( $email ) : ?>
-						<li><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
-					<?php endif; ?>
-				</ul>
-			</div>
-		
-			<!-- <div class="site-footer__newsletter" id="newsletter">
-				<p class="eyebrow eyebrow--gold"><?php echo esc_html( kenda_site( 'newsletter_heading', __( 'Join the Campaign!', 'kenda-custom' ) ) ); ?></p>
-				<p><?php echo esc_html( kenda_site( 'newsletter_description', __( 'Stay informed — join the campaign community.', 'kenda-custom' ) ) ); ?></p>
-				<form class="newsletter-form" id="newsletter-form" novalidate>
-					<div class="newsletter-form__field">
-						<label class="form-label form-label--light" for="newsletter-email"><?php esc_html_e( 'Email address', 'kenda-custom' ); ?></label>
-						<div class="newsletter-form__row">
-							<input class="form-control form-control--footer" type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="<?php echo esc_attr( $newsletter_placeholder ); ?>" />
-							<button type="submit" class="btn btn--gold btn--sm"><?php esc_html_e( 'Join', 'kenda-custom' ); ?></button>
-						</div>
-					</div>
-					<input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-					<p class="form-status form-status--light" role="status" aria-live="polite" hidden data-newsletter-status></p>
-				</form>
-			</div> -->
-		</div>
-		<div class="site-footer__social">
-			<?php
-			$social = array(
-				'facebook_url'  => __( 'Facebook', 'kenda-custom' ),
-				'instagram_url' => __( 'Instagram', 'kenda-custom' ),
-				'twitter_url'   => __( 'LinkedIn', 'kenda-custom' ),
-			);
-			foreach ( $social as $key => $label ) {
-				$url = kenda_site( $key );
-				if ( $url ) {
-					printf( '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>', esc_url( $url ), esc_html( $label ) );
-				}
-			}
-			?>
-		</div>
-		<!-- <div class="site-footer__legal">
-			<p><?php echo esc_html( kenda_site( 'copyright_text', '© ' . gmdate( 'Y' ) . ' Kenda Tomes McClain 4 KC' ) ); ?></p>
-			<?php if ( kenda_site( 'footer_disclaimer' ) ) : ?>
-				<p class="site-footer__disclaimer"><?php echo esc_html( kenda_site( 'footer_disclaimer' ) ); ?></p>
-			<?php endif; ?>
-		</div> -->
+					<a href="<?php echo esc_url( $item['url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $item['label'] ); ?></a>
+				<?php endforeach; ?>
+			</p>
+		<?php endif; ?>
+
+		<?php if ( $disclaimer ) : ?>
+			<p class="site-footer__disclaimer"><?php echo esc_html( (string) $disclaimer ); ?></p>
+		<?php endif; ?>
 	</div>
 </footer>
 <?php wp_footer(); ?>

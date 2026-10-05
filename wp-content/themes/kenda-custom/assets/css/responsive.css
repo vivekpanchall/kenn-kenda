@@ -166,19 +166,12 @@
 }
 
 .site-footer__inner {
-  max-width: var(--container-width);
+  max-width: var(--container-width, 1200px);
   margin: 0 auto;
 }
 
-.site-footer__social {
-  max-width: var(--container-width);
-  margin: 0 auto 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
 .site-footer__social a {
-  color: var(--color-gold);
+  color: inherit;
 }
 
 /* Buttons: section link colors must not override .btn text */
