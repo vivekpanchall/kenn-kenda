@@ -19,7 +19,7 @@
   --border-color: rgba(35, 70, 122, 0.2);
   --font-display: "Bebas Neue", sans-serif;
   --font-body: "Source Sans 3", system-ui, sans-serif;
-  --header-h: 5.5rem;
+  --header-h: 9rem;
   --container-width: 1200px;
   --section-spacing: clamp(3.5rem, 6vw, 5.5rem);
   --radius-sm: 2px;
@@ -199,9 +199,9 @@ a {
   inset: 0 0 auto;
   z-index: 100;
   height: var(--header-h);
-  background: rgba(9, 32, 63, 0.72);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(214, 174, 94, 0.25);
+  background: #ffffff;
+  backdrop-filter: none;
+  border-bottom: 1px solid rgba(9, 32, 63, 0.08);
 }
 
 .site-header__inner {
@@ -251,7 +251,7 @@ a {
 }
 
 .site-nav__list a {
-  color: var(--color-ice);
+  color: var(--color-navy-deep);
   text-decoration: none;
   font-size: clamp(0.9rem, 1.05vw, 1rem);
   font-weight: 700;
@@ -275,7 +275,7 @@ a {
   display: block;
   width: 1.5rem;
   height: 2px;
-  background: var(--color-white);
+  background: var(--color-navy-deep);
   margin: 0.35rem 0;
 }
 
@@ -865,13 +865,13 @@ a {
     max-height: calc(100svh - var(--header-h));
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    background: rgba(9, 32, 63, 0.98);
+    background: #ffffff;
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
     padding: 1rem 1.25rem 1.5rem;
-    border-bottom: 1px solid rgba(214, 174, 94, 0.25);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+    border-bottom: 1px solid rgba(9, 32, 63, 0.1);
+    box-shadow: 0 16px 40px rgba(9, 32, 63, 0.12);
     transform: translateY(-120%);
     visibility: hidden;
     pointer-events: none;
@@ -917,13 +917,13 @@ a {
 
 @media (max-width: 960px) {
   :root {
-    --header-h: 4.5rem;
+    --header-h: 6.75rem;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --header-h: 4.25rem;
+    --header-h: 6rem;
   }
 
   body {

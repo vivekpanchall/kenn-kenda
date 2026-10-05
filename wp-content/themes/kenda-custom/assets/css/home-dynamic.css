@@ -9,11 +9,11 @@
            clamp(1rem, 3vw, 1.75rem);
 }
 .k-section--light {
-  background: var(--color-white);
+  background: #ffffff;
 }
 
 .k-section--muted {
-  background: #f4f7fb;
+  background: #ffffff;
 }
 
 .k-section--dark {

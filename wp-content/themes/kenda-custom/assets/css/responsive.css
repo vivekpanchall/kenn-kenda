@@ -17,12 +17,12 @@
 }
 
 .site-header:not(.is-scrolled) {
-  background: rgba(9, 32, 63, 0.35);
-  border-bottom-color: transparent;
+  background: #ffffff;
+  border-bottom-color: rgba(9, 32, 63, 0.08);
 }
 
 .site-header.is-scrolled {
-  background: rgba(9, 32, 63, 0.92);
+  background: #ffffff;
 }
 
 .site-brand .custom-logo-link img,
@@ -51,7 +51,7 @@
   display: block;
   width: 1.5rem;
   height: 2px;
-  background: var(--color-white);
+  background: var(--color-navy-deep);
   margin: 0.35rem 0;
 }
 
