@@ -35,7 +35,9 @@ $logo_id     = kenda_custom_logo_id();
 $logo_fb     = KENDA_THEME_URI . '/assets/images/campaign-logo-shield.png';
 
 $website_href = $website;
-if ( $website_href && ! str_contains( $website_href, '://' ) ) {
+if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
+	$website_href = 'tel:' . preg_replace( '/[^\d+]/', '', $website_href );
+} elseif ( $website_href && ! str_contains( $website_href, '://' ) ) {
 	$website_href = 'https://' . ltrim( $website_href, '/' );
 }
 ?>
@@ -63,36 +65,53 @@ if ( $website_href && ! str_contains( $website_href, '://' ) ) {
 					</h1>
 				<?php endif; ?>
 
-				<div class="hero__deck-lines">
+				<div class="hero__copy">
 					<?php if ( '' !== trim( $subtitle ) ) : ?>
-						<p class="hero__deck-line hero__deck-line--blue"><?php echo esc_html( $subtitle ); ?></p>
+						<?php
+						$subtitle_html = esc_html( $subtitle );
+						$subtitle_html = preg_replace(
+							'/(\s)(Every tax dollar accounted for\.)/i',
+							'$1<br>$2',
+							$subtitle_html,
+							1
+						);
+						?>
+						<p class="hero__lead"><?php echo $subtitle_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?></p>
 					<?php endif; ?>
-					<?php if ( '' !== trim( $eyebrow ) ) : ?>
-						<p class="hero__deck-line hero__deck-line--gold"><?php echo esc_html( $eyebrow ); ?></p>
+
+					<?php if ( '' !== trim( $eyebrow ) || '' !== trim( $credit ) || '' !== trim( $services ) ) : ?>
+						<div class="hero__meta">
+							<?php if ( '' !== trim( $eyebrow ) ) : ?>
+								<p class="hero__meta-line hero__meta-line--accent"><?php echo esc_html( $eyebrow ); ?></p>
+							<?php endif; ?>
+							<?php if ( '' !== trim( $credit ) ) : ?>
+								<p class="hero__meta-line hero__meta-line--strong"><?php echo esc_html( $credit ); ?></p>
+							<?php endif; ?>
+							<?php if ( '' !== trim( $services ) ) : ?>
+								<p class="hero__meta-line hero__meta-line--accent"><?php echo esc_html( $services ); ?></p>
+							<?php endif; ?>
+						</div>
 					<?php endif; ?>
-					<?php if ( '' !== trim( $credit ) ) : ?>
-						<p class="hero__deck-line hero__deck-line--blue hero__deck-line--bold"><?php echo esc_html( $credit ); ?></p>
-					<?php endif; ?>
-					<?php if ( '' !== trim( $services ) ) : ?>
-						<p class="hero__deck-line hero__deck-line--gold"><?php echo esc_html( $services ); ?></p>
-					<?php endif; ?>
+
 					<?php if ( '' !== trim( $website ) ) : ?>
-						<p class="hero__deck-line hero__deck-line--blue hero__deck-line--bold">
-							<a class="hero__deck-link" href="<?php echo esc_url( $website_href ); ?>"><?php echo esc_html( $website ); ?></a>
+						<p class="hero__website">
+							<a class="hero__website-link" href="<?php echo esc_url( $website_href ); ?>"><?php echo esc_html( $website ); ?></a>
 						</p>
 					<?php endif; ?>
-				</div>
 
-				<?php if ( '' !== trim( $desc ) ) : ?>
-					<p class="hero__summary"><?php echo esc_html( $desc ); ?></p>
-				<?php endif; ?>
-
-				<div class="hero__actions">
-					<?php if ( $p_text && $p_url ) : ?>
-						<a class="btn btn--gold btn--lg js-scroll-link" href="<?php echo esc_url( $p_url ); ?>"><?php echo esc_html( $p_text ); ?></a>
+					<?php if ( '' !== trim( $desc ) ) : ?>
+						<p class="hero__summary"><?php echo esc_html( $desc ); ?></p>
 					<?php endif; ?>
-					<?php if ( $s_text && $s_url ) : ?>
-						<a class="btn btn--outline js-scroll-link" href="<?php echo esc_url( $s_url ); ?>"><?php echo esc_html( $s_text ); ?></a>
+
+					<?php if ( ( $p_text && $p_url ) || ( $s_text && $s_url ) ) : ?>
+						<div class="hero__actions">
+							<?php if ( $p_text && $p_url ) : ?>
+								<a class="btn btn--gold btn--lg js-scroll-link" href="<?php echo esc_url( $p_url ); ?>"><?php echo esc_html( $p_text ); ?></a>
+							<?php endif; ?>
+							<?php if ( $s_text && $s_url ) : ?>
+								<a class="btn btn--outline btn--lg js-scroll-link" href="<?php echo esc_url( $s_url ); ?>"><?php echo esc_html( $s_text ); ?></a>
+							<?php endif; ?>
+						</div>
 					<?php endif; ?>
 				</div>
 			</div>
