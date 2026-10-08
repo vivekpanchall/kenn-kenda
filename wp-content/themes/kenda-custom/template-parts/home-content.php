@@ -75,17 +75,15 @@ $experience_query = new WP_Query(
 
 				<p class="k-campaign-intro__tagline">
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tagline_1' ) ); ?>
-				</p>
-
-				<p class="k-campaign-intro__tagline">
+					<br>
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tagline_2' ) ); ?>
 				</p>
 
-				<h2 class="k-campaign-intro__name">
+				<h2 class="display-md">
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'intro_name' ) ); ?>
 				</h2>
 
-				<p class="k-campaign-intro__text">
+				<p class="k-section__lead">
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'intro_text' ) ); ?>
 				</p>
 

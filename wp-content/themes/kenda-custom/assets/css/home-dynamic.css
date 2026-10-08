@@ -1758,12 +1758,6 @@ p.eyebrow {
     margin-bottom: 3rem;
 }
 
-.k-campaign-intro__tagline {
-    margin: 0 0 0.5rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
 .k-campaign-intro__name {
     margin: 2rem 0 0.75rem;
 }
@@ -1777,6 +1771,7 @@ p.eyebrow {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top:2rem;
     margin-bottom: 1.5rem;
 }
 
@@ -1798,9 +1793,9 @@ p.eyebrow {
 }
 
 .k-campaign-intro__tagline {
-    margin: 0 0 0.5rem;
-    font-size: 1.35rem;
-    line-height: 1.4;
+    margin: 0 0 1 .5rem;
+    font-size: 1.50rem;
+    line-height: 1.25;
     font-weight: 700;
 }
 
