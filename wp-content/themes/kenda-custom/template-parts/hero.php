@@ -31,7 +31,8 @@ $name_parts = array(
     implode( ' ', array_slice( $words, 5, 2 ) ),
     implode( ' ', array_slice( $words, 7 ) ),
 );
-$logo_id     = kenda_custom_logo_id();
+
+$logo_id = (int) kenda_home( 'hero_poster', 0 );
 $logo_fb     = KENDA_THEME_URI . '/assets/images/campaign-logo-shield.png';
 
 $website_href = $website;
