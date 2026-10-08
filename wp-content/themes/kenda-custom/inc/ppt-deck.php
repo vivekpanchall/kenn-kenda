@@ -28,6 +28,22 @@ function kenda_ppt_default_slides(): array {
 		),
 		'slide_03' => array(
 
+			'tagline_1'  => 'Safer neighborhoods. Streets and services that work.',
+			'tagline_2'  => 'Every tax dollar accounted for.',
+			'intro_name' => 'Kenda Tomes McClain:',
+			'intro_text' => '30+ years living, working and volunteering in Kansas City, and a career spent advising and negotiating for clients in finance and development decisions with discipline and integrity.',
+
+			'donate_text' => 'DONATE',
+			'donate_url'  => '#support',
+
+			'join_text' => 'JOIN THE TEAM',
+			'join_url'  => '#get-involved',
+
+			'updates_text' => 'GET TEXT UPDATES',
+			'updates_url'  => '#contact',
+
+			'phone' => '816-829-0177',
+
 			'heading'    => __( 'Meet the JPP Consulting Team', 'kenda-custom' ),
 
 			'subheading' => __( 'Enterprise-grade marketing technology, human oversight, and disciplined messaging', 'kenda-custom' ),

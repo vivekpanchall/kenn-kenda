@@ -74,7 +74,7 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 					</h1>
 				<?php endif; ?>
 
-				<div class="hero__copy">
+				<!-- <div class="hero__copy">
 					<?php if ( '' !== trim( $subtitle ) ) : ?>
 						<?php
 						$subtitle_html = esc_html( $subtitle );
@@ -122,10 +122,10 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
-				</div>
+				</div> -->
 			</div>
 
-			<div class="hero__brand" data-animate>
+			<!-- <div class="hero__brand" data-animate>
 				<div class="hero__brand-card">
 					<?php
 					echo kenda_render_image(
@@ -140,7 +140,7 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 					);
 					?>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 

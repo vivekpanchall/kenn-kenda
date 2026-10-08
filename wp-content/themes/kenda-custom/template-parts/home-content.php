@@ -15,8 +15,9 @@ $s02_scope = kenda_ppt_lines(
     kenda_ppt( 'slide_02', 'scope_bullets', '' )
 );
 
-
-
+$logo_fb     = KENDA_THEME_URI . '/assets/images/campaign-logo-shield.png';
+$logo_id = (int) kenda_home( 'hero_poster', 0 );
+$brand_alt   = kenda_site( 'site_name', __( 'Kenda Tomes McClain', 'kenda-custom' ) );
 $s03_cards    = kenda_ppt( 'slide_03', 'cards', array() );
 $s04_steps    = kenda_ppt( 'slide_04', 'steps', array() );
 $s05_bullets  = kenda_ppt_lines( (string) kenda_ppt( 'slide_05', 'bullets', '' ) );
@@ -63,69 +64,169 @@ $experience_query = new WP_Query(
 
 <!-- Slide 3 -->
 <section class="k-section" data-animate>
-	<div class="k-section__inner">
-		<header class="k-section__head">
-			<h2 class="display-md"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'heading' ) ); ?></h2>
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'subheading' ) ); ?></p>
-			<p class="k-stat"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'stat' ) ); ?></p>
-			<p class="k-tags"><?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tags' ) ); ?></p>
-		</header>
-		<!-- <?php if ( is_array( $s03_cards ) && $s03_cards ) : ?>
 
-			<div class="k-card-grid k-card-grid--4">
+    <div class="k-section__inner">
 
-				<?php foreach ( $s03_cards as $card ) : ?>
+        <!-- Campaign Introduction -->
+		<div class="k-campaign-intro">
 
-					<?php if ( ! is_array( $card ) ) {
-						continue;
-					} ?>
+			<!-- Left: Content -->
+			<div class="k-campaign-intro__content">
 
-					<article class="k-card k-card--hover">
+				<p class="k-campaign-intro__tagline">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tagline_1' ) ); ?>
+				</p>
 
-						<?php
-						$image_id = absint( $card['image'] ?? 0 );
+				<p class="k-campaign-intro__tagline">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tagline_2' ) ); ?>
+				</p>
 
-						if ( $image_id ) :
-							?>
-							<div class="k-card__image">
-								<?php
-								echo wp_get_attachment_image(
-									$image_id,
-									'large',
-									false,
-									array(
-										'loading' => 'lazy',
-										'alt'     => (string) ( $card['title'] ?? '' ),
-									)
-								);
-								?>
-							</div>
-						<?php endif; ?>
+				<h2 class="k-campaign-intro__name">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'intro_name' ) ); ?>
+				</h2>
 
-						<div class="k-card__content">
+				<p class="k-campaign-intro__text">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'intro_text' ) ); ?>
+				</p>
 
-							<h3 class="k-card__title">
-								<?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?>
-							</h3>
+				<div class="k-campaign-intro__actions">
 
-							<?php if ( ! empty( $card['desc'] ) ) : ?>
+					<a
+						href="<?php echo esc_url( (string) kenda_ppt( 'slide_03', 'donate_url' ) ); ?>"
+						class="k-button"
+					>
+						<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'donate_text' ) ); ?>
+					</a>
 
-								<p class="k-card__text">
-									<?php echo esc_html( (string) $card['desc'] ); ?>
-								</p>
+					<a
+						href="<?php echo esc_url( (string) kenda_ppt( 'slide_03', 'join_url' ) ); ?>"
+						class="k-button"
+					>
+						<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'join_text' ) ); ?>
+					</a>
 
-							<?php endif; ?>
+					<a
+						href="<?php echo esc_url( (string) kenda_ppt( 'slide_03', 'updates_url' ) ); ?>"
+						class="k-button"
+					>
+						<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'updates_text' ) ); ?>
+					</a>
 
-						</div>
+				</div>
 
-					</article>
-
-				<?php endforeach; ?>
+				<a
+					href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', (string) kenda_ppt( 'slide_03', 'phone' ) ) ); ?>"
+					class="k-campaign-intro__phone"
+				>
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'phone' ) ); ?>
+				</a>
 
 			</div>
 
-		<?php endif; ?> -->
-	</div>
+			<!-- Right: Kenda Image -->
+			<div class="k-campaign-intro__image">
+				<div class="hero__brand-card">
+					<?php
+					echo kenda_render_image(
+						$logo_id,
+						'large',
+						array(
+							'class' => 'hero__brand-mark',
+							'alt'   => $brand_alt,
+						),
+						$logo_fb,
+						$brand_alt
+					);
+					?>
+				</div>
+			</div>
+
+		</div>
+
+        <!-- Existing Slide 3 Content -->
+        <header class="k-section__head">
+
+            <h2 class="display-md">
+                <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'heading' ) ); ?>
+            </h2>
+
+            <p class="k-section__lead">
+                <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'subheading' ) ); ?>
+            </p>
+
+            <p class="k-stat">
+                <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'stat' ) ); ?>
+            </p>
+
+            <p class="k-tags">
+                <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tags' ) ); ?>
+            </p>
+
+        </header>
+
+        <!-- Existing cards intentionally disabled -->
+        <!--
+        <?php if ( is_array( $s03_cards ) && $s03_cards ) : ?>
+
+            <div class="k-card-grid k-card-grid--4">
+
+                <?php foreach ( $s03_cards as $card ) : ?>
+
+                    <?php if ( ! is_array( $card ) ) {
+                        continue;
+                    } ?>
+
+                    <article class="k-card k-card--hover">
+
+                        <?php
+                        $image_id = absint( $card['image'] ?? 0 );
+
+                        if ( $image_id ) :
+                            ?>
+
+                            <div class="k-card__image">
+                                <?php
+                                echo wp_get_attachment_image(
+                                    $image_id,
+                                    'large',
+                                    false,
+                                    array(
+                                        'loading' => 'lazy',
+                                        'alt'     => (string) ( $card['title'] ?? '' ),
+                                    )
+                                );
+                                ?>
+                            </div>
+
+                        <?php endif; ?>
+
+                        <div class="k-card__content">
+
+                            <h3 class="k-card__title">
+                                <?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?>
+                            </h3>
+
+                            <?php if ( ! empty( $card['desc'] ) ) : ?>
+
+                                <p class="k-card__text">
+                                    <?php echo esc_html( (string) $card['desc'] ); ?>
+                                </p>
+
+                            <?php endif; ?>
+
+                        </div>
+
+                    </article>
+
+                <?php endforeach; ?>
+
+            </div>
+
+        <?php endif; ?>
+        -->
+
+    </div>
+
 </section>
 
 <!-- Slide 2 -->

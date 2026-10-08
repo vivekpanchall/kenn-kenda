@@ -275,13 +275,128 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_02', 'scope_bullets', __( 'Scope box bullets', 'kenda-custom' ), $data['slide_02'], 'textarea' );
 			?></table>
 
-			<h2><?php esc_html_e( 'Slide 3 — Team / Capabilities Grid', 'kenda-custom' ); ?></h2>
-			<table class="form-table"><?php
-				kenda_ppt_admin_row( 'slide_03', 'heading', __( 'Heading', 'kenda-custom' ), $data['slide_03'] );
-				kenda_ppt_admin_row( 'slide_03', 'subheading', __( 'Subheading', 'kenda-custom' ), $data['slide_03'] );
-				kenda_ppt_admin_row( 'slide_03', 'stat', __( 'Highlight stat', 'kenda-custom' ), $data['slide_03'] );
-				kenda_ppt_admin_row( 'slide_03', 'tags', __( 'Tag line', 'kenda-custom' ), $data['slide_03'] );
-			?></table>
+			<h2><?php esc_html_e( 'Slide 3 — Campaign Introduction / Team & Capabilities', 'kenda-custom' ); ?></h2>
+
+<h3><?php esc_html_e( 'Campaign Introduction', 'kenda-custom' ); ?></h3>
+
+<table class="form-table">
+    <?php
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'tagline_1',
+        __( 'Tagline 1', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'tagline_2',
+        __( 'Tagline 2', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'intro_name',
+        __( 'Introduction Name', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'intro_text',
+        __( 'Introduction Text', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'donate_text',
+        __( 'Donate Button Text', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'donate_url',
+        __( 'Donate Button URL', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'join_text',
+        __( 'Join Team Button Text', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'join_url',
+        __( 'Join Team Button URL', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'updates_text',
+        __( 'Text Updates Button Text', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'updates_url',
+        __( 'Text Updates Button URL', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'phone',
+        __( 'Phone Number', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    ?>
+</table>
+
+<h3><?php esc_html_e( 'Team / Capabilities', 'kenda-custom' ); ?></h3>
+
+<table class="form-table">
+    <?php
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'heading',
+        __( 'Heading', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'subheading',
+        __( 'Subheading', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'stat',
+        __( 'Highlight stat', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    kenda_ppt_admin_row(
+        'slide_03',
+        'tags',
+        __( 'Tag line', 'kenda-custom' ),
+        $data['slide_03']
+    );
+
+    ?>
+</table>
 			<h3><?php esc_html_e( 'Cards', 'kenda-custom' ); ?></h3>
 			<table class="widefat striped">
 

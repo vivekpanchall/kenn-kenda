@@ -1753,3 +1753,120 @@ p.eyebrow {
 }
 
 
+/* new add */
+.k-campaign-intro {
+    margin-bottom: 3rem;
+}
+
+.k-campaign-intro__tagline {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.k-campaign-intro__name {
+    margin: 2rem 0 0.75rem;
+}
+
+.k-campaign-intro__text {
+    max-width: 850px;
+    margin: 0 0 2rem;
+}
+
+.k-campaign-intro__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.k-campaign-intro__phone {
+    font-weight: 700;
+}
+
+/* small text and image layout in 1st slide */
+.k-campaign-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.k-campaign-intro__content {
+    max-width: 760px;
+}
+
+.k-campaign-intro__tagline {
+    margin: 0 0 0.5rem;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.k-campaign-intro__name {
+    margin: 2rem 0 0.75rem;
+}
+
+.k-campaign-intro__text {
+    max-width: 700px;
+    margin: 0 0 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.k-campaign-intro__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.k-campaign-intro__phone {
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.k-campaign-intro__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.k-campaign-intro__image .hero__brand-card {
+    width: 100%;
+    max-width: 360px;
+}
+
+.k-campaign-intro__image .hero__brand-mark {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .k-campaign-intro {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .k-campaign-intro__image {
+        order: 2;
+    }
+
+    .k-campaign-intro__content {
+        order: 1;
+    }
+
+    .k-campaign-intro__image .hero__brand-card {
+        max-width: 280px;
+    }
+
+    .k-campaign-intro__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
