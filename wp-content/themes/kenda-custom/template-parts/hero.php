@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 $video_url   = kenda_media_url( kenda_home( 'hero_video' ), KENDA_THEME_URI . '/assets/videos/hero-campaign.mp4' );
-$poster_url  = kenda_media_url( kenda_home( 'hero_poster' ), KENDA_THEME_URI . '/assets/images/kc-skyline.png' );
+
 $brand_alt   = kenda_site( 'site_name', __( 'Kenda Tomes McClain', 'kenda-custom' ) );
 $elect       = (string) kenda_home( 'hero_elect', 'ELECT' );
 $title       = (string) kenda_home( 'hero_title' );

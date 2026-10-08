@@ -68,7 +68,7 @@ function kenda_theme_seed_content(): void {
 	}
 
 	$video_id    = kenda_import_theme_asset( 'assets/videos/hero-campaign.mp4', 'Hero Campaign Video' );
-	$poster_id   = kenda_import_theme_asset( 'assets/images/kc-skyline.png', 'KC Skyline Poster' );
+	
 	$portrait_id = kenda_import_theme_asset( 'assets/images/kenda-portrait.png', 'Kenda Portrait' );
 	$vision_id   = kenda_import_theme_asset( 'assets/images/kc-community.jpg', 'Kansas City Community' );
 	$logo_id     = kenda_import_theme_asset( 'assets/images/campaign-logo-shield.png', 'Campaign Logo' );
@@ -104,7 +104,6 @@ function kenda_theme_seed_content(): void {
 			'hero_website_line'   => 'kendatomesmcclain4kc.com',
 			'hero_description'    => '',
 			'hero_video'          => $video_id,
-			'hero_poster'         => $poster_id,
 			'hero_primary_text'   => 'Get Involved',
 			'hero_primary_url'    => '#get-involved',
 			'hero_secondary_text' => 'Donate',
