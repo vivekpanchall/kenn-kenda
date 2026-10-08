@@ -62,7 +62,7 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 	<div class="hero__container">
 		<div class="hero__grid">
 			<div class="hero__content" data-animate>
-				<?php if ( '' !== trim( $elect ) ) : ?>
+				<!-- <?php if ( '' !== trim( $elect ) ) : ?>
 					<p class="hero__elect"><?php echo esc_html( $elect ); ?></p>
 				<?php endif; ?>
 
@@ -72,7 +72,7 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 							<span class="hero__name-line"><?php echo esc_html( $part ); ?></span>
 						<?php endforeach; ?>
 					</h1>
-				<?php endif; ?>
+				<?php endif; ?> -->
 
 				<!-- <div class="hero__copy">
 					<?php if ( '' !== trim( $subtitle ) ) : ?>

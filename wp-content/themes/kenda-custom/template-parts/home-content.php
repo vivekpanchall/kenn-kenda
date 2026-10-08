@@ -30,6 +30,8 @@ $s12_payments = kenda_ppt( 'slide_12', 'payments', array() );
 $s13_bullets  = kenda_ppt_lines( (string) kenda_ppt( 'slide_13', 'bullets', '' ) );
 $s07_table    = kenda_ppt( 'slide_07', 'table', array() );
 $timeline     = kenda_ppt( 'slide_11', 'phases', array() );
+$title       = (string) kenda_home( 'hero_title' );
+
 
 $pillar_preview_query = new WP_Query(
 	array(
@@ -60,6 +62,16 @@ $experience_query = new WP_Query(
 		'post_status'    => 'publish',
 	)
 );
+
+$elect       = (string) kenda_home( 'hero_elect', 'ELECT' );
+$words = preg_split( '/\s+/', trim( $title ) );
+
+$name_parts = array(
+    implode( ' ', array_slice( $words, 0, 2 ) ),
+    implode( ' ', array_slice( $words, 2, 3 ) ),
+    implode( ' ', array_slice( $words, 5, 2 ) ),
+    implode( ' ', array_slice( $words, 7 ) ),
+);
 ?>
 
 <!-- Slide 3 -->
@@ -72,6 +84,38 @@ $experience_query = new WP_Query(
 
 			<!-- Left: Content -->
 			<div class="k-campaign-intro__content">
+				<div class="hero__content" data-animate>
+					<?php if ( '' !== trim( $elect ) ) : ?>
+						<p class="hero__elect"><?php echo esc_html( $elect ); ?></p>
+					<?php endif; ?>
+
+					<?php if ( $name_parts ) : ?>
+						<h1 class="hero__headline hero__headline--stack">
+
+							<?php
+							$total_parts = count( $name_parts );
+
+							foreach ( $name_parts as $index => $part ) :
+								// Skip the last two parts; they are rendered together below.
+								if ( $index >= $total_parts - 2 ) {
+									continue;
+								}
+								?>
+								<span class="hero__name-line">
+									<?php echo esc_html( $part ); ?>
+								</span>
+							<?php endforeach; ?>
+
+							<?php if ( $total_parts >= 2 ) : ?>
+								<span class="hero__name-line hero__name-line--combined">
+									<?php echo esc_html( $name_parts[ $total_parts - 2 ] ); ?>
+									<?php echo esc_html( $name_parts[ $total_parts - 1 ] ); ?>
+								</span>
+							<?php endif; ?>
+
+						</h1>
+					<?php endif; ?>
+				</div>
 
 				<p class="k-campaign-intro__tagline">
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tagline_1' ) ); ?>
