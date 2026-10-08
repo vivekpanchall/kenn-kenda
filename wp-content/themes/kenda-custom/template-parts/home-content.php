@@ -84,13 +84,13 @@ $name_parts = array(
 
 			<!-- Left: Content -->
 			<div class="k-campaign-intro__content">
-				<div class="hero__content" data-animate>
+				<div class="k-campaign-intro__headline-wrap" data-animate>
 					<?php if ( '' !== trim( $elect ) ) : ?>
-						<p class="hero__elect"><?php echo esc_html( $elect ); ?></p>
+						<p class="k-campaign-intro__eyebrow"><?php echo esc_html( $elect ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( $name_parts ) : ?>
-						<h1 class="hero__headline hero__headline--stack">
+						<h1 class="k-campaign-intro__headline">
 
 							<?php
 							$total_parts = count( $name_parts );
@@ -101,15 +101,15 @@ $name_parts = array(
 									continue;
 								}
 								?>
-								<span class="hero__name-line">
+								<span class="k-campaign-intro__line">
 									<?php echo esc_html( $part ); ?>
 								</span>
 							<?php endforeach; ?>
 
 							<?php if ( $total_parts >= 2 ) : ?>
-								<span class="hero__name-line hero__name-line--combined">
+								<span class="k-campaign-intro__line">
 									<?php echo esc_html( $name_parts[ $total_parts - 2 ] ); ?>
-									<?php echo esc_html( $name_parts[ $total_parts - 1 ] ); ?>
+									<span class="k-campaign-intro__accent"><?php echo esc_html( $name_parts[ $total_parts - 1 ] ); ?></span>
 								</span>
 							<?php endif; ?>
 
@@ -123,11 +123,13 @@ $name_parts = array(
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tagline_2' ) ); ?>
 				</p>
 
-				<h2 class="display-md">
+				<span class="k-campaign-intro__rule" aria-hidden="true"></span>
+
+				<h2 class="k-campaign-intro__name">
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'intro_name' ) ); ?>
 				</h2>
 
-				<p class="k-section__lead">
+				<p class="k-campaign-intro__text">
 					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'intro_text' ) ); ?>
 				</p>
 
@@ -135,21 +137,21 @@ $name_parts = array(
 
 					<a
 						href="<?php echo esc_url( (string) kenda_ppt( 'slide_03', 'donate_url' ) ); ?>"
-						class="k-button"
+						class="k-campaign-intro__btn k-campaign-intro__btn--donate"
 					>
 						<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'donate_text' ) ); ?>
 					</a>
 
 					<a
 						href="<?php echo esc_url( (string) kenda_ppt( 'slide_03', 'join_url' ) ); ?>"
-						class="k-button"
+						class="k-campaign-intro__btn k-campaign-intro__btn--join"
 					>
 						<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'join_text' ) ); ?>
 					</a>
 
 					<a
 						href="<?php echo esc_url( (string) kenda_ppt( 'slide_03', 'updates_url' ) ); ?>"
-						class="k-button"
+						class="k-campaign-intro__btn k-campaign-intro__btn--updates"
 					>
 						<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'updates_text' ) ); ?>
 					</a>

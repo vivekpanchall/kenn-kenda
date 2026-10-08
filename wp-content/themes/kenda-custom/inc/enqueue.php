@@ -16,7 +16,7 @@ add_action(
 	function (): void {
 		wp_enqueue_style(
 			'kenda-fonts',
-			'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap',
+			'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap',
 			array(),
 			null
 		);

@@ -1753,115 +1753,250 @@ p.eyebrow {
 }
 
 
-/* new add */
+/* Campaign introduction — matches the slide-3 hero graphic */
 .k-campaign-intro {
-    margin-bottom: 3rem;
-}
-
-.k-campaign-intro__name {
-    margin: 2rem 0 0.75rem;
-}
-
-.k-campaign-intro__text {
-    max-width: 850px;
-    margin: 0 0 2rem;
-}
-
-.k-campaign-intro__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top:2rem;
-    margin-bottom: 1.5rem;
-}
-
-.k-campaign-intro__phone {
-    font-weight: 700;
-}
-
-/* small text and image layout in 1st slide */
-.k-campaign-intro {
+    --intro-navy: #082046;
+    --intro-teal: #2f7490;
+    --intro-gold: #bf9541;
     display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
-    gap: 4rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+    gap: clamp(1.25rem, 3vw, 2.25rem);
     align-items: center;
-    margin-bottom: 5rem;
+    margin: 0 0 clamp(2.5rem, 5vw, 4rem);
 }
 
 .k-campaign-intro__content {
-    max-width: 760px;
+    min-width: 0;
+    max-width: none;
+}
+
+.k-campaign-intro__line {
+    display: block;
+    font-size: clamp(2.35rem, 5vw, 4.15rem);
+    font-weight: 700;
+    letter-spacing: 0.015em;
+}
+
+.k-campaign-intro__eyebrow {
+    margin: 0 0 0.85rem;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--intro-navy);
+}
+
+.k-campaign-intro__headline {
+    margin: 0 0 0.55rem;
+    font-family: Oswald, "Bebas Neue", Impact, sans-serif;
+    font-weight: 700;
+    line-height: 0.86;
+    text-transform: uppercase;
+    color: var(--intro-navy);
+}
+
+.k-campaign-intro__accent {
+    color: var(--intro-teal);
 }
 
 .k-campaign-intro__tagline {
-    margin: 0 0 1 .5rem;
-    font-size: 1.50rem;
-    line-height: 1.25;
-    font-weight: 700;
+    margin: 0 0 0.85rem;
+    max-width: 36rem;
+    font-family: Montserrat, "Source Sans 3", sans-serif;
+    font-size: clamp(1.02rem, 1.45vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--intro-navy);
+}
+
+.k-campaign-intro__rule {
+    display: block;
+    width: min(16.5rem, 72%);
+    height: 3px;
+    margin: 0 0 0.9rem;
+    background: #c9a24d;
+    border-radius: 1px;
 }
 
 .k-campaign-intro__name {
-    margin: 2rem 0 0.75rem;
+    margin: 0 0 0.4rem;
+    font-family: Montserrat, "Source Sans 3", sans-serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--intro-navy);
 }
 
 .k-campaign-intro__text {
-    max-width: 700px;
-    margin: 0 0 2rem;
-    font-size: 1.05rem;
-    line-height: 1.7;
+    margin: 0 0 1.15rem;
+    max-width: 36rem;
+    font-family: Montserrat, "Source Sans 3", sans-serif;
+    font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1a2744;
 }
 
 .k-campaign-intro__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-bottom: 1.5rem;
+    align-items: center;
+    gap: 0.55rem 0.65rem;
+    margin: 0 0 0.85rem;
+}
+
+.k-campaign-intro__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.55rem;
+    padding: 0.55rem 1.05rem;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: clamp(0.72rem, 1vw, 0.82rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.k-campaign-intro__btn--donate {
+    background: var(--intro-gold);
+    border-color: var(--intro-gold);
+    color: #ffffff;
+}
+
+.k-campaign-intro__btn--donate:hover {
+    background: #a67e2e;
+    border-color: #a67e2e;
+    color: #ffffff;
+}
+
+.k-campaign-intro__btn--join {
+    background: var(--intro-teal);
+    border-color: var(--intro-teal);
+    color: #ffffff;
+}
+
+.k-campaign-intro__btn--join:hover {
+    background: #245e76;
+    border-color: #245e76;
+    color: #ffffff;
+}
+
+.k-campaign-intro__btn--updates {
+    background: #ffffff;
+    border-color: var(--intro-navy);
+    color: var(--intro-navy);
+}
+
+.k-campaign-intro__btn--updates:hover {
+    background: var(--intro-navy);
+    color: #ffffff;
+}
+
+.k-campaign-intro__btn:focus-visible {
+    outline: 2px solid var(--intro-teal);
+    outline-offset: 2px;
 }
 
 .k-campaign-intro__phone {
     display: inline-block;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
     font-weight: 700;
+    line-height: 1.2;
+    color: var(--intro-navy);
     text-decoration: none;
+}
+
+.k-campaign-intro__phone:hover {
+    color: var(--intro-teal);
 }
 
 .k-campaign-intro__image {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    min-width: 0;
 }
 
 .k-campaign-intro__image .hero__brand-card {
     width: 100%;
-    max-width: 360px;
+    max-width: none;
+    padding: 0;
+    background: transparent;
 }
 
 .k-campaign-intro__image .hero__brand-mark {
     display: block;
     width: 100%;
+    max-width: none;
     height: auto;
+    max-height: min(34rem, 78vh);
+    margin-left: auto;
     object-fit: contain;
+    object-position: center bottom;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
+    .k-campaign-intro {
+        grid-template-columns: minmax(0, 1.2fr) minmax(12rem, 0.75fr);
+        gap: 1.25rem;
+    }
+
+    .k-campaign-intro__line {
+        font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+    }
+}
+
+@media (max-width: 720px) {
     .k-campaign-intro {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
-        margin-bottom: 4rem;
+        gap: 1.5rem;
+    }
+
+    .k-campaign-intro__content,
+    .k-campaign-intro__image {
+        order: 0;
+        max-width: none;
     }
 
     .k-campaign-intro__image {
-        order: 2;
+        order: -1;
+        justify-content: center;
     }
 
-    .k-campaign-intro__content {
-        order: 1;
+    .k-campaign-intro__image .hero__brand-mark {
+        width: min(100%, 22rem);
+        max-height: 22rem;
+        margin: 0 auto;
     }
 
-    .k-campaign-intro__image .hero__brand-card {
-        max-width: 280px;
+    .k-campaign-intro__line {
+        font-size: clamp(1.85rem, 8.4vw, 2.45rem);
     }
 
+    .k-campaign-intro__btn {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 420px) {
     .k-campaign-intro__actions {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .k-campaign-intro__btn {
+        width: 100%;
     }
 }
