@@ -574,9 +574,37 @@ function kenda_render_site_settings_page(): void {
 				<tr>
 					<th scope="row"><?php esc_html_e( 'Social Links', 'kenda-custom' ); ?></th>
 					<td>
-						<p><label>Facebook <input type="url" name="kenda_site_settings[facebook_url]" value="<?php echo esc_attr( (string) ( $options['facebook_url'] ?? '' ) ); ?>" class="large-text" /></label></p>
-						<p><label>Instagram <input type="url" name="kenda_site_settings[instagram_url]" value="<?php echo esc_attr( (string) ( $options['instagram_url'] ?? '' ) ); ?>" class="large-text" /></label></p>
-						<p><label>X (Twitter) <input type="url" name="kenda_site_settings[twitter_url]" value="<?php echo esc_attr( (string) ( $options['twitter_url'] ?? '' ) ); ?>" class="large-text" /></label></p>
+						<p>
+							<label>
+								Facebook 
+								<input type="url" name="kenda_site_settings[facebook_url]" value="<?php echo esc_attr( (string) ( $options['facebook_url'] ?? '' ) ); ?>" class="large-text" />
+							</label>
+						</p>
+						<p>
+							<label>Instagram 
+								<input type="url" name="kenda_site_settings[instagram_url]" value="<?php echo esc_attr( (string) ( $options['instagram_url'] ?? '' ) ); ?>" class="large-text" />
+							</label>
+						</p>
+						<p>
+							<label>LinkedIn 
+								<input type="url" name="kenda_site_settings[linkedin_url]" value="<?php echo esc_attr( (string) ( $options['linkedin_url'] ?? '' ) ); ?>" class="large-text" />
+							</label>
+						</p>
+						<p>
+							<label>TikTok 
+								<input type="url" name="kenda_site_settings[tiktok_url]" value="<?php echo esc_attr( (string) ( $options['tiktok_url'] ?? '' ) ); ?>" class="large-text" />
+							</label>
+						</p>
+						<p>
+							<label>YouTube 
+								<input type="url" name="kenda_site_settings[youtube_url]" value="<?php echo esc_attr( (string) ( $options['youtube_url'] ?? '' ) ); ?>" class="large-text" />
+							</label>
+						</p>
+							<p>
+							<label>X 
+								<input type="url" name="kenda_site_settings[x_url]" value="<?php echo esc_attr( (string) ( $options['x_url'] ?? '' ) ); ?>" class="large-text" />
+							</label>
+						</p>
 					</td>
 				</tr>
 				<tr>
@@ -616,7 +644,10 @@ function kenda_sanitize_site_settings( array $input ): array {
 		'header_cta_url'         => 'esc_url_raw',
 		'facebook_url'           => 'esc_url_raw',
 		'instagram_url'          => 'esc_url_raw',
-		'twitter_url'            => 'esc_url_raw',
+		'linkedin_url'          => 'esc_url_raw',
+		'tiktok_url'          => 'esc_url_raw',
+		'youtube_url'          => 'esc_url_raw',
+		'x_url'            => 'esc_url_raw',
 		'footer_disclaimer'      => 'sanitize_textarea_field',
 		'copyright_text'         => 'sanitize_text_field',
 		'newsletter_heading'     => 'sanitize_text_field',

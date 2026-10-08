@@ -22,7 +22,10 @@ $social_links = array();
 $social_map   = array(
 	'facebook_url'  => __( 'Facebook', 'kenda-custom' ),
 	'instagram_url' => __( 'Instagram', 'kenda-custom' ),
-	'twitter_url'   => __( 'LinkedIn', 'kenda-custom' ),
+	'linkedin_url'   => __( 'LinkedIn', 'kenda-custom' ),
+	'tiktok_url'    => __( 'TikTok', 'kenda-custom' ),
+	'youtube_url'   => __( 'YouTube', 'kenda-custom' ),
+	'x_url'   => __( 'X', 'kenda-custom' ),
 );
 foreach ( $social_map as $key => $label ) {
 	$url = kenda_site( $key );
