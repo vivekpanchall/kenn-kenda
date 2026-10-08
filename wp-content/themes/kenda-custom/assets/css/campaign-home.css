@@ -381,16 +381,16 @@
 
 /* Hero layout (base) — keep after earlier legacy rules */
 .hero__container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: var(--container-width, 1200px);
-  margin: 0 auto;
-  padding: calc(var(--header-h) + 1.75rem) clamp(1.25rem, 4vw, 2rem) clamp(3.25rem, 6vw, 4.5rem);
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container-width, 1200px);
+    margin: 600px auto 0;
+    padding: calc(var(--header-h) + 1.75rem) clamp(1.25rem, 4vw, 2rem) clamp(3.25rem, 6vw, 4.5rem);
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero__grid {
