@@ -46,7 +46,7 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 		<video class="hero__video" playsinline muted loop autoplay preload="metadata" poster="<?php echo esc_url( $poster_url ); ?>" data-hero-video>
 			<source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4" />
 		</video>
-		<div class="hero__overlay"></div>
+		<!-- <div class="hero__overlay"></div> -->
 		<div class="hero__overlay hero__overlay--accent"></div>
 	</div>
 
