@@ -1774,15 +1774,15 @@ p.eyebrow {
     display: block;
     font-size: clamp(2.35rem, 5vw, 4.15rem);
     font-weight: 700;
-    letter-spacing: 0.015em;
+    letter-spacing: 0.020em;
 }
 
 .k-campaign-intro__eyebrow {
     margin: 0 0 0.85rem;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Montserrat;
     font-size: clamp(1.15rem, 1.9vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-weight: 600;
+    letter-spacing: 0.30em;
     line-height: 1;
     text-transform: uppercase;
     color: var(--intro-navy);
@@ -1792,7 +1792,7 @@ p.eyebrow {
     margin: 0 0 0.55rem;
     font-family: Oswald, "Bebas Neue", Impact, sans-serif;
     font-weight: 700;
-    line-height: 0.86;
+    line-height: 1;
     text-transform: uppercase;
     color: var(--intro-navy);
 }
@@ -1835,8 +1835,8 @@ p.eyebrow {
     margin: 0 0 1.15rem;
     max-width: 36rem;
     font-family: Montserrat, "Source Sans 3", sans-serif;
-    font-size: clamp(0.95rem, 1.25vw, 1.05rem);
-    font-weight: 400;
+  font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+    font-weight: 500;
     line-height: 1.5;
     color: #1a2744;
 }
