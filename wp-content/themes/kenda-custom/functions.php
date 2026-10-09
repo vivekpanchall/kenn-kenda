@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KENDA_THEME_VERSION', '1.6.8' );
+define( 'KENDA_THEME_VERSION', '1.6.9' );
 define( 'KENDA_THEME_DIR', get_template_directory() );
 define( 'KENDA_THEME_URI', get_template_directory_uri() );
 

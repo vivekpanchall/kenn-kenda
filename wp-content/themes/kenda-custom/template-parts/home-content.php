@@ -472,6 +472,41 @@ $name_parts = array(
 							</div>
 						<?php endif; ?>
 
+						<?php
+						$popup = (string) get_post_meta( get_the_ID(), 'priority_popup_content', true );
+						if ( '' !== trim( wp_strip_all_tags( $popup ) ) ) :
+							$platform_modal_id = 'k-platform-modal-' . (int) get_the_ID();
+							?>
+							<button
+								type="button"
+								class="k-platform-detail__more"
+								data-platform-open="<?php echo esc_attr( $platform_modal_id ); ?>"
+								aria-haspopup="dialog"
+								aria-controls="<?php echo esc_attr( $platform_modal_id ); ?>"
+							>
+								<?php esc_html_e( 'Learn More', 'kenda-custom' ); ?>
+								<span aria-hidden="true">→</span>
+							</button>
+
+							<dialog
+								class="k-platform-modal"
+								id="<?php echo esc_attr( $platform_modal_id ); ?>"
+								aria-labelledby="<?php echo esc_attr( $platform_modal_id ); ?>-title"
+							>
+								<div class="k-platform-modal__panel">
+									<button type="button" class="k-platform-modal__close" data-platform-close aria-label="<?php esc_attr_e( 'Close', 'kenda-custom' ); ?>">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="k-platform-modal__title" id="<?php echo esc_attr( $platform_modal_id ); ?>-title">
+										<?php the_title(); ?>
+									</h3>
+									<div class="k-platform-modal__body k-prose">
+										<?php echo apply_filters( 'the_content', $popup ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitized with wp_kses_post on save. ?>
+									</div>
+								</div>
+							</dialog>
+						<?php endif; ?>
+
 					</article>
 
 					<?php ++$j; ?>

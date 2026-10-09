@@ -118,6 +118,7 @@ function kenda_render_priority_meta_box( WP_Post $post ): void {
 	wp_nonce_field( 'kenda_priority_meta', 'kenda_priority_nonce' );
 	$short = get_post_meta( $post->ID, 'priority_short_description', true );
 	$num   = get_post_meta( $post->ID, 'priority_number', true );
+	$popup = get_post_meta( $post->ID, 'priority_popup_content', true );
 	?>
 	<p>
 		<label for="priority_number"><strong><?php esc_html_e( 'Display Number (e.g. 01)', 'kenda-custom' ); ?></strong></label><br />
@@ -127,7 +128,20 @@ function kenda_render_priority_meta_box( WP_Post $post ): void {
 		<label for="priority_short_description"><strong><?php esc_html_e( 'Short Description', 'kenda-custom' ); ?></strong></label><br />
 		<textarea id="priority_short_description" name="priority_short_description" rows="3" class="widefat"><?php echo esc_textarea( (string) $short ); ?></textarea>
 	</p>
+	<p>
+		<label for="priority_popup_content"><strong><?php esc_html_e( 'Popup Content', 'kenda-custom' ); ?></strong></label><br />
+		<span class="description"><?php esc_html_e( 'Shown in the Learn More modal on the homepage. Leave empty to hide the button.', 'kenda-custom' ); ?></span>
+	</p>
 	<?php
+	wp_editor(
+		(string) $popup,
+		'priority_popup_content',
+		array(
+			'textarea_name' => 'priority_popup_content',
+			'textarea_rows' => 12,
+			'media_buttons' => true,
+		)
+	);
 }
 
 add_action(
@@ -161,5 +175,6 @@ add_action(
 		}
 		update_post_meta( $post_id, 'priority_short_description', sanitize_textarea_field( wp_unslash( $_POST['priority_short_description'] ?? '' ) ) );
 		update_post_meta( $post_id, 'priority_number', sanitize_text_field( wp_unslash( $_POST['priority_number'] ?? '' ) ) );
+		update_post_meta( $post_id, 'priority_popup_content', wp_kses_post( wp_unslash( $_POST['priority_popup_content'] ?? '' ) ) );
 	}
 );
