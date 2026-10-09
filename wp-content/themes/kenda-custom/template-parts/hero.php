@@ -55,105 +55,6 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 		>
 			<source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4" />
 		</video>
-		<!-- <button
-			type="button"
-			class="hero__video-toggle"
-			aria-label="Pause background video"
-			title="Pause background video"
-			data-hero-video-toggle
-		>
-			<span class="hero__video-toggle-icon" aria-hidden="true">
-				<span class="hero__video-toggle-pause"></span>
-				<span class="hero__video-toggle-play"></span>
-			</span>
-		</button> -->
-		<!-- <div class="hero__overlay"></div> -->
-		<div class="hero__overlay hero__overlay--accent"></div>
-	</div>
-
-	<div class="hero__container">
-		<div class="hero__grid">
-			<div class="hero__content" data-animate>
-				<!-- <?php if ( '' !== trim( $elect ) ) : ?>
-					<p class="hero__elect"><?php echo esc_html( $elect ); ?></p>
-				<?php endif; ?>
-
-				<?php if ( $name_parts ) : ?>
-					<h1 class="hero__headline hero__headline--stack">
-						<?php foreach ( $name_parts as $part ) : ?>
-							<span class="hero__name-line"><?php echo esc_html( $part ); ?></span>
-						<?php endforeach; ?>
-					</h1>
-				<?php endif; ?> -->
-
-				<!-- <div class="hero__copy">
-					<?php if ( '' !== trim( $subtitle ) ) : ?>
-						<?php
-						$subtitle_html = esc_html( $subtitle );
-						$subtitle_html = preg_replace(
-							'/(\s)(Every tax dollar accounted for\.)/i',
-							'$1<br>$2',
-							$subtitle_html,
-							1
-						);
-						?>
-						<p class="hero__lead"><?php echo $subtitle_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?></p>
-					<?php endif; ?>
-
-					<?php if ( '' !== trim( $eyebrow ) || '' !== trim( $credit ) || '' !== trim( $services ) ) : ?>
-						<div class="hero__meta">
-							<?php if ( '' !== trim( $eyebrow ) ) : ?>
-								<p class="hero__meta-line hero__meta-line--accent"><?php echo esc_html( $eyebrow ); ?></p>
-							<?php endif; ?>
-							<?php if ( '' !== trim( $credit ) ) : ?>
-								<p class="hero__meta-line hero__meta-line--strong"><?php echo esc_html( $credit ); ?></p>
-							<?php endif; ?>
-							<?php if ( '' !== trim( $services ) ) : ?>
-								<p class="hero__meta-line hero__meta-line--accent"><?php echo esc_html( $services ); ?></p>
-							<?php endif; ?>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( '' !== trim( $website ) ) : ?>
-						<p class="hero__website">
-							<a class="hero__website-link" href="<?php echo esc_url( $website_href ); ?>"><?php echo esc_html( $website ); ?></a>
-						</p>
-					<?php endif; ?>
-
-					<?php if ( '' !== trim( $desc ) ) : ?>
-						<p class="hero__summary"><?php echo esc_html( $desc ); ?></p>
-					<?php endif; ?>
-
-					<?php if ( ( $p_text && $p_url ) || ( $s_text && $s_url ) ) : ?>
-						<div class="hero__actions">
-							<?php if ( $p_text && $p_url ) : ?>
-								<a class="btn btn--gold btn--lg js-scroll-link" href="<?php echo esc_url( $p_url ); ?>"><?php echo esc_html( $p_text ); ?></a>
-							<?php endif; ?>
-							<?php if ( $s_text && $s_url ) : ?>
-								<a class="btn btn--outline btn--lg js-scroll-link" href="<?php echo esc_url( $s_url ); ?>"><?php echo esc_html( $s_text ); ?></a>
-							<?php endif; ?>
-						</div>
-					<?php endif; ?>
-				</div> -->
-			</div>
-
-			<!-- <div class="hero__brand" data-animate>
-				<div class="hero__brand-card">
-					<?php
-					echo kenda_render_image(
-						$logo_id,
-						'medium',
-						array(
-							'class' => 'hero__brand-mark',
-							'alt'   => $brand_alt,
-						),
-						$logo_fb,
-						$brand_alt
-					);
-					?>
-				</div>
-			</div> -->
-		</div>
 		<button
 			type="button"
 			class="hero__scroll-hint hero__audio-toggle"
@@ -162,8 +63,15 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 			title="Listen"
 			data-hero-audio-toggle
 		>
-		Listen
+			Listen
 		</button>
+		<div class="hero__overlay hero__overlay--accent"></div>
+	</div>
+
+	<div class="hero__container">
+		<div class="hero__grid">
+			<div class="hero__content" data-animate></div>
+		</div>
 	</div>
 
 </section>

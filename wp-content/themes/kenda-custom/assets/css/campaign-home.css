@@ -400,8 +400,8 @@
 .hero__scroll-hint {
   position: absolute;
   z-index: 3;
-  top: 4.25rem;
   left: 50%;
+  bottom: 1.1rem;
   transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
@@ -422,7 +422,6 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.2s var(--ease-out), box-shadow 0.2s ease, filter 0.2s ease;
-  margin-bottom: 1.5rem;
 }
 
 .hero__scroll-hint:hover,
@@ -529,6 +528,14 @@
     justify-content: flex-start;
   }
 
+  .hero__scroll-hint {
+    bottom: 0.9rem;
+    left: 50%;
+    padding: 0.8rem 1.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
   .hero--campaign .hero__video {
     object-fit: cover;
     object-position: center top;
@@ -558,7 +565,11 @@
   }
 
   .hero__scroll-hint {
-    display: none;
+    display: inline-flex;
+    bottom: 0.9rem;
+    padding: 0.8rem 1.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
   }
 
   .hero__container {
@@ -612,9 +623,27 @@
   }
 }
 
+section#home{
+    padding-top: 144px;
+}
+.hero--campaign .hero__media{
+    position: static;
+}
+.hero__container {
+    display: none;
+}
+
 @media (max-width: 480px) {
   .hero.hero--campaign {
     min-height: min(70svh, 640px);
+  }
+
+  .hero__scroll-hint {
+    bottom: 0.75rem;
+    left: 50%;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
   }
 
   .hero--campaign .hero__video {
