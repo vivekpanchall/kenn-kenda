@@ -47,7 +47,6 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 		<video
 			class="hero__video"
 			playsinline
-			muted
 			loop
 			autoplay
 			preload="auto"
@@ -55,6 +54,18 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 		>
 			<source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4" />
 		</video>
+		<button
+			type="button"
+			class="hero__video-toggle"
+			aria-label="Pause background video"
+			title="Pause background video"
+			data-hero-video-toggle
+		>
+			<span class="hero__video-toggle-icon" aria-hidden="true">
+				<span class="hero__video-toggle-pause"></span>
+				<span class="hero__video-toggle-play"></span>
+			</span>
+		</button>
 		<!-- <div class="hero__overlay"></div> -->
 		<div class="hero__overlay hero__overlay--accent"></div>
 	</div>
