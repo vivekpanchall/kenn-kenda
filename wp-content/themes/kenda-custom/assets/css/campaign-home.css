@@ -400,45 +400,45 @@
 .hero__scroll-hint {
   position: absolute;
   z-index: 3;
-  bottom: 1.25rem;
+  top: 4.25rem;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
+  min-height: 3.1rem;
+  padding: 0.9rem 1.8rem;
+  border: 2px solid #d8a92d;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #f5d36a 0%, #d7a72b 100%);
+  box-shadow: 0 12px 26px rgba(9, 32, 63, 0.28);
+  appearance: none;
   text-decoration: none;
-  color: var(--color-navy-mid);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  color: #0d2340;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  transition: color 0.2s;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s ease, filter 0.2s ease;
+  margin-bottom: 1.5rem;
 }
 
-.hero__scroll-hint:hover {
-  color: var(--color-gold);
+.hero__scroll-hint:hover,
+.hero__scroll-hint:focus-visible {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 10px 22px rgba(23, 42, 68, 0.17);
+  filter: brightness(1.02);
+}
+
+.hero__scroll-hint:focus-visible {
+  outline: 2px solid rgba(9, 32, 63, 0.7);
+  outline-offset: 3px;
 }
 
 .hero__scroll-hint-icon {
-  width: 1.25rem;
-  height: 2rem;
-  border: 2px solid rgba(9, 32, 63, 0.35);
-  border-radius: 999px;
-  position: relative;
-}
-
-.hero__scroll-hint-icon::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0.4rem;
-  width: 4px;
-  height: 8px;
-  margin-left: -2px;
-  background: var(--color-gold);
-  border-radius: 999px;
-  animation: hero-scroll-nudge 1.8s ease-in-out infinite;
+  display: none;
 }
 
 @keyframes hero-scroll-nudge {

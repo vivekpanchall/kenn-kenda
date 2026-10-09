@@ -49,12 +49,13 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 			playsinline
 			loop
 			autoplay
+			muted
 			preload="auto"
 			data-hero-video
 		>
 			<source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4" />
 		</video>
-		<button
+		<!-- <button
 			type="button"
 			class="hero__video-toggle"
 			aria-label="Pause background video"
@@ -65,7 +66,7 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 				<span class="hero__video-toggle-pause"></span>
 				<span class="hero__video-toggle-play"></span>
 			</span>
-		</button>
+		</button> -->
 		<!-- <div class="hero__overlay"></div> -->
 		<div class="hero__overlay hero__overlay--accent"></div>
 	</div>
@@ -153,10 +154,16 @@ if ( $website_href && preg_match( '/^[\d\s.\-+()]+$/', $website_href ) ) {
 				</div>
 			</div> -->
 		</div>
+		<button
+			type="button"
+			class="hero__scroll-hint hero__audio-toggle"
+			aria-label="Listen"
+			aria-pressed="false"
+			title="Listen"
+			data-hero-audio-toggle
+		>
+		Listen
+		</button>
 	</div>
 
-	<a class="hero__scroll-hint js-scroll-link" href="#intro" aria-label="<?php esc_attr_e( 'Scroll to content', 'kenda-custom' ); ?>">
-		<span class="hero__scroll-hint-text"><?php esc_html_e( 'Explore', 'kenda-custom' ); ?></span>
-		<span class="hero__scroll-hint-icon" aria-hidden="true"></span>
-	</a>
 </section>

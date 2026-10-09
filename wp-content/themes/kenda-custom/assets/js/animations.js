@@ -3,57 +3,51 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const heroVideo = document.querySelector("[data-hero-video]");
-  const heroVideoToggle = document.querySelector("[data-hero-video-toggle]");
+  const heroAudioToggle = document.querySelector("[data-hero-audio-toggle]");
 
-  if (heroVideo && heroVideoToggle && heroVideoToggle.dataset.heroVideoToggleBound !== "true") {
-    const syncHeroVideoToggle = () => {
-      const isPaused = heroVideo.paused || heroVideo.ended;
-      const label = isPaused ? "Play background video" : "Pause background video";
+  if (heroVideo && heroAudioToggle && heroAudioToggle.dataset.heroAudioToggleBound !== "true") {
+    const syncHeroAudioToggle = () => {
+      const isMuted = heroVideo.muted;
+      const label = isMuted ? "Listen" : "Mute Audio";
 
-      heroVideoToggle.classList.toggle("is-paused", isPaused);
-      heroVideoToggle.setAttribute("aria-label", label);
-      heroVideoToggle.setAttribute("title", label);
+      heroAudioToggle.textContent = label;
+      heroAudioToggle.setAttribute("aria-label", label);
+      heroAudioToggle.setAttribute("title", label);
+      heroAudioToggle.setAttribute("aria-pressed", String(!isMuted));
     };
 
-    const toggleHeroVideo = () => {
+    const toggleHeroAudio = () => {
       if (!heroVideo) {
         return;
       }
 
-      if (heroVideo.paused || heroVideo.ended) {
-        heroVideo.play().catch(() => {
-          heroVideoToggle.disabled = true;
-          heroVideoToggle.setAttribute("aria-label", "Background video unavailable");
-          heroVideoToggle.setAttribute("title", "Background video unavailable");
-        });
-        return;
-      }
-
-      heroVideo.pause();
+      heroVideo.muted = !heroVideo.muted;
+      syncHeroAudioToggle();
     };
 
-    heroVideoToggle.addEventListener("click", toggleHeroVideo);
-    heroVideo.addEventListener("play", syncHeroVideoToggle);
-    heroVideo.addEventListener("pause", syncHeroVideoToggle);
-    heroVideo.addEventListener("ended", syncHeroVideoToggle);
+    heroAudioToggle.addEventListener("click", toggleHeroAudio);
+    heroVideo.addEventListener("volumechange", syncHeroAudioToggle);
     heroVideo.addEventListener("error", () => {
-      heroVideoToggle.disabled = true;
-      heroVideoToggle.classList.add("is-disabled");
-      heroVideoToggle.setAttribute("aria-label", "Background video unavailable");
-      heroVideoToggle.setAttribute("title", "Background video unavailable");
+      heroVideo.muted = true;
+      syncHeroAudioToggle();
     });
 
-    heroVideoToggle.dataset.heroVideoToggleBound = "true";
-    syncHeroVideoToggle();
+    heroAudioToggle.dataset.heroAudioToggleBound = "true";
+    syncHeroAudioToggle();
   }
 
   if (heroVideo && reduceMotion) {
     heroVideo.removeAttribute("autoplay");
     heroVideo.pause();
-    if (heroVideoToggle) {
-      heroVideoToggle.classList.add("is-paused");
-      heroVideoToggle.setAttribute("aria-label", "Play background video");
-      heroVideoToggle.setAttribute("title", "Play background video");
+    heroVideo.muted = true;
+    if (heroAudioToggle) {
+      const toggleText = heroAudioToggle.querySelector(".hero__scroll-hint-text");
+      if (toggleText) {
+        toggleText.textContent = "Listen";
+      }
+      heroAudioToggle.setAttribute("aria-label", "Listen");
+      heroAudioToggle.setAttribute("title", "Listen");
+      heroAudioToggle.setAttribute("aria-pressed", "false");
     }
   }
 
