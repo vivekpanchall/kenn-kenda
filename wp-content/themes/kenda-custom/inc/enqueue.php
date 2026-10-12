@@ -62,13 +62,6 @@ add_action(
 				array( 'kenda-campaign-home' ),
 				KENDA_THEME_VERSION
 			);
-			wp_enqueue_script(
-				'kenda-platform-modal',
-				KENDA_THEME_URI . '/assets/js/platform-modal.js',
-				array(),
-				KENDA_THEME_VERSION,
-				array( 'strategy' => 'defer', 'in_footer' => true )
-			);
 		}
 
 		wp_enqueue_script(

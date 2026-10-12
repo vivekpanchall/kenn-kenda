@@ -432,39 +432,63 @@ $name_parts = array(
 				while ( $priority_full_query->have_posts() ) :
 					$priority_full_query->the_post();
 
-					$num   = get_post_meta( get_the_ID(), 'priority_number', true );
-					$short = get_post_meta( get_the_ID(), 'priority_short_description', true );
+					$num    = get_post_meta( get_the_ID(), 'priority_number', true );
+					$short  = get_post_meta( get_the_ID(), 'priority_short_description', true );
+					$popup  = (string) get_post_meta( get_the_ID(), 'priority_popup_content', true );
+					$number = $num ? (string) $num : sprintf( '%02d', $j + 1 );
+					$has_popup = '' !== trim( wp_strip_all_tags( $popup ) );
+					$panel_id  = 'k-platform-plan-' . (int) get_the_ID();
 					?>
 
-					<article class="k-platform-detail">
+					<article class="k-platform-detail<?php echo $has_popup ? ' k-platform-detail--accordion' : ''; ?>">
 
-						<div class="k-platform-detail__header">
+						<?php if ( $has_popup ) : ?>
+							<h4 class="k-platform-detail__heading">
+								<button
+									type="button"
+									class="k-accordion__trigger k-platform-detail__trigger"
+									data-priority-toggle
+									aria-expanded="false"
+									aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+								>
+									<span class="k-platform-detail__num">
+										<?php echo esc_html( $number ); ?>
+									</span>
 
-							<span class="k-platform-detail__num">
-								<?php
-								echo esc_html(
-									$num
-										? (string) $num
-										: sprintf( '%02d', $j + 1 )
-								);
-								?>
-							</span>
+									<span class="k-platform-detail__info">
+										<span class="k-platform-detail__title">
+											<?php the_title(); ?>
+										</span>
 
-							<div class="k-platform-detail__info">
+										<?php if ( $short ) : ?>
+											<span class="k-platform-detail__short">
+												<?php echo esc_html( (string) $short ); ?>
+											</span>
+										<?php endif; ?>
+									</span>
 
-								<h4 class="k-platform-detail__title">
-									<?php the_title(); ?>
-								</h4>
+									<span class="k-platform-detail__chevron" aria-hidden="true"></span>
+								</button>
+							</h4>
+						<?php else : ?>
+							<div class="k-platform-detail__header">
+								<span class="k-platform-detail__num">
+									<?php echo esc_html( $number ); ?>
+								</span>
 
-								<?php if ( $short ) : ?>
-									<p class="k-platform-detail__short">
-										<?php echo esc_html( (string) $short ); ?>
-									</p>
-								<?php endif; ?>
+								<div class="k-platform-detail__info">
+									<h4 class="k-platform-detail__title">
+										<?php the_title(); ?>
+									</h4>
 
+									<?php if ( $short ) : ?>
+										<p class="k-platform-detail__short">
+											<?php echo esc_html( (string) $short ); ?>
+										</p>
+									<?php endif; ?>
+								</div>
 							</div>
-
-						</div>
+						<?php endif; ?>
 
 						<?php if ( get_the_content() ) : ?>
 							<div class="k-platform-detail__content k-prose">
@@ -472,39 +496,14 @@ $name_parts = array(
 							</div>
 						<?php endif; ?>
 
-						<?php
-						$popup = (string) get_post_meta( get_the_ID(), 'priority_popup_content', true );
-						if ( '' !== trim( wp_strip_all_tags( $popup ) ) ) :
-							$platform_modal_id = 'k-platform-modal-' . (int) get_the_ID();
-							?>
-							<button
-								type="button"
-								class="k-platform-detail__more"
-								data-platform-open="<?php echo esc_attr( $platform_modal_id ); ?>"
-								aria-haspopup="dialog"
-								aria-controls="<?php echo esc_attr( $platform_modal_id ); ?>"
+						<?php if ( $has_popup ) : ?>
+							<div
+								class="k-accordion__panel k-platform-detail__panel k-prose"
+								id="<?php echo esc_attr( $panel_id ); ?>"
+								hidden
 							>
-								<?php esc_html_e( 'Learn More', 'kenda-custom' ); ?>
-								<span aria-hidden="true">→</span>
-							</button>
-
-							<dialog
-								class="k-platform-modal"
-								id="<?php echo esc_attr( $platform_modal_id ); ?>"
-								aria-labelledby="<?php echo esc_attr( $platform_modal_id ); ?>-title"
-							>
-								<div class="k-platform-modal__panel">
-									<button type="button" class="k-platform-modal__close" data-platform-close aria-label="<?php esc_attr_e( 'Close', 'kenda-custom' ); ?>">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<h3 class="k-platform-modal__title" id="<?php echo esc_attr( $platform_modal_id ); ?>-title">
-										<?php the_title(); ?>
-									</h3>
-									<div class="k-platform-modal__body k-prose">
-										<?php echo apply_filters( 'the_content', $popup ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitized with wp_kses_post on save. ?>
-									</div>
-								</div>
-							</dialog>
+								<?php echo apply_filters( 'the_content', $popup ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitized with wp_kses_post on save. ?>
+							</div>
 						<?php endif; ?>
 
 					</article>

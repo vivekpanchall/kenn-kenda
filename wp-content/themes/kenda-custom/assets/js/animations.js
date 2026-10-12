@@ -73,6 +73,20 @@
     animated.forEach((el) => el.classList.add("is-visible"));
   }
 
+  document.querySelectorAll(".k-platform-detail--accordion").forEach(function (article) {
+    article.addEventListener("click", function (event) {
+      if (event.target.closest(".k-platform-detail__panel, [data-priority-toggle]")) {
+        return;
+      }
+
+      const button = article.querySelector("[data-priority-toggle]");
+
+      if (button) {
+        button.click();
+      }
+    });
+  });
+
   document.querySelectorAll("[data-priority-toggle]").forEach(function (button) {
     button.addEventListener("click", function () {
 
