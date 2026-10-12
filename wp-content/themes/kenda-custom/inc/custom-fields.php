@@ -448,7 +448,15 @@ function kenda_render_homepage_settings_page(): void {
  */
 function kenda_sanitize_homepage_settings( array $input ): array {
 	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'vision_image', 'cta_qr_image' );
-	$url_keys   = array( 'hero_primary_url', 'hero_secondary_url', 'involved_cta_url', 'cta_button_url' );
+	$url_keys   = array(
+		'hero_primary_url',
+		'hero_secondary_url',
+		'involved_cta_url',
+		'cta_button_url',
+		'donate_button_url',
+		'team_button_url',
+		'text_updates_form_action',
+	);
 	$text_keys  = array(
 		'hero_elect',
 		'hero_eyebrow',
