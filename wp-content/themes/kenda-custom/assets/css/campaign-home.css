@@ -43,9 +43,9 @@
 
 .site-brand__logo-img--portrait {
   width: auto;
-  height: 148px;
-  max-width: 340px;
-  max-height: 148px;
+  height: auto;
+  max-width: min(340px, 68vw);
+  max-height: calc(var(--header-h) - 12px);
   object-fit: contain;
   object-position: left center;
   border: none;
@@ -54,19 +54,21 @@
   background: transparent;
 }
 
+@media (min-width: 961px) {
+  :root {
+    --header-h: 10rem;
+  }
+}
+
 @media (max-width: 960px) {
   .site-brand__logo-img--portrait {
-    height: 100px;
-    max-width: 240px;
-    max-height: 100px;
+    max-width: min(240px, 62vw);
   }
 }
 
 @media (max-width: 480px) {
   .site-brand__logo-img--portrait {
-    height: 84px;
-    max-width: 200px;
-    max-height: 84px;
+    max-width: min(200px, 58vw);
   }
 }
 
@@ -624,7 +626,7 @@
 }
 
 section#home{
-    padding-top: 144px;
+    padding-top: var(--header-h);
 }
 .hero--campaign .hero__media{
     position: static;

@@ -514,7 +514,7 @@ $name_parts = array(
 
 				<?php wp_reset_postdata(); ?>
 
-			</div>
+			</div>															
 
 		<?php endif; ?>
 
