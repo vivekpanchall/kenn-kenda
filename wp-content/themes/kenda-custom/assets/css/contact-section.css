@@ -510,10 +510,12 @@ header.contact-section__header {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.35s ease;
+  z-index: 0;
 }
 
+/* Keep slides in layout for fade; JS toggles [hidden] + .is-active */
 .k-gallery__slide[hidden] {
-  display: block;
+  display: block !important;
 }
 
 .k-gallery__slide.is-active {
