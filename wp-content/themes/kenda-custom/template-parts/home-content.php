@@ -188,87 +188,48 @@ $name_parts = array(
 		</div>
 
         <!-- Existing Slide 3 Content -->
-        <header class="k-section__head">
+		<?php
+		$slide03_heading_image_id = absint( kenda_ppt( 'slide_03', 'heading_image', 0 ) );
+		$slide03_heading_alt      = (string) kenda_ppt( 'slide_03', 'heading' );
+		?>
+		<header class="k-section__head k-slide03-head<?php echo $slide03_heading_image_id ? ' k-slide03-head--has-image' : ''; ?>">
 
-            <h2 class="display-md">
-                <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'heading' ) ); ?>
-            </h2>
+			<div class="k-slide03-head__copy">
+				<h2 class="display-md">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'heading' ) ); ?>
+				</h2>
 
-            <p class="k-section__lead">
-                <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'subheading' ) ); ?>
-            </p>
+				<p class="k-section__lead">
+					<?php echo esc_html( (string) kenda_ppt( 'slide_03', 'subheading' ) ); ?>
+				</p>
+			</div>
 
-            <p class="k-stat">
+			<?php if ( $slide03_heading_image_id ) : ?>
+				<figure class="k-slide03-head__media">
+					<?php
+					echo kenda_render_image(
+						$slide03_heading_image_id,
+						'large',
+						array(
+							'class'   => 'k-slide03-head__image',
+							'alt'     => $slide03_heading_alt,
+							'loading' => 'lazy',
+							'decoding'=> 'async',
+						)
+					);
+					?>
+				</figure>
+			<?php endif; ?>
+
+            <!-- <p class="k-stat">
                 <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'stat' ) ); ?>
             </p>
 
             <p class="k-tags">
                 <?php echo esc_html( (string) kenda_ppt( 'slide_03', 'tags' ) ); ?>
-            </p>
+            </p> -->
 
         </header>
-
-        <!-- Existing cards intentionally disabled -->
-        <!--
-        <?php if ( is_array( $s03_cards ) && $s03_cards ) : ?>
-
-            <div class="k-card-grid k-card-grid--4">
-
-                <?php foreach ( $s03_cards as $card ) : ?>
-
-                    <?php if ( ! is_array( $card ) ) {
-                        continue;
-                    } ?>
-
-                    <article class="k-card k-card--hover">
-
-                        <?php
-                        $image_id = absint( $card['image'] ?? 0 );
-
-                        if ( $image_id ) :
-                            ?>
-
-                            <div class="k-card__image">
-                                <?php
-                                echo wp_get_attachment_image(
-                                    $image_id,
-                                    'large',
-                                    false,
-                                    array(
-                                        'loading' => 'lazy',
-                                        'alt'     => (string) ( $card['title'] ?? '' ),
-                                    )
-                                );
-                                ?>
-                            </div>
-
-                        <?php endif; ?>
-
-                        <div class="k-card__content">
-
-                            <h3 class="k-card__title">
-                                <?php echo esc_html( (string) ( $card['title'] ?? '' ) ); ?>
-                            </h3>
-
-                            <?php if ( ! empty( $card['desc'] ) ) : ?>
-
-                                <p class="k-card__text">
-                                    <?php echo esc_html( (string) $card['desc'] ); ?>
-                                </p>
-
-                            <?php endif; ?>
-
-                        </div>
-
-                    </article>
-
-                <?php endforeach; ?>
-
-            </div>
-
-        <?php endif; ?>
-        -->
-
     </div>
 
 </section>

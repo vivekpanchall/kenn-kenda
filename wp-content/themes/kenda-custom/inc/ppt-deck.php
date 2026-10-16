@@ -44,15 +44,17 @@ function kenda_ppt_default_slides(): array {
 
 			'phone' => '816-829-0177',
 
-			'heading'    => __( 'Meet the JPP Consulting Team', 'kenda-custom' ),
+			'heading'        => __( 'Meet the JPP Consulting Team', 'kenda-custom' ),
 
-			'subheading' => __( 'Enterprise-grade marketing technology, human oversight, and disciplined messaging', 'kenda-custom' ),
+			'subheading'     => __( 'Enterprise-grade marketing technology, human oversight, and disciplined messaging', 'kenda-custom' ),
 
-			'stat'       => __( "100+ Years' Combined Experience", 'kenda-custom' ),
+			'heading_image'  => 0,
 
-			'tags'       => __( 'Digital Marketing • Software Development • Telecommunications • Best-in-Breed IT Products • Human Resource Management', 'kenda-custom' ),
+			'stat'           => __( "100+ Years' Combined Experience", 'kenda-custom' ),
 
-			'cards'      => array(
+			'tags'           => __( 'Digital Marketing • Software Development • Telecommunications • Best-in-Breed IT Products • Human Resource Management', 'kenda-custom' ),
+
+			'cards'          => array(
 
 				array(
 					'image' => '',
