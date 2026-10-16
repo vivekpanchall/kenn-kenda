@@ -150,6 +150,12 @@ function kenda_render_homepage_settings_page(): void {
 				kenda_admin_text_row( 'about_eyebrow', __( 'Section Label', 'kenda-custom' ), $options );
 				kenda_admin_text_row( 'about_heading', __( 'About Heading', 'kenda-custom' ), $options );
 				kenda_admin_text_row( 'about_body', __( 'Biography Content', 'kenda-custom' ), $options, 'textarea' );
+				kenda_admin_media_field(
+					'about_heading_image',
+					__( 'Heading Image (right side)', 'kenda-custom' ),
+					$options['about_heading_image'] ?? 0,
+					__( 'Shown beside the About / Meet Kenda heading on the homepage.', 'kenda-custom' )
+				);
 				kenda_admin_media_field( 'about_image', __( 'About Image / Header Portrait', 'kenda-custom' ), $options['about_image'] ?? 0, __( 'Used in the site header and hero portrait. Campaign shield stays on slide 1 only (Customizer → Logo).', 'kenda-custom' ) );
 				kenda_admin_text_row( 'about_facts', __( 'Supporting Facts (one per line)', 'kenda-custom' ), $options, 'textarea' );
 				?>
@@ -453,7 +459,7 @@ function kenda_render_homepage_settings_page(): void {
  * @return array<string,mixed>
  */
 function kenda_sanitize_homepage_settings( array $input ): array {
-	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'vision_image', 'cta_qr_image', 'priorities_heading_image' );
+	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'about_heading_image', 'vision_image', 'cta_qr_image', 'priorities_heading_image' );
 	$url_keys   = array(
 		'hero_primary_url',
 		'hero_secondary_url',

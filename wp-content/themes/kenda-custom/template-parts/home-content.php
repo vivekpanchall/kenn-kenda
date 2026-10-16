@@ -582,39 +582,56 @@ $name_parts = array(
 
     <div class="k-section__inner">
 
-        <header class="k-section__head">
+		<?php
+		$about_heading          = (string) kenda_home(
+			'about_heading',
+			__( "The Candidate's Story", 'kenda-custom' )
+		);
+		$about_heading_image_id = absint( kenda_home( 'about_heading_image', 0 ) );
+		?>
+		<header class="k-section__head k-about-head<?php echo $about_heading_image_id ? ' k-about-head--has-image' : ''; ?>">
 
-            <?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
+			<div class="k-about-head__copy">
+				<?php if ( kenda_home( 'about_eyebrow' ) ) : ?>
+					<p class="eyebrow k-about-eyebrow">
+						<?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?>
+					</p>
+				<?php endif; ?>
 
-                <p class="eyebrow k-about-eyebrow">
-					<?php echo esc_html( kenda_home( 'about_eyebrow' ) ); ?>
+				<h2 class="display-md">
+					<?php echo esc_html( $about_heading ); ?>
+				</h2>
+
+				<p class="k-section__lead">
+					<?php
+					echo esc_html(
+						(string) kenda_home(
+							'experience_intro',
+							__( '30+ years in finance and civic leadership', 'kenda-custom' )
+						)
+					);
+					?>
 				</p>
+			</div>
 
-            <?php endif; ?>
+			<?php if ( $about_heading_image_id ) : ?>
+				<figure class="k-about-head__media">
+					<?php
+					echo kenda_render_image(
+						$about_heading_image_id,
+						'large',
+						array(
+							'class'    => 'k-about-head__image',
+							'alt'      => $about_heading,
+							'loading'  => 'lazy',
+							'decoding' => 'async',
+						)
+					);
+					?>
+				</figure>
+			<?php endif; ?>
 
-            <h2 class="display-md">
-                <?php
-                echo esc_html(
-                    kenda_home(
-                        'about_heading',
-                        __( "The Candidate's Story", 'kenda-custom' )
-                    )
-                );
-                ?>
-            </h2>
-
-            <p class="k-section__lead">
-                <?php
-                echo esc_html(
-                    kenda_home(
-                        'experience_intro',
-                        __( '30+ years in finance and civic leadership', 'kenda-custom' )
-                    )
-                );
-                ?>
-            </p>
-
-        </header>
+		</header>
 
         <?php if ( kenda_home( 'about_body' ) ) : ?>
 
