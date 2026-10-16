@@ -89,9 +89,17 @@ add_action(
 		);
 
 		wp_enqueue_script(
+			'kenda-gallery',
+			KENDA_THEME_URI . '/assets/js/gallery.js',
+			array(),
+			KENDA_THEME_VERSION,
+			array( 'strategy' => 'defer', 'in_footer' => true )
+		);
+
+		wp_enqueue_script(
 			'kenda-main',
 			KENDA_THEME_URI . '/assets/js/main.js',
-			array( 'kenda-navigation', 'kenda-animations', 'kenda-contact' ),
+			array( 'kenda-navigation', 'kenda-animations', 'kenda-contact', 'kenda-gallery' ),
 			KENDA_THEME_VERSION,
 			array( 'strategy' => 'defer', 'in_footer' => true )
 		);

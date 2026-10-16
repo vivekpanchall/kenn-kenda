@@ -390,6 +390,78 @@ $message_placeholder = __( 'Tell us more about how you would like to get involve
     </form>
 
 </div>
+
+		<?php
+		$gallery_items   = kenda_gallery_items();
+		$gallery_heading = (string) kenda_home( 'gallery_heading', __( 'Gallery', 'kenda-custom' ) );
+		$gallery_eyebrow = (string) kenda_home( 'gallery_eyebrow', '' );
+		if ( $gallery_items ) :
+			?>
+			<section class="k-gallery" id="gallery" aria-label="<?php echo esc_attr( $gallery_heading ); ?>" data-k-gallery>
+				<header class="k-gallery__header">
+				
+					<h2 class="display-md k-gallery__title"><?php echo esc_html( $gallery_heading ); ?></h2>
+				</header>
+
+				<div class="k-gallery__stage">
+					<?php if ( count( $gallery_items ) > 1 ) : ?>
+						<button type="button" class="k-gallery__nav k-gallery__nav--prev" data-gallery-prev aria-label="<?php esc_attr_e( 'Previous slide', 'kenda-custom' ); ?>">
+							<span aria-hidden="true">‹</span>
+						</button>
+					<?php endif; ?>
+
+					<div class="k-gallery__viewport">
+						<?php foreach ( $gallery_items as $index => $item ) : ?>
+							<figure
+								class="k-gallery__slide<?php echo 0 === $index ? ' is-active' : ''; ?>"
+								data-gallery-slide
+								<?php echo 0 === $index ? '' : ' hidden'; ?>
+							>
+								<?php if ( 'video' === $item['type'] ) : ?>
+									<video
+										class="k-gallery__media k-gallery__media--video"
+										controls
+										playsinline
+										preload="metadata"
+										<?php echo $item['poster'] ? 'poster="' . esc_url( $item['poster'] ) . '"' : ''; ?>
+									>
+										<source src="<?php echo esc_url( $item['url'] ); ?>" type="<?php echo esc_attr( $item['mime'] ); ?>" />
+									</video>
+								<?php else : ?>
+									<img
+										class="k-gallery__media k-gallery__media--image"
+										src="<?php echo esc_url( $item['url'] ); ?>"
+										alt="<?php echo esc_attr( $item['alt'] ); ?>"
+										loading="<?php echo 0 === $index ? 'eager' : 'lazy'; ?>"
+										decoding="async"
+									/>
+								<?php endif; ?>
+							</figure>
+						<?php endforeach; ?>
+					</div>
+
+					<?php if ( count( $gallery_items ) > 1 ) : ?>
+						<button type="button" class="k-gallery__nav k-gallery__nav--next" data-gallery-next aria-label="<?php esc_attr_e( 'Next slide', 'kenda-custom' ); ?>">
+							<span aria-hidden="true">›</span>
+						</button>
+					<?php endif; ?>
+				</div>
+
+				<?php if ( count( $gallery_items ) > 1 ) : ?>
+					<div class="k-gallery__dots" role="tablist" aria-label="<?php esc_attr_e( 'Gallery slides', 'kenda-custom' ); ?>">
+						<?php foreach ( $gallery_items as $index => $item ) : ?>
+							<button
+								type="button"
+								class="k-gallery__dot<?php echo 0 === $index ? ' is-active' : ''; ?>"
+								data-gallery-dot="<?php echo (int) $index; ?>"
+								aria-label="<?php echo esc_attr( sprintf( __( 'Go to slide %d', 'kenda-custom' ), $index + 1 ) ); ?>"
+								aria-selected="<?php echo 0 === $index ? 'true' : 'false'; ?>"
+							></button>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+			</section>
+		<?php endif; ?>
 	
 	</div>
 </section>

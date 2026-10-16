@@ -90,6 +90,84 @@ function kenda_media_url( $attachment_id, string $fallback = '' ): string {
 }
 
 /**
+ * Parse gallery attachment IDs from CSV / array.
+ *
+ * @param mixed $value Raw value.
+ * @return list<int>
+ */
+function kenda_parse_gallery_ids( $value ): array {
+	if ( is_array( $value ) ) {
+		$parts = $value;
+	} else {
+		$parts = preg_split( '/[\s,]+/', (string) $value ) ?: array();
+	}
+
+	$ids = array();
+	foreach ( $parts as $part ) {
+		$id = absint( $part );
+		if ( $id > 0 ) {
+			$ids[] = $id;
+		}
+	}
+
+	return array_values( array_unique( $ids ) );
+}
+
+/**
+ * Gallery slideshow items for the homepage.
+ *
+ * @return list<array{id:int,type:string,url:string,mime:string,alt:string,poster:string}>
+ */
+function kenda_gallery_items(): array {
+	$ids = kenda_parse_gallery_ids( kenda_home( 'gallery_ids', '' ) );
+	if ( ! $ids ) {
+		return array();
+	}
+
+	$items = array();
+	foreach ( $ids as $id ) {
+		$url  = (string) wp_get_attachment_url( $id );
+		$mime = (string) get_post_mime_type( $id );
+		if ( '' === $url || '' === $mime ) {
+			continue;
+		}
+
+		$type = 'image';
+		if ( 0 === strpos( $mime, 'video/' ) ) {
+			$type = 'video';
+		} elseif ( 0 !== strpos( $mime, 'image/' ) ) {
+			continue;
+		}
+
+		$alt = (string) get_post_meta( $id, '_wp_attachment_image_alt', true );
+		if ( '' === $alt ) {
+			$alt = (string) get_the_title( $id );
+		}
+
+		$poster = '';
+		if ( 'video' === $type ) {
+			$poster = (string) ( wp_get_attachment_image_url( $id, 'large' ) ?: '' );
+		} else {
+			$sized = wp_get_attachment_image_url( $id, 'large' );
+			if ( $sized ) {
+				$url = $sized;
+			}
+		}
+
+		$items[] = array(
+			'id'     => $id,
+			'type'   => $type,
+			'url'    => $url,
+			'mime'   => $mime,
+			'alt'    => $alt,
+			'poster' => $poster,
+		);
+	}
+
+	return $items;
+}
+
+/**
  * Render attachment image or fallback img tag.
  */
 function kenda_render_image( $attachment_id, string $size = 'large', array $attrs = array(), string $fallback_src = '', string $fallback_alt = '' ): string {

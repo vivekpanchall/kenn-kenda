@@ -70,6 +70,61 @@ function kenda_admin_media_field( string $name, string $label, $value, string $h
 }
 
 /**
+ * Multi-select gallery media field (comma-separated attachment IDs).
+ *
+ * @param string $name  Option key.
+ * @param string $label Field label.
+ * @param mixed  $value Stored CSV of IDs.
+ * @param string $help  Optional help text.
+ */
+function kenda_admin_gallery_field( string $name, string $label, $value, string $help = '' ): void {
+	$ids = kenda_parse_gallery_ids( (string) $value );
+	?>
+	<tr>
+		<th scope="row"><label><?php echo esc_html( $label ); ?></label></th>
+		<td>
+			<div class="kenda-gallery-field" data-field="<?php echo esc_attr( $name ); ?>">
+				<input
+					type="hidden"
+					name="kenda_homepage_settings[<?php echo esc_attr( $name ); ?>]"
+					value="<?php echo esc_attr( implode( ',', $ids ) ); ?>"
+					class="kenda-gallery-ids"
+				/>
+				<div class="kenda-gallery-preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+					<?php foreach ( $ids as $attachment_id ) : ?>
+						<?php
+						$mime = (string) get_post_mime_type( $attachment_id );
+						$url  = (string) wp_get_attachment_url( $attachment_id );
+						$thumb = wp_get_attachment_image_url( $attachment_id, 'thumbnail' );
+						if ( ! $thumb && 0 === strpos( $mime, 'video/' ) ) {
+							$thumb = includes_url( 'images/media/video.png' );
+						}
+						if ( ! $thumb ) {
+							$thumb = $url;
+						}
+						?>
+						<span class="kenda-gallery-preview__item" style="display:inline-block;border:1px solid #ccd0d4;border-radius:4px;padding:4px;background:#fff;">
+							<img src="<?php echo esc_url( (string) $thumb ); ?>" alt="" style="display:block;width:72px;height:72px;object-fit:cover;" />
+							<small style="display:block;margin-top:4px;text-align:center;">
+								<?php echo esc_html( 0 === strpos( $mime, 'video/' ) ? __( 'Video', 'kenda-custom' ) : __( 'Image', 'kenda-custom' ) ); ?>
+							</small>
+						</span>
+					<?php endforeach; ?>
+				</div>
+				<button type="button" class="button kenda-gallery-select"><?php esc_html_e( 'Select Photos / Videos', 'kenda-custom' ); ?></button>
+				<button type="button" class="button kenda-gallery-clear" <?php echo $ids ? '' : 'style="display:none;"'; ?>>
+					<?php esc_html_e( 'Clear Gallery', 'kenda-custom' ); ?>
+				</button>
+				<?php if ( $help ) : ?>
+					<p class="description"><?php echo esc_html( $help ); ?></p>
+				<?php endif; ?>
+			</div>
+		</td>
+	</tr>
+	<?php
+}
+
+/**
  * Text field row for homepage settings.
  */
 function kenda_admin_text_row( string $key, string $label, array $options, string $type = 'text', string $help = '' ): void {
@@ -454,6 +509,23 @@ function kenda_render_homepage_settings_page(): void {
 				?>
 			</table>
 
+			<h2 class="title"><?php esc_html_e( 'Gallery Section', 'kenda-custom' ); ?></h2>
+			<p class="description">
+				<?php esc_html_e( 'Slideshow of photos and videos shown after the contact form.', 'kenda-custom' ); ?>
+			</p>
+			<table class="form-table" role="presentation">
+				<?php
+				kenda_admin_text_row( 'gallery_eyebrow', __( 'Section Label', 'kenda-custom' ), $options );
+				kenda_admin_text_row( 'gallery_heading', __( 'Gallery Heading', 'kenda-custom' ), $options );
+				kenda_admin_gallery_field(
+					'gallery_ids',
+					__( 'Gallery Media', 'kenda-custom' ),
+					$options['gallery_ids'] ?? '',
+					__( 'Select multiple images and/or videos from the Media Library. Order is preserved.', 'kenda-custom' )
+				);
+				?>
+			</table>
+
 			<?php submit_button( __( 'Save Homepage Content', 'kenda-custom' ) ); ?>
 		</form>
 	</div>
@@ -539,10 +611,15 @@ function kenda_sanitize_homepage_settings( array $input ): array {
 		'text_updates_disclaimer',
 	);
 
+	$text_keys[] = 'gallery_eyebrow';
+	$text_keys[] = 'gallery_heading';
+
 	$out = array();
 	foreach ( $input as $key => $value ) {
 		$key = sanitize_key( (string) $key );
-		if ( in_array( $key, $media_keys, true ) ) {
+		if ( 'gallery_ids' === $key ) {
+			$out[ $key ] = implode( ',', kenda_parse_gallery_ids( (string) $value ) );
+		} elseif ( in_array( $key, $media_keys, true ) ) {
 			$out[ $key ] = absint( $value );
 		} elseif ( in_array( $key, $url_keys, true ) ) {
 			$out[ $key ] = esc_url_raw( (string) $value );
