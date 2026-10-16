@@ -439,21 +439,44 @@ $name_parts = array(
 <!-- Slide 8 -->
 <section class="k-section k-section--muted" id="get-involved" data-animate>
 	<div class="k-section__inner">
-		<header class="k-section__head">
-			<div class="k-slide08-head__row">
+		<?php
+		$slide08_heading          = (string) kenda_ppt( 'slide_08', 'heading' );
+		$slide08_heading_image_id = absint( kenda_ppt( 'slide_08', 'heading_image', 0 ) );
+		?>
+		<header class="k-section__head k-slide08-head<?php echo $slide08_heading_image_id ? ' k-slide08-head--has-image' : ''; ?>">
 
-				<h2 class="display-md">
-					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'heading' ) ); ?>
-				</h2>
+			<div class="k-slide08-head__copy">
+				<div class="k-slide08-head__row">
+					<h2 class="display-md">
+						<?php echo esc_html( $slide08_heading ); ?>
+					</h2>
 
-				<h2 class="display-md k-slide08-stat">
-					<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?>
-				</h2>
+					<h2 class="display-md k-slide08-stat">
+						<?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?>
+					</h2>
+				</div>
 
+				<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'lead' ) ); ?></p>
+				<p class="k-stat-line"><strong><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'strategy' ) ); ?></strong> <?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?></p>
 			</div>
-			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'lead' ) ); ?></p>
-			<p class="k-stat-line"><strong><?php echo esc_html( (string) kenda_ppt( 'slide_08', 'strategy' ) ); ?></strong> <?php echo esc_html( (string) kenda_ppt( 'slide_08', 'stat' ) ); ?></p>
-			
+
+			<?php if ( $slide08_heading_image_id ) : ?>
+				<figure class="k-slide08-head__media">
+					<?php
+					echo kenda_render_image(
+						$slide08_heading_image_id,
+						'large',
+						array(
+							'class'    => 'k-slide08-head__image',
+							'alt'      => $slide08_heading,
+							'loading'  => 'lazy',
+							'decoding' => 'async',
+						)
+					);
+					?>
+				</figure>
+			<?php endif; ?>
+
 		</header>
 		<div class="k-platform-details k-slide08-details">
 			<article class="k-platform-detail">

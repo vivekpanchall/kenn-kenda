@@ -686,8 +686,57 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_08', 'strategy', __( 'Strategy label', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'stat', __( 'Stat line', 'kenda-custom' ), $data['slide_08'] );
 				kenda_ppt_admin_row( 'slide_08', 'lead', __( 'Lead', 'kenda-custom' ), $data['slide_08'], 'textarea' );
+
+				$slide08_heading_image_id = absint( $data['slide_08']['heading_image'] ?? 0 );
+				?>
+				<tr>
+					<th scope="row">
+						<label for="kenda-slide08-heading-image">
+							<?php esc_html_e( 'Heading Image (right side)', 'kenda-custom' ); ?>
+						</label>
+					</th>
+					<td>
+						<input
+							type="hidden"
+							id="kenda-slide08-heading-image"
+							name="kenda_ppt_settings[slide_08][heading_image]"
+							value="<?php echo esc_attr( (string) $slide08_heading_image_id ); ?>"
+						>
+
+						<div id="kenda-slide08-heading-image-preview" style="margin-bottom: 10px;">
+							<?php if ( $slide08_heading_image_id ) : ?>
+								<?php
+								echo wp_get_attachment_image(
+									$slide08_heading_image_id,
+									'medium',
+									false,
+									array(
+										'style' => 'max-width:280px;height:auto;display:block;',
+									)
+								);
+								?>
+							<?php endif; ?>
+						</div>
+
+						<button type="button" class="button kenda-slide08-select-heading-image">
+							<?php esc_html_e( 'Choose Image', 'kenda-custom' ); ?>
+						</button>
+
+						<button
+							type="button"
+							class="button kenda-slide08-remove-heading-image"
+							<?php echo $slide08_heading_image_id ? '' : 'style="display:none;"'; ?>
+						>
+							<?php esc_html_e( 'Remove Image', 'kenda-custom' ); ?>
+						</button>
+
+						<p class="description">
+							<?php esc_html_e( 'Shown beside the Accountability Promise / Get Involved heading on the homepage.', 'kenda-custom' ); ?>
+						</p>
+					</td>
+				</tr>
+				<?php
 				kenda_ppt_admin_row( 'slide_08', 'includes', __( 'Responsible spending', 'kenda-custom' ), $data['slide_08'], 'textarea' );
-				  // NEW FIELD
 				kenda_ppt_admin_row(
 					'slide_08',
 					'opt_content',
