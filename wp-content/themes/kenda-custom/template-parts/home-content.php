@@ -294,110 +294,49 @@ $name_parts = array(
 
     <div class="k-section__inner">
 
-        <header class="k-section__head">
+		<?php
+		$priorities_heading          = (string) kenda_home(
+			'priorities_heading',
+			__( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' )
+		);
+		$priorities_heading_image_id = absint( kenda_home( 'priorities_heading_image', 0 ) );
+		$priorities_have_posts       = $priority_full_query->have_posts();
+		?>
+		<header class="k-section__head k-priorities-head<?php echo $priorities_heading_image_id ? ' k-priorities-head--has-image' : ''; ?>">
 
-            <h2 class="display-md">
-                <?php
-                echo esc_html(
-                    kenda_home(
-                        'priorities_heading',
-                        __( 'Sentiment Analysis: What Greater Kansas City Thinks', 'kenda-custom' )
-                    )
-                );
-                ?>
-            </h2>
+			<div class="k-priorities-head__copy">
+				<h2 class="display-md">
+					<?php echo esc_html( $priorities_heading ); ?>
+				</h2>
 
-            <!-- <p class="k-section__lead">
-                <?php echo esc_html( kenda_home( 'priorities_intro', '' ) ); ?>
-            </p> -->
+				<?php if ( $priorities_have_posts ) : ?>
+					<h3 class="k-subhead k-priorities-head__subhead">
+						<?php esc_html_e( 'Platform details', 'kenda-custom' ); ?>
+					</h3>
+				<?php endif; ?>
+			</div>
 
-            <!-- <?php if ( kenda_ppt( 'slide_07', 'deliverable' ) ) : ?>
+			<?php if ( $priorities_heading_image_id ) : ?>
+				<figure class="k-priorities-head__media">
+					<?php
+					echo kenda_render_image(
+						$priorities_heading_image_id,
+						'large',
+						array(
+							'class'    => 'k-priorities-head__image',
+							'alt'      => $priorities_heading,
+							'loading'  => 'lazy',
+							'decoding' => 'async',
+						)
+					);
+					?>
+				</figure>
+			<?php endif; ?>
 
-                <p class="k-note">
-                    <?php echo esc_html( (string) kenda_ppt( 'slide_07', 'deliverable' ) ); ?>
-                </p>
-
-            <?php endif; ?> -->
-
-        </header>
-
-
-        <!-- FIRST ACCORDION -->
-        <!-- <div class="k-accordion" data-priority-accordion>
-
-            <?php if ( is_array( $s07_table ) ) : ?>
-
-                <?php foreach ( $s07_table as $i => $row ) : ?>
-
-                    <?php
-                    if ( ! is_array( $row ) ) {
-                        continue;
-                    }
-
-                    $panel_id = 'k-pillar-panel-' . (int) $i;
-                    ?>
-
-                    <article class="k-accordion__item">
-
-                        <button
-                            type="button"
-                            class="k-accordion__trigger"
-                            data-slide07-toggle
-                            aria-expanded="false"
-                            aria-controls="<?php echo esc_attr( $panel_id ); ?>"
-                        >
-
-                            <span class="k-accordion__label">
-                                <?php echo esc_html( (string) ( $row['pillar'] ?? '' ) ); ?>
-                            </span>
-
-                            <span
-                                class="k-accordion__icon"
-                                aria-hidden="true"
-                            ></span>
-
-                        </button>
-
-
-                        <div
-                            class="k-accordion__panel"
-                            id="<?php echo esc_attr( $panel_id ); ?>"
-                            hidden
-                        >
-
-                            <p>
-                                <strong>
-                                    <?php esc_html_e( 'What we measure', 'kenda-custom' ); ?>
-                                </strong>
-                                —
-                                <?php echo esc_html( (string) ( $row['measure'] ?? '' ) ); ?>
-                            </p>
-
-                            <p>
-                                <strong>
-                                    <?php esc_html_e( 'How it shapes the message', 'kenda-custom' ); ?>
-                                </strong>
-                                —
-                                <?php echo esc_html( (string) ( $row['message'] ?? '' ) ); ?>
-                            </p>
-
-                        </div>
-
-                    </article>
-
-                <?php endforeach; ?>
-
-            <?php endif; ?>
-
-        </div> -->
-
+		</header>
 
         <!-- PLATFORM DETAILS -->
-		<?php if ( $priority_full_query->have_posts() ) : ?>
-
-			<h3 class="k-subhead">
-				<?php esc_html_e( 'Platform details', 'kenda-custom' ); ?>
-			</h3>
+		<?php if ( $priorities_have_posts ) : ?>
 
 			<div class="k-platform-details">
 

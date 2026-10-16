@@ -172,6 +172,12 @@ function kenda_render_homepage_settings_page(): void {
 				kenda_admin_text_row( 'priorities_eyebrow', __( 'Section Label', 'kenda-custom' ), $options );
 				kenda_admin_text_row( 'priorities_heading', __( 'Section Heading', 'kenda-custom' ), $options );
 				kenda_admin_text_row( 'priorities_intro', __( 'Section Introduction', 'kenda-custom' ), $options, 'textarea' );
+				kenda_admin_media_field(
+					'priorities_heading_image',
+					__( 'Heading Image (right side)', 'kenda-custom' ),
+					$options['priorities_heading_image'] ?? 0,
+					__( 'Shown beside the Priorities heading and Platform details label.', 'kenda-custom' )
+				);
 				?>
 			</table>
 
@@ -447,7 +453,7 @@ function kenda_render_homepage_settings_page(): void {
  * @return array<string,mixed>
  */
 function kenda_sanitize_homepage_settings( array $input ): array {
-	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'vision_image', 'cta_qr_image' );
+	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'vision_image', 'cta_qr_image', 'priorities_heading_image' );
 	$url_keys   = array(
 		'hero_primary_url',
 		'hero_secondary_url',
