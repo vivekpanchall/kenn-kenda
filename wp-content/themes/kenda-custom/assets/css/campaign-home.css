@@ -629,10 +629,49 @@ section#home{
     padding-top: var(--header-h);
 }
 .hero--campaign .hero__media{
-    position: static;
+    --hero-video-frame: clamp(3px, 0.45vw, 6px);
+    position: relative;
+    inset: auto;
+    box-sizing: border-box;
+    width: calc(100% - (2 * clamp(0.75rem, 2.5vw, 1.75rem)));
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+    border: var(--hero-video-frame) solid var(--color-gold);
+    border-radius: clamp(6px, 1vw, 12px);
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(214, 174, 94, 0.25);
+}
+.hero--campaign .hero__video {
+    width: 100%;
+    height: auto;
+    max-height: min(92svh, 860px);
+    margin-top: 0;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+.hero.hero--campaign {
+    min-height: 0;
 }
 .hero__container {
     display: none;
+}
+
+@media (max-width: 960px) {
+  .hero--campaign .hero__media {
+    --hero-video-frame: 3px;
+    width: calc(100% - 1.5rem);
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero--campaign .hero__media {
+    --hero-video-frame: 2px;
+    width: calc(100% - 1rem);
+    border-radius: 6px;
+  }
 }
 
 @media (max-width: 480px) {
