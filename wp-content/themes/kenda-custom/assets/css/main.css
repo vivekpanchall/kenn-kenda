@@ -759,7 +759,7 @@ a {
 .site-footer__inner {
   max-width: var(--container-width, 1200px);
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .site-footer__title {
@@ -773,6 +773,10 @@ a {
 
 .site-footer__contact,
 .site-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: 0 0 0.45rem;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
