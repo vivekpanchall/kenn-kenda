@@ -248,6 +248,13 @@ function kenda_render_homepage_settings_page(): void {
 					'textarea'
 				);
 
+				kenda_admin_media_field(
+					'voice_image',
+					__( 'Your Voice - Image', 'kenda-custom' ),
+					$options['voice_image'] ?? 0,
+					__( 'Shown below the Your Voice description on the homepage.', 'kenda-custom' )
+				);
+
 
 				// Help Bring Accountability Back.
 				kenda_admin_text_row(
@@ -459,7 +466,7 @@ function kenda_render_homepage_settings_page(): void {
  * @return array<string,mixed>
  */
 function kenda_sanitize_homepage_settings( array $input ): array {
-	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'about_heading_image', 'vision_image', 'cta_qr_image', 'priorities_heading_image' );
+	$media_keys = array( 'hero_video', 'hero_poster', 'about_image', 'about_heading_image', 'vision_image', 'cta_qr_image', 'priorities_heading_image', 'voice_image' );
 	$url_keys   = array(
 		'hero_primary_url',
 		'hero_secondary_url',

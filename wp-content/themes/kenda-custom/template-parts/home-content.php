@@ -710,6 +710,27 @@ $name_parts = array(
 							</p>
 						<?php endif; ?>
 
+						<?php
+						$voice_image_id = absint( kenda_home( 'voice_image', 0 ) );
+						if ( $voice_image_id ) :
+							$voice_image_alt = (string) kenda_home( 'voice_heading', __( 'Your Voice', 'kenda-custom' ) );
+							?>
+							<figure class="k-campaign-closing__media">
+								<?php
+								echo kenda_render_image(
+									$voice_image_id,
+									'large',
+									array(
+										'class'    => 'k-campaign-closing__image',
+										'alt'      => $voice_image_alt,
+										'loading'  => 'lazy',
+										'decoding' => 'async',
+									)
+								);
+								?>
+							</figure>
+						<?php endif; ?>
+
 					</div>
 
 
