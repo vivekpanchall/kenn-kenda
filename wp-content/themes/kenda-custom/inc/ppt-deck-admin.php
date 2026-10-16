@@ -91,7 +91,7 @@ function kenda_sanitize_ppt_settings( array $input ): array {
 		foreach ( $slide_val as $field_key => $field_val ) {
 			$field_key = sanitize_key( (string) $field_key );
 
-			if ( 'image' === $field_key || 'heading_image' === $field_key ) {
+			if ( in_array( $field_key, array( 'image', 'heading_image', 'scope_image' ), true ) ) {
 				$out[ $slide_key ][ $field_key ] = absint( $field_val );
 				continue;
 			}
@@ -273,7 +273,56 @@ function kenda_render_ppt_deck_settings_page(): void {
 				kenda_ppt_admin_row( 'slide_02', 'bullets', __( 'Bullets', 'kenda-custom' ), $data['slide_02'], 'textarea' );
 				kenda_ppt_admin_row( 'slide_02', 'scope_title', __( 'Scope box title', 'kenda-custom' ), $data['slide_02'] );
 				kenda_ppt_admin_row( 'slide_02', 'scope_bullets', __( 'Scope box bullets', 'kenda-custom' ), $data['slide_02'], 'textarea' );
-			?></table>
+
+				$slide02_scope_image_id = absint( $data['slide_02']['scope_image'] ?? 0 );
+				?>
+				<tr>
+					<th scope="row">
+						<label for="kenda-slide02-scope-image">
+							<?php esc_html_e( 'Scope Image', 'kenda-custom' ); ?>
+						</label>
+					</th>
+					<td>
+						<input
+							type="hidden"
+							id="kenda-slide02-scope-image"
+							name="kenda_ppt_settings[slide_02][scope_image]"
+							value="<?php echo esc_attr( (string) $slide02_scope_image_id ); ?>"
+						>
+
+						<div id="kenda-slide02-scope-image-preview" style="margin-bottom: 10px;">
+							<?php if ( $slide02_scope_image_id ) : ?>
+								<?php
+								echo wp_get_attachment_image(
+									$slide02_scope_image_id,
+									'medium',
+									false,
+									array(
+										'style' => 'max-width:280px;height:auto;display:block;',
+									)
+								);
+								?>
+							<?php endif; ?>
+						</div>
+
+						<button type="button" class="button kenda-slide02-select-scope-image">
+							<?php esc_html_e( 'Choose Image', 'kenda-custom' ); ?>
+						</button>
+
+						<button
+							type="button"
+							class="button kenda-slide02-remove-scope-image"
+							<?php echo $slide02_scope_image_id ? '' : 'style="display:none;"'; ?>
+						>
+							<?php esc_html_e( 'Remove Image', 'kenda-custom' ); ?>
+						</button>
+
+						<p class="description">
+							<?php esc_html_e( 'Replaces the old disclosure block under Scope & Campaign Window. Recommended: landscape photo.', 'kenda-custom' ); ?>
+						</p>
+					</td>
+				</tr>
+			<?php ?></table>
 
 			<h2><?php esc_html_e( 'Slide 3 — Campaign Introduction / Team & Capabilities', 'kenda-custom' ); ?></h2>
 

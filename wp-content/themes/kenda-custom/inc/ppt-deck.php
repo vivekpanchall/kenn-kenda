@@ -25,6 +25,7 @@ function kenda_ppt_default_slides(): array {
 			'bullets'       => "• This proposal is built to carry a disciplined message Kansas City can trust.\n• The campaign will position Kenda as a fiscally serious leader focused on families, accountability, and results.\n• Every recommendation is designed to reach voters where they live, scroll, stream, and gather.",
 			'scope_title'   => __( 'Scope Note', 'kenda-custom' ),
 			'scope_bullets' => "• Primary campaign deliverables only.\n• Kansas City's nonpartisan municipal primary is expected in April 2027.\n• Working planning date: April 6, 2027, pending the official Election Board calendar.\n• A June 2027 runoff/general election proposal will be prepared separately if Kenda advances.",
+			'scope_image'   => 0,
 		),
 		'slide_03' => array(
 

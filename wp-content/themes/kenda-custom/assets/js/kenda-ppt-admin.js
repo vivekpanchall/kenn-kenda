@@ -188,3 +188,63 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
+jQuery(document).ready(function ($) {
+
+    let slide02ScopeMediaFrame = null;
+
+    $('.kenda-slide02-select-scope-image').on('click', function (event) {
+
+        event.preventDefault();
+
+        slide02ScopeMediaFrame = wp.media({
+            title: 'Select Scope Image',
+            button: {
+                text: 'Use This Image'
+            },
+            multiple: false,
+            library: {
+                type: 'image'
+            }
+        });
+
+        slide02ScopeMediaFrame.on('select', function () {
+
+            const attachment = slide02ScopeMediaFrame
+                .state()
+                .get('selection')
+                .first()
+                .toJSON();
+
+            $('#kenda-slide02-scope-image').val(attachment.id);
+
+            let imageUrl = attachment.url;
+
+            if (attachment.sizes && attachment.sizes.medium) {
+                imageUrl = attachment.sizes.medium.url;
+            }
+
+            $('#kenda-slide02-scope-image-preview').html(
+                '<img src="' +
+                imageUrl +
+                '" style="max-width:280px;height:auto;display:block;" />'
+            );
+
+            $('.kenda-slide02-remove-scope-image').show();
+        });
+
+        slide02ScopeMediaFrame.open();
+    });
+
+    $('.kenda-slide02-remove-scope-image').on('click', function (event) {
+
+        event.preventDefault();
+
+        $('#kenda-slide02-scope-image').val('');
+
+        $('#kenda-slide02-scope-image-preview').html('');
+
+        $(this).hide();
+    });
+
+});

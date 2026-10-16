@@ -242,15 +242,39 @@ $name_parts = array(
 			<!-- <p class="slide-02-blue-text"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'eyebrow' ) ); ?></p> -->
 			<p class="k-section__lead"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'intro' ) ); ?></p>
 		</header>
-		<div class="k-split">
-			<div class="k-card k-card--soft">
-				<!-- <h3 class="k-card__title slide-02-dark-blue"><?php esc_html_e( 'Thank you for the opportunity', 'kenda-custom' ); ?></h3> -->
-				<ul class="k-list">
-					<?php foreach ( $s02_bullets as $line ) : ?>
-						<li><?php echo esc_html( $line ); ?></li>
-					<?php endforeach; ?>
-				</ul>
+		<?php
+		$slide02_scope_image_id = absint( kenda_ppt( 'slide_02', 'scope_image', 0 ) );
+		$slide02_scope_alt      = (string) kenda_ppt( 'slide_02', 'scope_title', __( 'Scope', 'kenda-custom' ) );
+		?>
+		<div class="k-split<?php echo $slide02_scope_image_id ? ' k-split--intro-media' : ''; ?>">
+			<div class="k-intro-stack">
+				<div class="k-card k-card--soft">
+					<!-- <h3 class="k-card__title slide-02-dark-blue"><?php esc_html_e( 'Thank you for the opportunity', 'kenda-custom' ); ?></h3> -->
+					<ul class="k-list">
+						<?php foreach ( $s02_bullets as $line ) : ?>
+							<li><?php echo esc_html( $line ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+
+				<?php if ( $slide02_scope_image_id ) : ?>
+					<figure class="k-slide02-scope-media">
+						<?php
+						echo kenda_render_image(
+							$slide02_scope_image_id,
+							'medium_large',
+							array(
+								'class'    => 'k-slide02-scope-media__image',
+								'alt'      => $slide02_scope_alt,
+								'loading'  => 'lazy',
+								'decoding' => 'async',
+							)
+						);
+						?>
+					</figure>
+				<?php endif; ?>
 			</div>
+
 			<div class="k-card k-card--soft">
 				<h3 class="k-card__title slide-02-dark-blue"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'scope_title' ) ); ?></h3>
 				<ul class="k-list">
@@ -259,16 +283,6 @@ $name_parts = array(
 					<?php endforeach; ?>
 				</ul>
 			</div>
-			<!-- <details class="k-disclosure k-disclosure--gold">
-				<summary class="k-disclosure__summary"><?php echo esc_html( (string) kenda_ppt( 'slide_02', 'scope_title' ) ); ?></summary>
-				<div class="k-disclosure__body">
-					<ul class="k-list k-list--compact">
-						<?php foreach ( $s02_scope as $line ) : ?>
-							<li><?php echo esc_html( $line ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-			</details> -->
 		</div>
 	</div>
 </section>
